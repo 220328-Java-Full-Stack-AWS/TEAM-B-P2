@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterUserComponent } from './sign-in-sign-up/register-user.component';
+import { SignInSignUpComponent } from './sign-in-sign-up/sign-in-sign-up.component';
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterUserComponent,
+    SignInSignUpComponent,
   ],
   imports: [
     BrowserModule,
