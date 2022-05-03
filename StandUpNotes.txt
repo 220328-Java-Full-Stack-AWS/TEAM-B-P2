@@ -1,14 +1,14 @@
 Anthony Pilletti - Has Trello board
 Fatemah will be making GitHub for all of us to start branching from
 
-kenneth mondays starting may 2 & may 16
-chenxi tuesdays may 3 & 10 & 17
-fatemeh wednesdays may 4 & 11 & 18
-qiang thursdays may 5 & 12
-mohammad fridays may 6 & 13 & 20
-anthony monday may 9 & thursday may 19
+#### kenneth mondays starting may 2 & may 16
+#### chenxi tuesdays may 3 & 10 & 17
+#### fatemeh wednesdays may 4 & 11 & 18
+#### qiang thursdays may 5 & 12
+#### mohammad fridays may 6 & 13 & 20
+#### anthony monday may 9 & thursday may 19
 
--5/2/22
+#### -5/2/22
 -What did you do since last time?
 Chenxi: Reviewed QC questions, worked on workflow
 Mohammad: Studying for QC, thinking about tables for project 2, skeleton of approach
@@ -33,7 +33,7 @@ Fatemeh: getting to know new technologies
 Qiang: Seperate template and component portions of Angular. Also, try to understand model system
 Kenneth: time
 
--5/3/22
+#### -5/3/22
 -What did you do since last time?
 Chenxi: Communicating with team members to get people on same page, and familarizing thmeselves with projec
 Mohammad: Studying HTML CSS and javascipt, watching video sent by teammate (wants to learn more front end)
