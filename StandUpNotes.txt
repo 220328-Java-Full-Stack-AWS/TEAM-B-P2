@@ -37,7 +37,7 @@ Kenneth: time
 -What did you do since last time?
 Chenxi: Communicating with team members to get people on same page, and familarizing thmeselves with projec
 Mohammad: Studying HTML CSS and javascipt, watching video sent by teammate (wants to learn more front end)
-Anthony: 
+Anthony: Look back on P1 to see what can be reused
 Fatemeh: Continued learning angular, did some changes in project structure and uploaded to github
 Qiang: Finsihed register form and login form with UI using Angular UI library
 Kenneth: Learned some of hibernate
@@ -45,7 +45,7 @@ Kenneth: Learned some of hibernate
 -What are you going to work on next?
 Chenxi: Continue communicate with team members
 Mohammad: Finish learning more about front end and start to learn hibernate
-Anthony:
+Anthony: Learn new technologies
 Fatemeh: Continue to learn new technologies
 Qiang: Finish databinding for register and login form, build fake API to test with 
 Kenneth: Continue to learn more about hibernate
@@ -53,7 +53,7 @@ Kenneth: Continue to learn more about hibernate
 -Blocker?
 Chenxi: Feeling lack of knowledge 
 Mohammad: Time, lack of knowledge of technologies
-Anthony: 
+Anthony: Lack of knowledge of technologies
 Fatemeh: Lack of knowledge of technologies
 Qiang: Angular data binding concept
 Kenneth: Lack of knowledge of technologies
