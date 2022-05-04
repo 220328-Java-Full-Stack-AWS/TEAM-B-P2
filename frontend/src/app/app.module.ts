@@ -13,6 +13,8 @@ import { MatFormFieldControl, MatFormFieldModule } from "@angular/material/form-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from "@angular/router";
+
 
 
 
@@ -34,7 +36,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule.forRoot([
+      {
+        path: 'login',
+        component: SignInSignUpComponent
+      }
+    ])
 
   ],
   providers: [],
