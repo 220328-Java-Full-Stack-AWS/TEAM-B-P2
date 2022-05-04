@@ -2,7 +2,7 @@ package com.revature.p2backend.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
