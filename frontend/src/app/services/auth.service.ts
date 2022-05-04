@@ -8,12 +8,14 @@ export class AuthService
 
   constructor() { }
 
-  login(username: string, password: string)
+  login(email: string, password: string)
   {
-    if (username === 'test' && password === '123456') {
-      localStorage.setItem('username', username);
+    if (email === 'test@test.com' && password === '123456') {
+      localStorage.setItem('email', email);
+      alert('Login Successful');
       return true;
     }
+    alert('Login Failed');
     return false;
   }
 }
