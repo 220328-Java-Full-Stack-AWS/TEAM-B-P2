@@ -67,3 +67,29 @@ BrainStorming
 	-Post milestones to Trello (5 minutes)
 	-Chenxi starts some code
 	
+	
+#### -5/4/22
+-What did you do since last time?
+Chenxi: Reviewed Unit testing and learning more.
+Mohammad: Practiced more stuff related to github and git branching.Learning Spring boot as well as more html & css. 
+Anthony: Worked on Hibernate.
+Fatemeh: Continued learning angular.
+Qiang: Did service layer for front end.
+Kenneth: Worked on Hibernet , coding challenges. Application of Hibernaet for crud functionality p1.
+
+-What are you going to work on next?
+Chenxi: Unit testing.
+Mohammad: Continuation of learning.
+Anthony: Learn new technologies
+Fatemeh: Continue learning Angular and start learning Hibernate.
+Qiang: Will be building user repository for the frontend as well as making a fake API to test out login functionality.
+Kenneth: Continue to learn more about hibernate
+
+-Blocker?
+Chenxi: Lack of knowledge.
+Mohammad: Can not find ide for Spring boot.
+Anthony: Lack of knowledge.
+Fatemeh: Time, Lack of knowledge.
+Qiang: Angular, data binding concept.
+Kenneth: Lack of knowledge of technologies
+
