@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: 'app-sign-in-sign-up',
@@ -9,11 +10,13 @@ export class SignInSignUpComponent implements OnInit
 {
   #email: string;
   #password: string;
+  authService: AuthService;
 
   constructor()
   {
     this.#email = "";
     this.#password = "";
+    this.authService = new AuthService();
   }
 
   ngOnInit(): void
@@ -23,13 +26,17 @@ export class SignInSignUpComponent implements OnInit
   onEmailChange(event: Event): void
   {
     this.#email = (<HTMLInputElement>event.target).value;
-    console.log(this.#email);
   }
 
   onPasswordChange(event: Event): void
   {
     this.#password = (<HTMLInputElement>event.target).value;
-    console.log(this.#password);
+
+  }
+
+  login(): void
+  {
+    this.authService.login(this.#email, this.#password);
   }
 
 }
