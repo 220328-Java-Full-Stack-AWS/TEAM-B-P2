@@ -16,6 +16,7 @@
                                 name="email"
                                 ngModel
                                 #email="ngModel"
+                                (input)="onEmailChange($event)"
                             >
                             <mat-error *ngIf="email.invalid">Email is required</mat-error>
                             <mat-icon matSuffix>email</mat-icon>
@@ -30,6 +31,7 @@
                                 name="password"
                                 ngModel
                                 #password="ngModel"
+                                (input)="onPasswordChange($event)"
                             >
                             <mat-error *ngIf="password.errors && password.errors['required']">
                                 Password is required
