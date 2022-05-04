@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="p2-backend:war">
+    <output-path>$PROJECT_DIR$/p2-backend/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>p2-backend</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="p2-backend-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="p2-backend:war exploded" />
+    </root>
+  </artifact>
+</component>
