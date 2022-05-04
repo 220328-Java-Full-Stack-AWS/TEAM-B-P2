@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from "@angular/router";
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -22,6 +23,7 @@ import { RouterModule } from "@angular/router";
   declarations: [
     AppComponent,
     SignInSignUpComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,10 @@ import { RouterModule } from "@angular/router";
     MatCheckboxModule,
     MatIconModule,
     RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent
+      },
       {
         path: 'login',
         component: SignInSignUpComponent
