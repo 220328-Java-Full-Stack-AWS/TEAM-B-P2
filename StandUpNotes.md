@@ -93,6 +93,8 @@ Fatemeh: Time, Lack of knowledge.
 Qiang: Angular, data binding concept.
 Kenneth: Lack of knowledge of technologies
 
+<hr>
+
 #### 5/5/22
 ##### What did you do since last time?
 - 
@@ -123,7 +125,7 @@ Kenneth:
 - Backend Create entities from user, then finish user repository layer. 
 - Frontend continue working on authService. 
   
-Kenneth: 
+###### Kenneth: 
 -
 ##### Blocker?
 ###### Chenxi: 
@@ -137,5 +139,7 @@ Qiang:
 - Entity relationships.
 
 ###### Kenneth: 
+
+<hr>
 
 
