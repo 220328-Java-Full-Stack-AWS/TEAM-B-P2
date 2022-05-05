@@ -135,7 +135,7 @@ Kenneth: Lack of knowledge of technologies
 ###### Chenxi: 
 - Git merging conflics.
 ###### Mohammad: 
-- 
+- time and knowledge 
 ###### Anthony: 
 - hibernate commands
 ###### Fatemeh: 
