@@ -97,7 +97,6 @@ Kenneth: Lack of knowledge of technologies
 
 #### 5/5/22
 ##### What did you do since last time?
-- 
 ###### Chenxi: 
 -
 ###### Mohammad: 
@@ -122,8 +121,8 @@ Kenneth:
 ###### Fatemeh: 
 -
 ###### Qiang: 
-- Backend Create entities from user, then finish user repository layer. 
-- Frontend continue working on authService. 
+- Backend: Create entities from user, then finish user repository layer. 
+- Frontend: continue working on authService. 
   
 ###### Kenneth: 
 -
