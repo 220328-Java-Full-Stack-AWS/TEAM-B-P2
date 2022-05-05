@@ -1,5 +1,7 @@
 package com.revature.p2backend.models;
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -9,7 +11,7 @@ public class User {
     @Column(name = "user_id")
     private Integer id;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column(name = "user_password")
@@ -21,18 +23,19 @@ public class User {
     @Column(name = "user_last_name")
     private String lastName;
 
-    @Column(name = "user_email")
+    @Column(name = "user_email", unique = true)
     private String email;
 
     @Column(name = "user_credit_card")
     private String creditCard;
 
-    @Column(name = "user_phone")
+    @Column(name = "user_phone", unique = true)
     private String phone;
 
     //@OneToOne
     @Column(name ="user_address")
-    private Integer addressId;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Address> addresses;
 
     public User() {
     }
@@ -45,9 +48,10 @@ public class User {
         this.email = email;
         this.creditCard = creditCard;
         this.phone = phone;
+        this.addresses = new LinkedList<>();
     }
 
-    public User(Integer id, String username, String password, String firstName, String lastName, String email, String creditCard, String phone, Integer addressId) {
+    public User(Integer id, String username, String password, String firstName, String lastName, String email, String creditCard, String phone, List<Address> addresses) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -56,7 +60,7 @@ public class User {
         this.email = email;
         this.creditCard = creditCard;
         this.phone = phone;
-        this.addressId = addressId;
+        this.addresses = addresses;
     }
 
     public Integer getId() {
@@ -123,12 +127,30 @@ public class User {
         this.phone = phone;
     }
 
-    public Integer getAddressId() {
-        return addressId;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
+    public void setAddresses(List<Address> address) {
+        this.addresses = address;
     }
+
+    public void addAddress(Address address){
+        this.addresses.add(address);
+    }
+
+    public void removeAddress(Address address){
+        this.addresses.remove(address);
+    }
+
+    public Address getAddressByNickname(String nickname){
+        for(Address address: addresses){
+            if(address.getNickname().equals(nickname)){
+                return address;
+            }
+        }
+        return null;
+    }
+
 }
 
