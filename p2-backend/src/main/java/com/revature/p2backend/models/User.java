@@ -1,7 +1,11 @@
 package com.revature.p2backend.models;
-import javax.persistence.*;
-import java.util.LinkedList;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -32,15 +36,33 @@ public class User {
     @Column(name = "user_phone", unique = true)
     private String phone;
 
-    //@OneToOne
-    @Column(name ="user_address")
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Address> addresses;
+    @Column(name = "street_name")
+    String streetName;
+
+    @Column(name = "city")
+    String city;
+
+    @Column(name = "state")
+    String state;
+
+    @Column(name = "zip_code")
+    String zipCode;
 
     public User() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, String creditCard, String phone) {
+    public User(
+            String username,
+            String password,
+            String firstName,
+            String lastName,
+            String email,
+            String creditCard,
+            String phone,
+            String streetName,
+            String city,
+            String state,
+            String zipCode) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -48,19 +70,10 @@ public class User {
         this.email = email;
         this.creditCard = creditCard;
         this.phone = phone;
-        this.addresses = new LinkedList<>();
-    }
-
-    public User(Integer id, String username, String password, String firstName, String lastName, String email, String creditCard, String phone, List<Address> addresses) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.creditCard = creditCard;
-        this.phone = phone;
-        this.addresses = addresses;
+        this.streetName = streetName;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
     }
 
     public Integer getId() {
@@ -127,30 +140,36 @@ public class User {
         this.phone = phone;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setAddresses(List<Address> address) {
-        this.addresses = address;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
-    public void addAddress(Address address){
-        this.addresses.add(address);
+    public String getCity() {
+        return city;
     }
 
-    public void removeAddress(Address address){
-        this.addresses.remove(address);
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public Address getAddressByNickname(String nickname){
-        for(Address address: addresses){
-            if(address.getNickname().equals(nickname)){
-                return address;
-            }
-        }
-        return null;
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
 }
-
