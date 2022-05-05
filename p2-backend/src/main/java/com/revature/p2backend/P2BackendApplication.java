@@ -1,7 +1,6 @@
 package com.revature.p2backend;
 
 import com.revature.p2backend.dao.UserDao;
-import com.revature.p2backend.models.Address;
 import com.revature.p2backend.models.User;
 import com.revature.p2backend.utilities.StorageManager;
 import com.revature.p2backend.utilities.TransactionManager;
@@ -17,7 +16,6 @@ public class P2BackendApplication {
 		SpringApplication.run(P2BackendApplication.class, args);
 
 		StorageManager connection = new StorageManager();
-		connection.addAnnotatedClass(Address.class);
 		connection.addAnnotatedClass(User.class);
 
 		Session session = connection.initializeDataSource();
