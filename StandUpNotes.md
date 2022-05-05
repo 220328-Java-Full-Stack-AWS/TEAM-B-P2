@@ -93,3 +93,29 @@ Fatemeh: Time, Lack of knowledge.
 Qiang: Angular, data binding concept.
 Kenneth: Lack of knowledge of technologies
 
+#### -5/4/22
+-What did you do since last time?
+Chenxi: 
+Mohammad: 
+Anthony: 
+Fatemeh: 
+Qiang: Finish design database, connecting to database using hibernate.
+Kenneth: 
+
+-What are you going to work on next?
+Chenxi: 
+Mohammad: 
+Anthony: 
+Fatemeh: 
+Qiang: Backend Create entities from user, then finish user repository layer. Frontend continue working on authService. 
+Kenneth: 
+
+-Blocker?
+Chenxi: 
+Mohammad: 
+Anthony: 
+Fatemeh: 
+Qiang: Table relationships.
+Kenneth: 
+
+
