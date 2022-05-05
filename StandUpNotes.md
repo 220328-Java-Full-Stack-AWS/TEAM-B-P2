@@ -98,47 +98,52 @@ Kenneth: Lack of knowledge of technologies
 #### 5/5/22
 ##### What did you do since last time?
 ###### Chenxi: 
--
+- Git Branching
 ###### Mohammad: 
--
+- Hibernate 
+- UI registeration login
 ###### Anthony: 
--
+- Hibernate
+- Database connection
 ###### Fatemeh: 
--
+- Learning Angular
+- Learning Typescript
+- Learning Hibernate
 ###### Qiang: 
 - Finish design database
 - connecting to database using hibernate.
-
-Kenneth: 
+##### Kenneth: 
+- connection hibernate
 
 ##### What are you going to work on next?
 ###### Chenxi: 
--
+- Git Branching
 ###### Mohammad: 
--
+- working entity
+- learn angular
 ###### Anthony: 
--
+- Hibernate
 ###### Fatemeh: 
--
+- hibernate
 ###### Qiang: 
 - Backend: Create entities from user, then finish user repository layer. 
 - Frontend: continue working on authService. 
-  
 ###### Kenneth: 
--
+- dao layer
+
 ##### Blocker?
 ###### Chenxi: 
--
+- Git merging conflics.
 ###### Mohammad: 
--
+- 
 ###### Anthony: 
--
+- hibernate commands
 ###### Fatemeh: 
-Qiang: 
+- time
+###### Qiang: 
 - Entity relationships.
-
 ###### Kenneth: 
-
+- knowladge
 <hr>
 
 
