@@ -148,28 +148,28 @@ Kenneth: Lack of knowledge of technologies
 
 #### -5/6/22
 -What did you do since last time?
-Chenxi: 
-Mohammad:  
-Anthony: 
-Fatemeh: 
-Qiang: 
-Kenneth: 
+Chenxi: updated our trial board, worked on hibernate crud
+Mohammad: learning hibernate 
+Anthony: worked on creating models
+Fatemeh: working on hibernate
+Qiang: learaning hibernate without spring boot
+Kenneth: created all the models in hibernates, able to save 
 
 -What are you going to work on next?
-Chenxi: 
-Mohammad: 
-Anthony: 
-Fatemeh:
-Qiang: 
-Kenneth: 
+Chenxi: focus on creating models for order 
+Mohammad: finish learning hibernate and start learning Angular
+Anthony: working on models
+Fatemeh: continue finish persisting
+Qiang: continue working on the front end
+Kenneth: doing the rest of the repositories
 
 -Blocker?
-Chenxi: 
-Mohammad: 
-Anthony: 
-Fatemeh: 
-Qiang: 
-Kenneth: 
+Chenxi: time 
+Mohammad: time and knowledge
+Anthony: time
+Fatemeh: how to map foreign keys
+Qiang: hibernate syntax
+Kenneth: time
 
 <hr>
 
