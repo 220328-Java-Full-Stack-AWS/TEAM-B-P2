@@ -72,7 +72,7 @@ private List<OrderItem> orderItems;
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Integer integer) {
         this.user = user;
     }
 
