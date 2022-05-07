@@ -1,8 +1,6 @@
 package com.revature.p2backend;
 
-import com.revature.p2backend.entities.Order;
-import com.revature.p2backend.entities.OrderItem;
-import com.revature.p2backend.entities.User;
+import com.revature.p2backend.entities.*;
 import com.revature.p2backend.utilities.StorageManager;
 import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +17,8 @@ public class  P2BackendApplication {
 		storageManager.addAnnotadtedClass(User.class);
         storageManager.addAnnotadtedClass(Order.class);
 		storageManager.addAnnotadtedClass(OrderItem.class);
+		storageManager.addAnnotadtedClass(Product.class);
+		storageManager.addAnnotadtedClass(Category.class);
 		Session session = storageManager.inintializeDatasource();
 
 

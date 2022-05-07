@@ -18,7 +18,7 @@ private Integer id;
 private Date createdAt;
 
 @Column
-private double total;
+private Double total;
 
 @ManyToOne(fetch = FetchType.LAZY)
 private User user;
@@ -43,6 +43,7 @@ private List<OrderItem> orderItems;
         this.user = user;
     }
 
+
     public Integer getId() {
         return id;
     }
@@ -59,11 +60,11 @@ private List<OrderItem> orderItems;
         this.createdAt = createdAt;
     }
 
-    public double getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 

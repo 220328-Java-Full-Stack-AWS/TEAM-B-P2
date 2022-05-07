@@ -19,6 +19,9 @@ private Integer quantity;
 @ManyToOne(fetch = FetchType.LAZY)
 private Order order;
 
+@ManyToOne(fetch = FetchType.LAZY)
+private Product product;
+
 
     public OrderItem() {
     }
@@ -27,6 +30,13 @@ private Order order;
     public OrderItem(Integer quantity, Order order) {
         this.quantity = quantity;
         this.order = order;
+    }
+
+
+    public OrderItem(Integer quantity, Order order, Product product) {
+        this.quantity = quantity;
+        this.order = order;
+        this.product = product;
     }
 
     public Integer getId() {
@@ -51,5 +61,13 @@ private Order order;
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
