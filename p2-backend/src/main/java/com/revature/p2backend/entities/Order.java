@@ -74,4 +74,12 @@ private List<OrderItem> orderItems;
     public void setUser(User user) {
         this.user = user;
     }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

@@ -4,7 +4,7 @@ package com.revature.p2backend.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="order-item", schema = "p2")
+@Table(name="order_item", schema = "p2")
 public class OrderItem {
 
 
