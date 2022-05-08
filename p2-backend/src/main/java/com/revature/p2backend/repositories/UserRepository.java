@@ -1,11 +1,13 @@
 package com.revature.p2backend.repositories;
 
 import com.revature.p2backend.entities.User;
+import com.revature.p2backend.exceptions.Myexceptions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,13 +30,13 @@ public class UserRepository implements HibernateRepository<User> {
         transaction.commit();
     }
 
-    public void update(User user){
+    public void updateBySession(User user){
         Transaction transaction = session.beginTransaction();
         session.update(user);
         transaction.commit();
     }
 
-    public void delete(User user){
+    public void deleteBySession(User user){
         Transaction transaction = session.beginTransaction();
         session.delete(user);
         transaction.commit();
@@ -85,18 +87,25 @@ public class UserRepository implements HibernateRepository<User> {
 
         String hql = "FROM User WHERE userName = :userName";
         TypedQuery<User> query = session.createQuery(hql, User.class);
-
         query.setParameter("userName", userName);
-
         User user = query.getSingleResult();
-
         return user;
-
-
     }
 
 
+    public void updatenameById(Integer id, String userName) {
+        String hql = "UPDATE User SET userName = :userName WHERE id = :id";
+        Query query = session.createQuery(hql);
+        try
+        {query.setParameter("userName", "userName");
+        query.setParameter("id", "id");
+        query.executeUpdate();
+        } catch (RuntimeException e) {
+            throw new RuntimeException();
+            //e.printStackTrace();
+        }
 
+    }
 
 
 }
