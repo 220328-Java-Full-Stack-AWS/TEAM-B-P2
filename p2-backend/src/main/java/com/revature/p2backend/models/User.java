@@ -1,79 +1,59 @@
-package com.revature.p2backend.models;
+package com.revature.p2backend.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name="user" , schema="public")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name="user_id")
     private Integer id;
 
-    @Column(unique = true)
-    private String username;
-
-    @Column(name = "user_password")
-    private String password;
-
-    @Column(name = "user_first_name")
+    @Column(name="first_name")
     private String firstName;
 
-    @Column(name = "user_last_name")
+    @Column(name="last_name")
     private String lastName;
 
-    @Column(name = "user_email", unique = true)
+    @Column(name="user_name")
+    private String userName;
+
+    @Column
     private String email;
 
-    @Column(name = "user_credit_card")
-    private String creditCard;
+    @Column
+    private String password;
 
-    @Column(name = "user_phone", unique = true)
-    private String phone;
+    @Column(name="phone_number")
+    private String phoneNumber;
 
-    @Column(name = "street_name")
-    String streetName;
+    @ManyToMany(cascade={CascadeType.ALL})
+    @JoinTable(
+         name="user_address",
+         schema="public",
+         joinColumns={@JoinColumn(name="user_id")},
+         inverseJoinColumns={@JoinColumn(name="address_id")}
+    )
+    private Set<Address> addresses = new HashSet<Address>();
 
-    @Column(name = "city")
-    String city;
-
-    @Column(name = "state")
-    String state;
-
-    @Column(name = "zip_code")
-    String zipCode;
+    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
+    private List<Orders> orders = new LinkedList<>();
 
     public User() {
     }
 
-    public User(
-            String username,
-            String password,
-            String firstName,
-            String lastName,
-            String email,
-            String creditCard,
-            String phone,
-            String streetName,
-            String city,
-            String state,
-            String zipCode) {
-        this.username = username;
-        this.password = password;
+    public User(String firstName, String lastName, String userName, String email, String password, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.email = email;
-        this.creditCard = creditCard;
-        this.phone = phone;
-        this.streetName = streetName;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
     public Integer getId() {
@@ -82,22 +62,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {
@@ -116,6 +80,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -124,52 +96,35 @@ public class User {
         this.email = email;
     }
 
-    public String getCreditCard() {
-        return creditCard;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCreditCard(String creditCard) {
-        this.creditCard = creditCard;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public Set<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
+    public void setAddresses(Address address) {
+        this.addresses.add(address);
     }
 
-    public String getCity() {
-        return city;
+    public List<Orders> getOrders() {
+        return orders;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setOrders(Orders order) {
+        this.orders.add(order);
     }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
 }
