@@ -173,26 +173,48 @@ Kenneth: time
 
 <hr> 
 -5/9/22
+
 -What did you do since last time?
+
 Chenxi:
+
 Mohammad:I worked on the project and made all the classes, CRUD is working for Order and User
+
 Anthony: Finished CRUD functionality for all models/entities
+
 Fatemeh:Studied hibernate, make CRUD functionality for P1, did the same thing for P2, created all classes and entities for our models. 
+
 Qiang:Finished building the customer cart model and relationships.
+
 Kenneth: Created a schedule to help with working as a team.
+
 -What are you going to work on today?
+
 Chenxi:
+
 Mohammad: Finish CRUD for other classes, continue learning about angular
+
 Anthony: Show what is done, and hope to start service layer or help others with their CRUD
+
 Fatemeh:Work on service layer, learn more about Spring
+
 Qiang:Repository layer
+
 Kenneth:Help us work as a team to progress the project.
+
 -Blocker(s)?
+
 Chenxi:
+
 Mohammad:Time and knowledge
+
 Anthony:Time
+
 Fatemeh:Time 
+
 Qiang:How to use bidirectional association to auto update both sides
+
 Kenneth:No blockers, just waiting to move to the next level of team development.
+
 <hr>
 
