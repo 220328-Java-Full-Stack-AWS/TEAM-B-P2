@@ -39,7 +39,7 @@ public class  P2BackendApplication {
 		userRepository.save(mohammad);
 		mohammad.setUserName("mohammadfy");
 		userRepository.updateBySession(mohammad);
-
+		//userRepository.delete(mohammad);
 		//userRepository.deleteBySession(mohammad);
 		List<User> usersList = new ArrayList<>();
 		usersList = userRepository.getAll();
@@ -70,6 +70,9 @@ public class  P2BackendApplication {
 		Order o2 = orderRepository.getById(1);
 		System.out.println("user_id for that oredre: " + o2.getTotal());
 
+    mohammad.setPhoneNumber("8136134540");
+    userRepository.update(mohammad);
+	//userRepository.deleteBySession(mohammad);
 
 
 

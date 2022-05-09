@@ -10,6 +10,9 @@ public List<T> getAll();
 
 public T getById (Integer id);
 
+    public void delete(T t);
+    public void update(T t);
+
 
 
 

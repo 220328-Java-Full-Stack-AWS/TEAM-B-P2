@@ -4,10 +4,10 @@ import com.revature.p2backend.entities.User;
 import com.revature.p2backend.exceptions.Myexceptions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import javax.persistence.Query;
+
 import javax.persistence.TypedQuery;
-import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -90,4 +90,34 @@ public class UserRepository implements HibernateRepository<User> {
         return user;
     }
 
+    @Override
+    public void update(User user) {
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("UPDATE User SET " +
+                "userName = :userName, password = :password, firstName = :firstName, lastName = :lastName, " +
+                "emailAddress = :emailAddress, phoneNumber = :phoneNumber, address = :address, city = :city, " +
+                "state = :state where id = :id");
+
+        query.setParameter("userName", user.getUserName());
+        query.setParameter("password", user.getPassword());
+        query.setParameter("firstName", user.getFirstName());
+        query.setParameter("lastName", user.getLastName());
+        query.setParameter("emailAddress", user.getEmailAddress());
+        query.setParameter("phoneNumber", user.getPhoneNumber());
+        query.setParameter("address", user.getAddress());
+        query.setParameter("city", user.getCity());
+        query.setParameter("state", user.getState());
+        query.setParameter("id", user.getId());
+        query.executeUpdate();
+        tx.commit();
+    }
+
+    @Override
+    public void delete(User user) {
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("DELETE User WHERE id = :id");
+        query.setParameter("id", user.getId());
+        query.executeUpdate();
+        tx.commit();
+    }
 }
