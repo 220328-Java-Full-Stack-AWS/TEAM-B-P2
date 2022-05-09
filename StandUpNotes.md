@@ -171,8 +171,8 @@ Fatemeh: how to map foreign keys
 Qiang: hibernate syntax
 Kenneth: time
 
-### -5/9/22
-####What did you do since last time?
+-5/9/22
+What did you do since last time?
 -Chenxi:
 -Mohammad:I worked on the project and made all the classes, CRUD is working for Order and User
 -Anthony: Finished CRUD functionality for all models/entities
