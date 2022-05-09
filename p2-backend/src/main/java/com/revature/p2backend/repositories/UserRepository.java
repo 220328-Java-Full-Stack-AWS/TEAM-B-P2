@@ -22,7 +22,6 @@ public class UserRepository implements HibernateRepository<User> {
     }
 
 
-
     @Override
     public void save(User user) {
         Transaction transaction = session.beginTransaction();
@@ -30,18 +29,17 @@ public class UserRepository implements HibernateRepository<User> {
         transaction.commit();
     }
 
-    public void updateBySession(User user){
+    public void updateBySession(User user) {
         Transaction transaction = session.beginTransaction();
         session.update(user);
         transaction.commit();
     }
 
-    public void deleteBySession(User user){
+    public void deleteBySession(User user) {
         Transaction transaction = session.beginTransaction();
         session.delete(user);
         transaction.commit();
     }
-
 
 
     @Override
@@ -51,9 +49,9 @@ public class UserRepository implements HibernateRepository<User> {
         List<Object[]> results = query.getResultList();
         List<User> userList = new LinkedList<>();
 
-        for(Object[] result : results){
-             User user = new User();
-            user.setId((Integer)result[0]);
+        for (Object[] result : results) {
+            User user = new User();
+            user.setId((Integer) result[0]);
             user.setAddress((String) result[1]);
             user.setCity((String) result[2]);
             user.setEmailAddress((String) result[3]);
@@ -64,8 +62,8 @@ public class UserRepository implements HibernateRepository<User> {
             user.setState((String) result[8]);
             user.setUserName((String) result[9]);
             userList.add(user);
-         }
-             return userList;
+        }
+        return userList;
     }
 
     @Override
@@ -91,21 +89,5 @@ public class UserRepository implements HibernateRepository<User> {
         User user = query.getSingleResult();
         return user;
     }
-
-
-    public void updatenameById(Integer id, String userName) {
-        String hql = "UPDATE User SET userName = :userName WHERE id = :id";
-        Query query = session.createQuery(hql);
-        try
-        {query.setParameter("userName", "userName");
-        query.setParameter("id", "id");
-        query.executeUpdate();
-        } catch (RuntimeException e) {
-            throw new RuntimeException();
-            //e.printStackTrace();
-        }
-
-    }
-
 
 }
