@@ -176,7 +176,7 @@ Kenneth: time
 
 -What did you do since last time?
 
-Chenxi:
+Chenxi:spring unit testing, code challenge
 
 Mohammad:I worked on the project and made all the classes, CRUD is working for Order and User
 
@@ -190,7 +190,7 @@ Kenneth: Created a schedule to help with working as a team.
 
 -What are you going to work on today?
 
-Chenxi:
+Chenxi:	spring unit testing, spring bean, database order Dao
 
 Mohammad: Finish CRUD for other classes, continue learning about angular
 
@@ -204,7 +204,7 @@ Kenneth:Help us work as a team to progress the project.
 
 -Blocker(s)?
 
-Chenxi:
+Chenxi:Time
 
 Mohammad:Time and knowledge
 
