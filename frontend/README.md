@@ -1,27 +1,10 @@
-# Frontend
+### user story
+#### Place a order
+when customer buy a product, frontend will create a cart
+then customer can add product to cart, then the frontend will create a cart item with product id and quantity
+before customer checkout, the frontend will never talk to backend
+all the cart_item(product_id, quantity) will be saved in the frontend local storage/session storage/cookie storage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* when customer checkout, he/she has to provide address and payment information. * frontend will get the cart_item(product_id and quantity) from local storage/session storage/cookie storage * frontend will create an json object with customer_id, product_id, quantity, shipping_address and payment_info, send it to backend
+* when backend receive the json object, it will create an order with customer_id, shipping_address and payment_info * first backend will create a empty order with order_id and customer_id and pending status * then backend will create a order_item with order_id, product_id, quantity,subtotal and save it in the database * then backend will update the total in the order table based on the subtotal of the order_item * then after backend verify the payment information, backend will update the status of the order to paid * backend will send a json object with order_id, customer_id, shipping_address, payment_info, status, total, order_items to the frontend
+* after frontend receive the json object with the order infomation from the backend, it will clear the cart_item in the local storage/session storage/cookie storage * show the customer order received message
