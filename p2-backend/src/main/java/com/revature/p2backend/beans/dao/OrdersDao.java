@@ -1,4 +1,4 @@
-package com.revature.p2backend.dao;
+package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.entities.Orders;
 import com.revature.p2backend.entities.User;
@@ -17,7 +17,7 @@ public class OrdersDao implements HibernateDao<Orders>{
     public OrdersDao(Session session) {
         this.session = session;
         this.tableName = "orders";
-    }
+    }//make connection to the table orders
 
     @Override
     public void save(Orders orders) {

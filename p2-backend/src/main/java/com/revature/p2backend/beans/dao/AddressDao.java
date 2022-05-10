@@ -1,7 +1,6 @@
-package com.revature.p2backend.dao;
+package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.entities.Address;
-import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,7 +15,7 @@ public class AddressDao implements HibernateDao<Address>{
 
         this.session = session;
         this.tableName = "address";
-    }
+    }//make connection to the table address
 
 
     @Override

@@ -1,4 +1,4 @@
-package com.revature.p2backend.dao;
+package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.entities.User;
 
@@ -17,7 +17,7 @@ public class UserDao implements HibernateDao<User> {
     public UserDao(Session session) {
         this.session = session;
         this.tableName = "users";
-    }
+    }//make connection to the table users
 
     @Override
     public void save(User u) {

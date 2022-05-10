@@ -1,4 +1,4 @@
-package com.revature.p2backend.dao;
+package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.entities.Category;
 import com.revature.p2backend.entities.Product;
@@ -17,7 +17,7 @@ public class ProductDao implements HibernateDao<Product>{
     public ProductDao(Session session) {
         this.session = session;
         this.tableName = "products";
-    }
+    }//make connection to the table products
 
     @Override
     public void save(Product product) {

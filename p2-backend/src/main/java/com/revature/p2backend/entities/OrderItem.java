@@ -20,7 +20,7 @@ public class OrderItem {
     private Orders orders  ;
 
     @Column(name="item_total_amount")
-    private Double itemTotalAmount;
+    private Double itemTotalAmount;//changed to Double
 
     @OneToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")

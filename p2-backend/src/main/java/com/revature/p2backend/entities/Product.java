@@ -14,14 +14,14 @@ public class Product {
     private Integer productId ;
 
     @Column
-    private String name;
+    private String name; //added name column
 
 
     @Column
     private String description;
 
     @Column
-    private Double price;
+    private Double price;//changed to Double
 
     @Column
     private Integer inventory;

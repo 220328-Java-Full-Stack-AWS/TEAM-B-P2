@@ -1,7 +1,7 @@
 package com.revature.p2backend;
 
 
-import com.revature.p2backend.dao.UserDao;
+import com.revature.p2backend.beans.dao.UserDao;
 import com.revature.p2backend.entities.*;
 import com.revature.p2backend.utilities.StorageManager;
 import org.hibernate.Session;

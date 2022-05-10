@@ -17,7 +17,7 @@ public class Orders {
     private Timestamp creationDate;
 
     @Column(name="order_total")
-    private Double orderTotal;
+    private Double orderTotal;//changed to Double from Big Decimal
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="address_id", referencedColumnName = "address_id")

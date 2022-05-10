@@ -1,4 +1,4 @@
-package com.revature.p2backend.dao;
+package com.revature.p2backend.beans.dao;
 
 import java.util.List;
 

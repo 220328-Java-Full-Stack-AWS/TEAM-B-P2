@@ -33,7 +33,7 @@ public class User {
     private String phoneNumber;
 
     @Column(name="credit_card")
-    private String creditCard;
+    private String creditCard;//added credit card
 
     @ManyToMany(cascade={CascadeType.ALL})
     @JoinTable(
