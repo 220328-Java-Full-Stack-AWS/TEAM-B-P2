@@ -20,7 +20,7 @@ public class OrderItem {
     private Orders orders  ;
 
     @Column(name="item_total_amount")
-    private BigDecimal itemTotalAmount;
+    private Double itemTotalAmount;
 
     @OneToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
@@ -56,11 +56,11 @@ public class OrderItem {
         this.orders = orders;
     }
 
-    public BigDecimal getItemTotalAmount() {
+    public Double getItemTotalAmount() {
         return itemTotalAmount;
     }
 
-    public void setItemTotalAmount(BigDecimal itemTotalAmount) {
+    public void setItemTotalAmount(Double itemTotalAmount) {
         this.itemTotalAmount = itemTotalAmount;
     }
 

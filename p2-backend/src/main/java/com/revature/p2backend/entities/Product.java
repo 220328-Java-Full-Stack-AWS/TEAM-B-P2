@@ -17,7 +17,7 @@ public class Product {
     private String description;
 
     @Column
-    private BigDecimal price;
+    private Double price;
 
     @OneToOne(mappedBy = "productId")
     private OrderItem orderItem;
@@ -30,7 +30,7 @@ public class Product {
     public Product() {
     }
 
-    public Product( String description, BigDecimal price,Category category) {
+    public Product( String description, Double price,Category category) {
         this.description = description;
         this.price = price;
         this.category = category;
@@ -52,11 +52,11 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
