@@ -84,4 +84,16 @@ public class Orders {
     public void setOrderItems(OrderItem orderItem) {
         this.orderItems.add(orderItem);
     }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", creationDate=" + creationDate +
+                ", OrderTotal=" + OrderTotal +
+                ", address=" + address +
+                ", user=" + user +
+                ", orderItems=" + orderItems +
+                '}';
+    }
 }

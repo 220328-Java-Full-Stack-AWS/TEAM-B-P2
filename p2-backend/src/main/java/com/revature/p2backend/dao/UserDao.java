@@ -1,6 +1,6 @@
 package com.revature.p2backend.dao;
 
-import com.revature.p2backend.models.User;
+import com.revature.p2backend.entities.User;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -28,6 +28,21 @@ public class UserDao implements HibernateDao<User> {
     @Override
     public List<User> getAll() {
         return null;
+    }
+
+    @Override
+    public User getById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public void update(User user) {
+
+    }
+
+    @Override
+    public void delete(Integer id) {
+
     }
 
     public User getUserByUserName(String username) {

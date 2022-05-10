@@ -127,4 +127,19 @@ public class User {
     public void setOrders(Orders order) {
         this.orders.add(order);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", addresses=" + addresses +
+                ", orders=" + orders +
+                '}';
+    }
 }

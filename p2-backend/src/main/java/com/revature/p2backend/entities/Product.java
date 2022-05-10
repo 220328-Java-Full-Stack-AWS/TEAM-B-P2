@@ -1,5 +1,7 @@
 package com.revature.p2backend.entities;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -20,16 +22,18 @@ public class Product {
     @OneToOne(mappedBy = "productId")
     private OrderItem orderItem;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="product_category_id" , referencedColumnName = "category_id")
-    private ProductCategory productCategory;
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
+    @Type(type = "com.revature.p2backend.utilities.EnumConverter")
+    private Category category;
 
     public Product() {
     }
 
-    public Product( String description, BigDecimal price,ProductCategory productCategory) {
+    public Product( String description, BigDecimal price,Category category) {
         this.description = description;
         this.price = price;
+        this.category = category;
     }
 
     public Integer getProductId() {
@@ -62,5 +66,24 @@ public class Product {
 
     public void setOrderItem(OrderItem orderItem) {
         this.orderItem = orderItem;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", orderItem=" + orderItem +
+                ", category=" + category +
+                '}';
     }
 }
