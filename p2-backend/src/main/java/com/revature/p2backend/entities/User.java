@@ -32,6 +32,9 @@ public class User {
     @Column(name="phone_number")
     private String phoneNumber;
 
+    @Column(name="credit_card")
+    private String creditCard;
+
     @ManyToMany(cascade={CascadeType.ALL})
     @JoinTable(
          name="user_address",
@@ -110,6 +113,14 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 
     public Set<Address> getAddresses() {

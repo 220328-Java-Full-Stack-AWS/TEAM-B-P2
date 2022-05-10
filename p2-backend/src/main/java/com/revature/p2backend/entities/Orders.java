@@ -1,7 +1,6 @@
 package com.revature.p2backend.entities;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,9 +17,9 @@ public class Orders {
     private Timestamp creationDate;
 
     @Column(name="order_total")
-    private BigDecimal OrderTotal;
+    private Double orderTotal;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
     private Address address;
 
@@ -35,6 +34,10 @@ public class Orders {
         this.creationDate = creationDate;
         this.address = address;
         this.user = user;
+    }
+
+    public Orders() {
+
     }
 
     public Integer getId() {
@@ -53,12 +56,12 @@ public class Orders {
         this.creationDate = creationDate;
     }
 
-    public BigDecimal getOrderTotal() {
-        return OrderTotal;
+    public Double getOrderTotal() {
+        return orderTotal;
     }
 
-    public void setOrderTotal(BigDecimal orderTotal) {
-        OrderTotal = orderTotal;
+    public void setOrderTotal(Double orderTotal) {
+        this.orderTotal = orderTotal;
     }
 
     public Address getAddress() {
@@ -90,7 +93,7 @@ public class Orders {
         return "Orders{" +
                 "id=" + id +
                 ", creationDate=" + creationDate +
-                ", OrderTotal=" + OrderTotal +
+                ", OrderTotal=" + orderTotal +
                 ", address=" + address +
                 ", user=" + user +
                 ", orderItems=" + orderItems +

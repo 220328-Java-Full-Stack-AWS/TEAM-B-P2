@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,17 @@ public class Product {
     private Integer productId ;
 
     @Column
+    private String name;
+
+
+    @Column
     private String description;
 
     @Column
-    private BigDecimal price;
+    private Double price;
+
+    @Column
+    private Integer inventory;
 
     @OneToOne(mappedBy = "productId")
     private OrderItem orderItem;
@@ -30,10 +37,11 @@ public class Product {
     public Product() {
     }
 
-    public Product( String description, BigDecimal price,Category category) {
+    public Product(String name, String description, Double price, Integer inventory) {
+        this.name = name;
         this.description = description;
         this.price = price;
-        this.category = category;
+        this.inventory = inventory;
     }
 
     public Integer getProductId() {
@@ -44,6 +52,14 @@ public class Product {
         this.productId = productId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -52,13 +68,22 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
+
+    public Integer getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Integer inventory) {
+        this.inventory = inventory;
+    }
+
 
     public OrderItem getOrderItem() {
         return orderItem;

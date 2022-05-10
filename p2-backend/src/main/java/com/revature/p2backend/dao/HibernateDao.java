@@ -11,5 +11,5 @@ public interface HibernateDao<T> {
 
     public void update(T t);
 
-    public void delete(Integer id);
+    public void delete(T t);
 }

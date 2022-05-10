@@ -1,6 +1,7 @@
 package com.revature.p2backend.dao;
 
 import com.revature.p2backend.entities.Address;
+import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,10 +10,15 @@ import java.util.List;
 
 public class AddressDao implements HibernateDao<Address>{
     private Session session;
+    private String tableName;
 
     public AddressDao(Session session){
+
         this.session = session;
+        this.tableName = "address";
     }
+
+
     @Override
     public void save(Address address) {
         Transaction tx = session.beginTransaction();
@@ -39,7 +45,7 @@ public class AddressDao implements HibernateDao<Address>{
     public void update(Address address) {
         Transaction tx = session.beginTransaction();
         String hql = "UPDATE Address SET street = :street," +
-                " houseNumber = :houseNumber, city = :city," +
+                " number = :houseNumber, city = :city," +
                 " zipCode = :zipCode WHERE id = :id";
 
         TypedQuery<Address> query = session.createQuery(hql);
@@ -56,13 +62,14 @@ public class AddressDao implements HibernateDao<Address>{
 
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Address address) {
         Transaction tx = session.beginTransaction();
         String hql = "DELETE FROM Address WHERE id = :id";
         TypedQuery<Address> query = session.createQuery(hql);
-        query.setParameter("id", id);
+        query.setParameter("id", address.getAddressId());
         query.executeUpdate();
         tx.commit();
     }
+
 
 }

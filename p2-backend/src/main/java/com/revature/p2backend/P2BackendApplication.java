@@ -4,10 +4,7 @@ package com.revature.p2backend;
 import com.revature.p2backend.dao.UserDao;
 import com.revature.p2backend.entities.*;
 import com.revature.p2backend.utilities.StorageManager;
-import com.revature.p2backend.utilities.TransactionManager;
-
-import org.hibernate.*;
-
+import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -33,6 +30,13 @@ public class P2BackendApplication {
         User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
         UserDao userDao = new UserDao(session);
         userDao.save(fatemeh);
+
+        User f= new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
+
+        System.out.println(fatemeh);
+        System.out.println(f);
+        userDao.save(f);
+        System.out.println(f);
 
 //		User u = new User();
 //		u.setUsername("anthony01");
