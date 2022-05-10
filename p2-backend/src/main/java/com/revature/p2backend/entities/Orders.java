@@ -14,9 +14,10 @@ public class Orders {
     private Integer id;
 
     @Column(name="creation_date")
-    private Timestamp creationDate;
+    private String creationDate;
 
     @Column(name="order_total")
+
     private Double orderTotal;//changed to Double from Big Decimal
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -30,7 +31,7 @@ public class Orders {
     @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new LinkedList<OrderItem>();
 
-    public Orders( Timestamp creationDate, Address address, User user) {
+    public Orders( String creationDate, Address address, User user) {
         this.creationDate = creationDate;
         this.address = address;
         this.user = user;
@@ -48,11 +49,11 @@ public class Orders {
         this.id = id;
     }
 
-    public Timestamp getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -62,7 +63,9 @@ public class Orders {
 
     public void setOrderTotal(Double orderTotal) {
         this.orderTotal = orderTotal;
+
     }
+
 
     public Address getAddress() {
         return address;

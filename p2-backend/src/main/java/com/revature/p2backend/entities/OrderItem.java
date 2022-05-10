@@ -22,6 +22,7 @@ public class OrderItem {
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double
 
+
     @OneToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
     private Product productId;

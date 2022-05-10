@@ -37,11 +37,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, Double price, Integer inventory) {
+
+    public Product(String name, String description, Double price, Integer inventory, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.inventory = inventory;
+        this.category = category;
     }
 
     public Integer getProductId() {

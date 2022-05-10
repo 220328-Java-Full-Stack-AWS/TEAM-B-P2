@@ -218,3 +218,59 @@ Kenneth:No blockers, just waiting to move to the next level of team development.
 
 <hr>
 
+-5/10/22
+
+Chenxi
+    yesterday
+        spring bean
+        unit testing
+        code challenge
+    today
+        spring bean testing
+    blocker
+    time
+
+Mohammad
+    yesterday
+        spring framework
+    today
+        learn spring
+        working on project
+    blocker 
+        time knowledge
+
+
+Anthony
+    yesterday
+        spring bean
+    today
+        spring bean
+    blocker
+        knowledge
+
+Fatemeh
+    yesterday
+        tinkering beans
+        review tutoarial
+    today
+        learning spring framework more
+    blocker 
+        time
+
+
+Kenneth
+    yesterday
+        look at fatemeh's code
+        minor adjestment
+    today
+        beans implementation
+    blocker
+        time
+
+Qiang
+    yesterday
+        cart front end checkout process
+    today
+        focus on front end
+    blocker
+        uncertanity about front end UI
