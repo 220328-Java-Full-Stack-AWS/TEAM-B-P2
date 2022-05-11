@@ -1,6 +1,6 @@
 package com.revature.p2backend.beans.controllers;
 
-import com.revature.p2backend.Dto.UserDto;
+import com.revature.p2backend.Dto.AuthDto;
 import com.revature.p2backend.beans.services.UserService;
 import com.revature.p2backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +22,9 @@ public class AuthController {
         this.userService = userService;
     }
     @GetMapping
-    ResponseEntity<User> userLogin(@RequestBody UserDto userDto){
+    ResponseEntity<User> userLogin(@RequestBody AuthDto authDto){
         try{
-            userService.authenticateUser(userDto);
+            userService.authenticateUser(authDto);
             System.out.println("Successful login");
             return new ResponseEntity<>(HttpStatus.OK);
         }

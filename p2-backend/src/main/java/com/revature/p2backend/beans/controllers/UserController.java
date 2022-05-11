@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public User updateuser(@RequestBody User user){
+    public User updateUser(@RequestBody UserDto userDto){
         System.out.println("successfully updated user");
-        return userService.update(user);
+        return userService.update(userDto);
     }
 }
