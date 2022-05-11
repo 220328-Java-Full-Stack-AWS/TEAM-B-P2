@@ -54,7 +54,7 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
     }
 
     @Override
-    public void update(OrderItem orderItem) {
+    public OrderItem update(OrderItem orderItem) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("UPDATE OrderItem SET " +
                 "orders = :order, productId = :product, quantity = :quantity, itemTotalAmount = :total " +
@@ -66,6 +66,7 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
         query.setParameter("id", orderItem.getOrderItem());
         query.executeUpdate();
         tx.commit();
+        return orderItem;
     }
 
     public List<OrderItem> getOrderItemsByOrder (Orders o){

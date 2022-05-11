@@ -46,7 +46,7 @@ public class AddressDao implements HibernateDao<Address>{
     }
 
     @Override
-    public void update(Address address) {
+    public Address update(Address address) {
         Transaction tx = session.beginTransaction();
         String hql = "UPDATE Address SET street = :street," +
                 " number = :houseNumber, city = :city," +
@@ -62,6 +62,7 @@ public class AddressDao implements HibernateDao<Address>{
         query.setParameter("city", city);
         query.setParameter("zipCode", zipCode);
         tx.commit();
+        return address;
     }
 
 

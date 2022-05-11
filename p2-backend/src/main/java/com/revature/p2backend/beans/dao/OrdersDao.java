@@ -54,7 +54,7 @@ public class OrdersDao implements HibernateDao<Orders>{
     }
 
     @Override
-    public void update(Orders orders) {
+    public Orders update(Orders orders) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("UPDATE Orders SET " +
                 "user = :user, orderTotal = :order_total " +
@@ -64,6 +64,7 @@ public class OrdersDao implements HibernateDao<Orders>{
         query.setParameter("id", orders.getId());
         query.executeUpdate();
         tx.commit();
+        return orders;
     }
 
     public List<Orders> getOrdersByUser(User user){

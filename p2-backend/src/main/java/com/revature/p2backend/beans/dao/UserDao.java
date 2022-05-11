@@ -58,22 +58,23 @@ public class UserDao implements HibernateDao<User> {
     }
 
     @Override
-    public void update(User user) {
+    public User update(User user) {
 
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("UPDATE User SET " +
-                "password = :password, firstName = :first_name, lastName = :last_name, creditCard = :credit_card, phoneNumber = :phone " +
+                "userName = :username, password = :password, firstName = :first_name, lastName = :last_name, email = :email, creditCard = :credit_card, phoneNumber = :phone " +
                 "where id = :user_id");
-        //query.setParameter("username", user.getUserName());
+        query.setParameter("username", user.getUserName());
         query.setParameter("password", user.getPassword());
         query.setParameter("first_name", user.getFirstName());
         query.setParameter("last_name", user.getLastName());
-        //query.setParameter("email", user.getEmail());
+        query.setParameter("email", user.getEmail());
         query.setParameter("credit_card", user.getCreditCard());
         query.setParameter("phone", user.getPhoneNumber());
         query.setParameter("user_id", user.getId());
         query.executeUpdate();
         tx.commit();
+        return user;
     }
 
     public User getUserByUserName(String username) {

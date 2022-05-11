@@ -11,7 +11,7 @@ public interface HibernateDao<T> extends Lifecycle {
 
     public T getById(Integer id);
 
-    public void update(T t);
+    public T update(T t);
 
     public void delete(T t);
 }

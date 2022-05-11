@@ -58,7 +58,7 @@ public class ProductDao implements HibernateDao<Product>{
     }
 
     @Override
-    public void update(Product product) {
+    public Product update(Product product) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("UPDATE Product SET " +
                 "name = :name, price = :price, description = :description, inventory = :inventory, category = :category " +
@@ -71,6 +71,7 @@ public class ProductDao implements HibernateDao<Product>{
         query.setParameter("id", product.getProductId());
         query.executeUpdate();
         tx.commit();
+        return product;
     }
 
     public Product getByProductName(String name){
