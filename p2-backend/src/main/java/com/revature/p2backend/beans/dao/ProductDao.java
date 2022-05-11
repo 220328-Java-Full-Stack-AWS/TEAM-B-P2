@@ -1,29 +1,34 @@
 package com.revature.p2backend.beans.dao;
 
+import com.revature.p2backend.beans.utilities.StorageManager;
 import com.revature.p2backend.entities.Category;
 import com.revature.p2backend.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
-
+@Repository
 public class ProductDao implements HibernateDao<Product>{
-
+    private final StorageManager storageManager;
+    private boolean running = false;
     private Session session;
-    String tableName;
 
-    public ProductDao(Session session) {
-        this.session = session;
-        this.tableName = "products";
+    @Autowired
+    public ProductDao(StorageManager storageManager) {
+        this.storageManager = storageManager;
+
     }//make connection to the table products
 
     @Override
-    public void save(Product product) {
+    public Product save(Product product) {
         Transaction tx = session.beginTransaction();
         session.save(product);
         tx.commit();
+        return product;
     }
 
     @Override
@@ -100,5 +105,22 @@ public class ProductDao implements HibernateDao<Product>{
         List<Product> products = query.getResultList();
 
         return products;
+    }
+
+    @Override
+    public void start() {
+        this.session = storageManager.getSession();
+        running = true;
+    }
+
+    @Override
+    public void stop() {
+        running = false;
+        session.close();
+    }
+
+    @Override
+    public boolean isRunning() {
+        return running;
     }
 }

@@ -1,5 +1,7 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="users" , schema="public")
+@JsonIgnoreProperties
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +23,7 @@ public class User {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="user_name")
+    @Column(name="user_name", unique = true)
     private String userName;
 
     @Column

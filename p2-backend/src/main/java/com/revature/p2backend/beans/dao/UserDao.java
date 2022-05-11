@@ -1,29 +1,34 @@
 package com.revature.p2backend.beans.dao;
 
+import com.revature.p2backend.beans.utilities.StorageManager;
 import com.revature.p2backend.entities.User;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
-
+@Repository
 public class UserDao implements HibernateDao<User> {
-
+    private final StorageManager storageManager;
+    private boolean running = false;
     private Session session;
-    String tableName;
 
-    public UserDao(Session session) {
-        this.session = session;
-        this.tableName = "users";
-    }//make connection to the table users
+    @Autowired
+    public UserDao(StorageManager storageManager) {
+        this.storageManager = storageManager;
+
+    }
 
     @Override
-    public void save(User u) {
+    public User save(User u) {
         Transaction tx = session.beginTransaction();
         session.save(u);
         tx.commit();
+        return u;
     }
 
     @Override
@@ -72,7 +77,6 @@ public class UserDao implements HibernateDao<User> {
     }
 
     public User getUserByUserName(String username) {
-
         TypedQuery<User> query = session.createQuery("FROM User WHERE userName = :username ", User.class);
         query.setParameter("username", username);
         User user = query.getSingleResult();
@@ -81,4 +85,20 @@ public class UserDao implements HibernateDao<User> {
     }
 
 
+    @Override
+    public void start() {
+        this.session = storageManager.getSession();
+        running = true;
+    }
+
+    @Override
+    public void stop() {
+        running = false;
+        session.close();
+    }
+
+    @Override
+    public boolean isRunning() {
+        return running;
+    }
 }

@@ -1,4 +1,4 @@
-package com.revature.p2backend.utilities;
+package com.revature.p2backend.beans.utilities;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
