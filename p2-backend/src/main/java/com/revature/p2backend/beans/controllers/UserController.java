@@ -18,18 +18,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/auth")
-    ResponseEntity<User> userLogin(@RequestBody UserDto userDto){
-        try{
-            userService.authenticateUser(userDto);
-            System.out.println("Successful login");
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        catch(Exception e){
-            //e.printStackTrace();
-            System.out.println("Username or password incorrect");
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+    @GetMapping("/currentuser")
+    @ResponseStatus(HttpStatus.OK)
+    public User viewUser(@RequestBody User user){
+        System.out.println("You are now viewing the user");
+        return userService.getUserByUserId(user);
     }
 
     @PostMapping("/register")

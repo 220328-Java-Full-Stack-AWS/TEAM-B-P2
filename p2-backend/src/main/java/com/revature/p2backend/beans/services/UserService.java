@@ -16,10 +16,10 @@ public class UserService {
     }
 
     public Integer save(User user){
-            if(userDao.isUsernameUnique(user.getUserName()) != null){
+            if(!userDao.isUsernameUnique(user.getUserName())){
                 return 1;
             }
-            else if (userDao.isUserEmailUnique(user.getEmail()) != null) {
+            else if (!userDao.isUserEmailUnique(user.getEmail())) {
                 return 2;
             }
             else {
@@ -37,6 +37,10 @@ public class UserService {
         else{
             throw new Exception("Bad username or password");
         }
+    }
+
+    public User getUserByUserId(User user){
+        return userDao.getById(user.getId());
     }
 
 }

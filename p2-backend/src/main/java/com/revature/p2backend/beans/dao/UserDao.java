@@ -87,27 +87,27 @@ public class UserDao implements HibernateDao<User> {
      * @param username
      * @return
      */
-    public User isUsernameUnique(String username) {
-        try{
-            TypedQuery<User> query = session.createQuery("FROM User WHERE userName = :username", User.class);
-            query.setParameter("username", username);
-            return query.getSingleResult();
+    public Boolean isUsernameUnique(String username) {
+
+        TypedQuery<User> query = session.createQuery("FROM User WHERE userName = :username", User.class);
+        query.setParameter("username", username);
+        if(query.getResultList().isEmpty()){
+            return true;
         }
-        catch(Exception e){
-            System.out.println("Email does not exist");
-            return null;
+        else{
+            return false;
         }
+
     }
 
-    public User isUserEmailUnique(String email){
-        try {
-            TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email", User.class);
-            query.setParameter("email", email);
-            return query.getSingleResult();
+    public Boolean isUserEmailUnique(String email){
+        TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email", User.class);
+        query.setParameter("email", email);
+        if(query.getResultList().isEmpty()){
+            return true;
         }
-        catch(Exception e){
-            System.out.println("Email does not exist");
-            return null;
+        else{
+            return false;
         }
     }
 
