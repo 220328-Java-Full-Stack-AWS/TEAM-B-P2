@@ -218,7 +218,7 @@ Kenneth:No blockers, just waiting to move to the next level of team development.
 
 <hr>
 
--5/10/22
+#### -5/10/22
 
 Chenxi
     yesterday
@@ -274,3 +274,35 @@ Qiang
         focus on front end
     blocker
         uncertanity about front end UI
+
+#### -5/11/22
+Chenxi:
+Yesterday: Studied Hibernate 
+Today:Continue learning Hibernate & Spring.
+Blocker: Managing different syntax
+
+Mohammad:
+Yesterday: Studied Spring and watched educational tutorial about Spring boot.
+Today : Working on the project and the tinkering application.
+Blocker : Time & knowledge.
+
+Anthony:
+Practiced branch merging with git bash& studied Spring annotations.
+Today: Plan to do pair programing to use annotations and beans for our project.
+Blocker: Nothing. Just waiting.
+
+Fatemeh:
+Yesterday:Tinkered around with HQL, beans and controllers.
+Today: Hopefully, making progress in using controller and be able to hit the database using Postman. 
+Blocker: Time
+
+Qiang:
+Yesterday:Studied Spring and dependency injection.Tried to use the Spring without annotation and how to create beans, setter injection and construction injection. 
+Today:Learning Spring annotations.
+Blocker:Switching from plain java to annotations.
+
+Kenneth:
+Yesterday:Tinkered around on his branch. Added all annotations to the beans and the DAO layer.
+Added user service and user controller. Was able to hit it from Postman successfully with login information.
+Today: Continue studying the bean annotations. 
+Blocker: Only time.
