@@ -15,8 +15,18 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public User save(User user){
-        return userDao.save(user);
+    public Integer save(User user){
+            if(userDao.isUsernameUnique(user.getUserName()) != null){
+                return 1;
+            }
+            else if (userDao.isUserEmailUnique(user.getEmail()) != null) {
+                return 2;
+            }
+            else {
+                userDao.save(user);
+                return 0;
+            }
+
     }
 
     public User authenticateUser(UserDto userDto) throws Exception {

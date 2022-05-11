@@ -32,4 +32,24 @@ public class UserController {
         }
     }
 
+    @PostMapping("/register")
+    ResponseEntity<User> createUser(@RequestBody User user){
+
+        Integer result = userService.save(user);
+        switch(result){
+            case 0:
+                System.out.println("Successfully created new user");
+                return new ResponseEntity<>(HttpStatus.OK);
+            case 1:
+                System.out.println("Username is not unique");
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            case 2:
+                System.out.println("User email is not unique");;
+            default:
+                System.out.println("unable to create user");
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+    }
+
 }

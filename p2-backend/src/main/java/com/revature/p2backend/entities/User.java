@@ -26,7 +26,7 @@ public class User {
     @Column(name="user_name", unique = true)
     private String userName;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Column
@@ -45,7 +45,7 @@ public class User {
          joinColumns={@JoinColumn(name="user_id")},
          inverseJoinColumns={@JoinColumn(name="address_id")}
     )
-    private Set<Address> addresses = new HashSet<Address>();
+    private Set<Address> addresses;
 
     @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
     private List<Orders> orders = new LinkedList<>();
@@ -60,6 +60,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.addresses = new HashSet<>();
     }
 
     public Integer getId() {
@@ -141,6 +142,7 @@ public class User {
     public void setOrders(Orders order) {
         this.orders.add(order);
     }
+
 
     @Override
     public String toString() {

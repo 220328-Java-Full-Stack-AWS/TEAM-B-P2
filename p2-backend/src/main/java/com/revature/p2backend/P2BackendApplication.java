@@ -32,7 +32,12 @@ public class P2BackendApplication {
 
         User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
         UserDao userDao = context.getBean(UserDao.class);
+
+        Address address = new Address("123", "test", "test", "test", "test");
+        fatemeh.setAddresses(address);
+
         userDao.save(fatemeh);
+        System.out.println(fatemeh.getAddresses());
 
 
 
