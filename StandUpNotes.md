@@ -312,50 +312,49 @@ Blocker: Only time.
 #### 5/12/22
 ##### What did you do since last time?
 ###### Chenxi: 
-- 
+- restart p2 project
 ###### Mohammad: 
-- 
-- 
+- study hibernate spring
 ###### Anthony: 
-- 
-- 
+- p2 update functionality
 ###### Fatemeh: 
-- 
-- 
+- hibernate spring
+- review p1
 - 
 ###### Qiang: 
 - Learn Bean autowire by name, by id, inner bean, alias.
 - Bean scopes: Singleton, prototype, request, session, application.
 - I got some issue with database, Base on kyle feedback, I refactor the entities.
 ##### Kenneth: 
-- 
+- user user story functionality done
+- four branches created for service layer
 
 ##### What are you going to work on next?
 ###### Chenxi: 
-- 
+- continue p2
 ###### Mohammad: 
-- 
+- studing hibernate spring 
 - 
 ###### Anthony: 
-- 
+- controller and service layer
 ###### Fatemeh: 
-- 
+- application knowlage to p2
 ###### Qiang: 
 - start wrriting dao layer and testing
 ###### Kenneth: 
-- 
+- working on service layer
 
 ##### Blocker?
 ###### Chenxi: 
-- 
+- Work independently on the project.
 ###### Mohammad: 
-- 
+- knowledge and time
 ###### Anthony: 
-- 
+- time
 ###### Fatemeh: 
-- 
+- time and knowledge
 ###### Qiang: 
 - entity relationships.
 ###### Kenneth: 
-- 
+- time
 <hr>
