@@ -1,23 +1,30 @@
 package com.revature.p2backend.beans.dao;
 
+import com.revature.p2backend.beans.services.StorageManager;
 import com.revature.p2backend.entities.User;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository
 public class UserDao implements HibernateDao<User> {
 
+    private final StorageManager storageManager;
     private Session session;
-    String tableName;
+    private boolean running = false;
+    private String tableName;
 
-    public UserDao(Session session) {
-        this.session = session;
-        this.tableName = "users";
-    }//make connection to the table users
+    @Autowired
+    public UserDao(StorageManager storageManager) {
+        this.storageManager = storageManager;
+    }
 
     @Override
     public void save(User u) {
@@ -39,6 +46,7 @@ public class UserDao implements HibernateDao<User> {
         TypedQuery<User> query = session.createQuery("FROM User where id = :user_id");
         query.setParameter("user_id", id);
         User user = query.getSingleResult();
+        session.persist(user);
         return user;
     }
 
@@ -56,18 +64,7 @@ public class UserDao implements HibernateDao<User> {
     public void update(User user) {
 
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("UPDATE User SET " +
-                "userName = :username, password = :password, firstName = :first_name, lastName = :last_name, email = :email, creditCard = :credit_card, phoneNumber = :phone " +
-                "where id = :user_id");
-        query.setParameter("username", user.getUserName());
-        query.setParameter("password", user.getPassword());
-        query.setParameter("first_name", user.getFirstName());
-        query.setParameter("last_name", user.getLastName());
-        query.setParameter("email", user.getEmail());
-        query.setParameter("credit_card", user.getCreditCard());
-        query.setParameter("phone", user.getPhoneNumber());
-        query.setParameter("user_id", user.getId());
-        query.executeUpdate();
+        session.merge(user);
         tx.commit();
     }
 
@@ -76,9 +73,32 @@ public class UserDao implements HibernateDao<User> {
         TypedQuery<User> query = session.createQuery("FROM User WHERE userName = :username ", User.class);
         query.setParameter("username", username);
         User user = query.getSingleResult();
-
+        session.persist(user);
         return user;
     }
 
+    @Override
+    public void start() {
+        this.session = storageManager.getSession();
+        running = true;
+    }
 
+    @Override
+    public void stop() {
+        running = false;
+    }
+
+    @Override
+    public boolean isRunning() {
+        return running;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    @Value("users")
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
 }

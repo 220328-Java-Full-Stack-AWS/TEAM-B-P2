@@ -2,31 +2,40 @@ package com.revature.p2backend;
 
 
 
-import com.revature.p2backend.beans.dao.AddressDao;
-import com.revature.p2backend.beans.dao.OrderItemDao;
-import com.revature.p2backend.beans.dao.OrdersDao;
-import com.revature.p2backend.beans.dao.UserDao;
+import com.revature.p2backend.beans.dao.*;
 
 import com.revature.p2backend.entities.*;
-import com.revature.p2backend.utilities.StorageManager;
+import com.revature.p2backend.beans.services.StorageManager;
 import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.revature.p2backend.beans")
 public class P2BackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(P2BackendApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(P2BackendApplication.class, args);
 
-        StorageManager storageManager = new StorageManager();
-        storageManager.addAnnotatedClass(User.class);
-        storageManager.addAnnotatedClass(Address.class);
-        storageManager.addAnnotatedClass(OrderItem.class);
-        storageManager.addAnnotatedClass(Orders.class);
-        storageManager.addAnnotatedClass(Product.class);
+        StorageManager storageManager = context.getBean(StorageManager.class);
+        storageManager.addEntity(User.class);
+        storageManager.addEntity(Address.class);
+        storageManager.addEntity(OrderItem.class);
+        storageManager.addEntity(Orders.class);
+        storageManager.addEntity(Product.class);
+
+        context.start();
+
+        Session session = storageManager.getSession();
+
+        UserDao userDao = context.getBean(UserDao.class);
+        AddressDao addressDao = context.getBean(AddressDao.class);
+        ProductDao productDao = context.getBean(ProductDao.class);
+        OrderItemDao orderItemDao = context.getBean(OrderItemDao.class);
+        OrdersDao ordersDao = context.getBean(OrdersDao.class);
 
         Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
         Product product1 = new Product("earring", "earring", 125.39, 50,Category.EARRINGS);
@@ -39,13 +48,9 @@ public class P2BackendApplication {
 
         Double cartTotal = 0.0;
 
-        Session session = storageManager.initializeDataSource();
         User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
-        UserDao userDao = new UserDao(session);
-        userDao.save(fatemeh);
-        OrderItemDao orderItemDao = new OrderItemDao(session);
 
-        AddressDao addressDao = new AddressDao(session);
+        userDao.save(fatemeh);
         Address a = new Address("1", "test", "test", "test", "test");
         addressDao.save(a);
 
@@ -58,13 +63,12 @@ public class P2BackendApplication {
             cartTotal += orderItem.getItemTotalAmount();
         }
         orders.setOrderTotal(cartTotal);
-        OrdersDao ordersDao = new OrdersDao(session);
         ordersDao.save(orders);
 
 
 
 
-        User f= new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
+        User f= new User("Anthony","Pilletti","APilletti","APilletti@gmail.com","123","987654321");
 
         System.out.println(fatemeh);
         System.out.println(f);

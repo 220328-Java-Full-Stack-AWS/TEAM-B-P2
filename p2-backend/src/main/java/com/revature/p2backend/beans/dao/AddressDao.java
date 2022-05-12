@@ -1,22 +1,28 @@
 package com.revature.p2backend.beans.dao;
 
+import com.revature.p2backend.beans.services.StorageManager;
 import com.revature.p2backend.entities.Address;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository
 public class AddressDao implements HibernateDao<Address>{
+
+    private final StorageManager storageManager;
     private Session session;
+    private boolean running = false;
     private String tableName;
 
-    public AddressDao(Session session){
-
-        this.session = session;
-        this.tableName = "address";
-    }//make connection to the table address
-
+    @Autowired
+    public AddressDao(StorageManager storageManager) {
+        this.storageManager = storageManager;
+    }
 
     @Override
     public void save(Address address) {
@@ -70,5 +76,28 @@ public class AddressDao implements HibernateDao<Address>{
         tx.commit();
     }
 
+    @Override
+    public void start() {
+        this.session = storageManager.getSession();
+        running = true;
+    }
 
+    @Override
+    public void stop() {
+        running = false;
+    }
+
+    @Override
+    public boolean isRunning() {
+        return running;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    @Value("addresses")
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
 }

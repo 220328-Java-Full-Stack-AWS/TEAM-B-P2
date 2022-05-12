@@ -3,22 +3,29 @@ package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.entities.OrderItem;
 import com.revature.p2backend.entities.Orders;
+import com.revature.p2backend.beans.services.StorageManager;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository
 public class OrderItemDao implements HibernateDao<OrderItem> {
 
+    private final StorageManager storageManager;
     private Session session;
-    String tableName;
+    private boolean running = false;
+    private String tableName;
 
-    public OrderItemDao(Session session) {
-        this.session = session;
-        this.tableName = "order_item";
-    }//make connection ot the table order_item
+    @Autowired
+    public OrderItemDao(StorageManager storageManager) {
+        this.storageManager = storageManager;
+    }
 
     @Override
     public void save(OrderItem orderItem) {
@@ -69,5 +76,30 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
         query.setParameter("order", o);
         List<OrderItem> order = query.getResultList();
         return order;
+    }
+
+    @Override
+    public void start() {
+        this.session = storageManager.getSession();
+        running = true;
+    }
+
+    @Override
+    public void stop() {
+        running = false;
+    }
+
+    @Override
+    public boolean isRunning() {
+        return running;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    @Value("order_items")
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
     }
 }

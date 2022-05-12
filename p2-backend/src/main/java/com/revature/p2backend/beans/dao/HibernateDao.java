@@ -1,8 +1,12 @@
 package com.revature.p2backend.beans.dao;
 
+
+
+import org.springframework.context.Lifecycle;
+
 import java.util.List;
 
-public interface HibernateDao<T> {
+public interface HibernateDao<T> extends Lifecycle {
     public void save(T t);
 
     public List<T> getAll();

@@ -20,16 +20,16 @@ public class User {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="user_name")
+    @Column(name="user_name", unique = true)
     private String userName;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Column
     private String password;
 
-    @Column(name="phone_number")
+    @Column(name="phone_number", unique = true)
     private String phoneNumber;
 
     @Column(name="credit_card")
