@@ -47,8 +47,8 @@ public class User {
     )
     private Set<Address> addresses;
 
-    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
-    private List<Orders> orders = new LinkedList<>();
+//    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
+//    private List<Orders> orders = new LinkedList<>();
 
     public User() {
     }
@@ -135,13 +135,13 @@ public class User {
         this.addresses.add(address);
     }
 
-    public List<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Orders order) {
-        this.orders.add(order);
-    }
+//    public List<Orders> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(Orders order) {
+//        this.orders.add(order);
+//    }
 
 
     @Override
@@ -155,7 +155,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", addresses=" + addresses +
-                ", orders=" + orders +
+//                ", orders=" + orders +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.LinkedList;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name="orders" , schema="public")
+@JsonIgnoreProperties
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

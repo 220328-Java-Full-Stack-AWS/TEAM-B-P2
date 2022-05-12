@@ -40,7 +40,10 @@ public class P2BackendApplication {
         System.out.println(fatemeh.getAddresses());
 
 
-
+        Orders orders = new Orders(String.valueOf(LocalDate.now()),address, fatemeh);
+        OrdersDao ordersDao = context.getBean(OrdersDao.class);
+        ordersDao.save(orders);
+        System.out.println(orders);
 //        Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
 //        Product product1 = new Product("earring", "earring", 125.39, 50,Category.EARRINGS);
 //        Product product2 = new Product("necklace", "necklace", 199.99, 60, Category.NECKLACES);
