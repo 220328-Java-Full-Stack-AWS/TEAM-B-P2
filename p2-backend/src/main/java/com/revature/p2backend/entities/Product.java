@@ -31,7 +31,7 @@ public class Product {
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    @Type(type = "com.revature.p2backend.utilities.EnumConverter")
+    @Type(type = "com.revature.p2backend.beans.utilities.EnumConverter")
     private Category category;
 
     public Product() {
