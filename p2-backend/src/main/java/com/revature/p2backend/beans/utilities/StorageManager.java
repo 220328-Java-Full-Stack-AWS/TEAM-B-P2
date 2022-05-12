@@ -8,6 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+
+/**
+ * This is marked as service to interact with the
+ * rest of the beans. It gets us the configuration
+ * to add our annotated classes (entities) as tables
+ * in the database. It also allows us to get a session
+ * when the other beans are made aware of this class.
+ */
 @Service
 public class StorageManager implements Lifecycle {
     private boolean running = false;

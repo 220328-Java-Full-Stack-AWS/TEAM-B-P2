@@ -11,16 +11,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ *This class is specifically for the get request for logging into the site
+ */
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
+    /**
+     * This is the UserService we will use and call throughout this class. It will
+     * give us access to all the user service methods with in the UserService class.
+     * The UserService is also marked as a "service" bean. We have not Autowired this,
+     * as it is not a good practice.
+     */
     private final UserService userService;
 
+    /**
+     * This is a constructor and is better practice to Autowire here. This initializes the
+     * user service without having to initialize it to null or as a new object which would make it tightly coupled.
+     * @param userService
+     */
     @Autowired
     public AuthController(UserService userService){
         this.userService = userService;
     }
+
+    /**
+     * This is a response entity which allows us to return different responses to the front end.
+     * In this methode, if the user login is bad, it sends back the response status of UNAUTHORIZED
+     * which is response status 401.
+     * @param authDto
+     * @return
+     */
     @GetMapping
     ResponseEntity<User> userLogin(@RequestBody AuthDto authDto){
         try{

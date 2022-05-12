@@ -13,10 +13,20 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 @Repository
 public class ProductDao implements HibernateDao<Product>{
+    /**
+     * This is the StorageManager we will use and call throughout this class. It will
+     * give us access to all the StorageManager methods with in the StorageManager class.
+     * The StorageManager is also marked as a "service" bean. We have not Autowired this class
+     * declaration, as it is not a good practice.
+     */
     private final StorageManager storageManager;
-    private boolean running = false;
-    private Session session;
-
+    private boolean running = false;//Used to tell if the bean is running
+    private Session session;//session that becomes usable upon start, see below
+    /**
+     * This is a constructor and is better practice to Autowire here. This initializes the
+     * StorageManager without having to initialize it to null or as a new object which would make it tightly coupled.
+     * @param storageManager
+     */
     @Autowired
     public ProductDao(StorageManager storageManager) {
         this.storageManager = storageManager;
@@ -107,19 +117,27 @@ public class ProductDao implements HibernateDao<Product>{
 
         return products;
     }
-
+    /**
+     * This method will start the component and establish a usable session
+     * for the rest of the class.
+     */
     @Override
     public void start() {
         this.session = storageManager.getSession();
         running = true;
     }
-
+    /**
+     * Will destroy the connection when complete.
+     */
     @Override
     public void stop() {
         running = false;
         session.close();
     }
-
+    /**
+     * This will return a boolean if this component/bean is running.
+     * @return
+     */
     @Override
     public boolean isRunning() {
         return running;
