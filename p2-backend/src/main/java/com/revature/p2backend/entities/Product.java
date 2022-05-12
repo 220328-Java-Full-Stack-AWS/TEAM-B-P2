@@ -3,7 +3,6 @@ package com.revature.p2backend.entities;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
@@ -35,6 +34,13 @@ public class Product {
     private Category category;
 
     public Product() {
+    }
+
+    public Product(String name, String description, Double price, Integer inventory) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
     }
 
 

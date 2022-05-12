@@ -23,7 +23,7 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
     private final StorageManager storageManager;
     private boolean running = false;//Used to tell if the bean is running
     private Session session;//session that becomes usable upon start, see below
-
+     String tableName;
     /**
      * This is a constructor and is better practice to Autowire here. This initializes the
      * StorageManager without having to initialize it to null or as a new object which would make it tightly coupled.
@@ -33,6 +33,9 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
     public OrderItemDao(StorageManager storageManager) {
         this.storageManager = storageManager;
     }//make connection ot the table order_item
+
+
+
 
     @Override
     public OrderItem save(OrderItem orderItem) {

@@ -28,15 +28,27 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(OrderItem.class);
         storageManager.addAnnotatedClass(Orders.class);
         storageManager.addAnnotatedClass(Product.class);
+
         context.start();
 
-        User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
+        User fatemeh = new User("Fatemeh", "Goudarzi", "FatemehGoudarzi", "FGoudarzi@gmail.com", "123", "123456789");
         UserDao userDao = context.getBean(UserDao.class);
 
         Address address = new Address("123", "test", "test", "test", "test");
         fatemeh.setAddresses(address);
 
-        userDao.save(fatemeh);
+        Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
+
+
+        Orders orders = new Orders(String.valueOf(LocalDate.now()),address, fatemeh);
+        OrderItem orderItem = new OrderItem(1, product, orders);
+        OrderItemDao orderItemDao = context.getBean(OrderItemDao.class);
+        orderItemDao.save(orderItem);
+
+
+
+
+        /*userDao.save(fatemeh);
         System.out.println(fatemeh.getAddresses());
 
 
@@ -91,5 +103,6 @@ public class P2BackendApplication {
 //		User user = uDao.getUserByUserName("anthony01");
 //		System.out.println(user.getUsername());
     }
-
+*/
+    }
 }

@@ -1,7 +1,5 @@
 package com.revature.p2backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -9,8 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="users" , schema="public")
-@JsonIgnoreProperties
+@Table(name="user" , schema="public")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +20,10 @@ public class User {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="user_name", unique = true)
+    @Column(name="user_name")
     private String userName;
 
-    @Column(unique = true)
+    @Column
     private String email;
 
     @Column
@@ -45,7 +42,7 @@ public class User {
          joinColumns={@JoinColumn(name="user_id")},
          inverseJoinColumns={@JoinColumn(name="address_id")}
     )
-    private Set<Address> addresses;
+    private Set<Address> addresses = new HashSet<Address>();
 
     @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
     private List<Orders> orders = new LinkedList<>();
@@ -60,7 +57,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.addresses = new HashSet<>();
     }
 
     public Integer getId() {
@@ -142,7 +138,6 @@ public class User {
     public void setOrders(Orders order) {
         this.orders.add(order);
     }
-
 
     @Override
     public String toString() {
