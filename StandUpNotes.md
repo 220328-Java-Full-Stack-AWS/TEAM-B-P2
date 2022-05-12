@@ -324,8 +324,9 @@ Blocker: Only time.
 - 
 - 
 ###### Qiang: 
-- 
-- 
+- Learn Bean autowire by name, by id, inner bean, alias.
+- Bean scopes: Singleton, prototype, request, session, application.
+- I got some issue with database, Base on kyle feedback, I refactor the entities.
 ##### Kenneth: 
 - 
 
@@ -340,8 +341,7 @@ Blocker: Only time.
 ###### Fatemeh: 
 - 
 ###### Qiang: 
-- 
-- 
+- start wrriting dao layer and testing
 ###### Kenneth: 
 - 
 
@@ -355,7 +355,7 @@ Blocker: Only time.
 ###### Fatemeh: 
 - 
 ###### Qiang: 
-- 
+- entity relationships.
 ###### Kenneth: 
 - 
 <hr>
