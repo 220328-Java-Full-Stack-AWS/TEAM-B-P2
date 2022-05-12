@@ -60,7 +60,6 @@ public class UserDao implements HibernateDao<User> {
 
     @Override
     public void delete(User user) {
-
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("DELETE User where id = :user_id");
         query.setParameter("user_id", user.getId());
@@ -70,20 +69,8 @@ public class UserDao implements HibernateDao<User> {
 
     @Override
     public User update(User user) {
-
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("UPDATE User SET " +
-                "firstName = :first_name, lastName = :last_name, password = :password,  phoneNumber = :phone " +
-                "where id = :user_id");
-        //query.setParameter("username", getById(user.getId()).getUserName());
-        query.setParameter("user_id", user.getId());
-        query.setParameter("first_name", user.getFirstName());
-        query.setParameter("last_name", user.getLastName());
-        //query.setParameter("email", getById(user.getId()).getEmail());
-        //query.setParameter("credit_card", user.getCreditCard());
-        query.setParameter("password", user.getPassword());
-        query.setParameter("phone", user.getPhoneNumber());
-        query.executeUpdate();
+        session.merge(user);
         tx.commit();
         return user;
     }

@@ -2,10 +2,7 @@ package com.revature.p2backend;
 
 
 
-import com.revature.p2backend.beans.dao.AddressDao;
-import com.revature.p2backend.beans.dao.OrderItemDao;
-import com.revature.p2backend.beans.dao.OrdersDao;
-import com.revature.p2backend.beans.dao.UserDao;
+import com.revature.p2backend.beans.dao.*;
 
 import com.revature.p2backend.entities.*;
 import com.revature.p2backend.beans.utilities.StorageManager;
@@ -38,6 +35,10 @@ public class P2BackendApplication {
 
         userDao.save(fatemeh);
         System.out.println(fatemeh.getAddresses());
+
+//        Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
+//        ProductDao productDao = context.getBean(ProductDao.class);
+//        productDao.save(product);
 
 
 
