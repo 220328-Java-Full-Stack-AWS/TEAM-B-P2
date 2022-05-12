@@ -306,3 +306,56 @@ Yesterday:Tinkered around on his branch. Added all annotations to the beans and 
 Added user service and user controller. Was able to hit it from Postman successfully with login information.
 Today: Continue studying the bean annotations. 
 Blocker: Only time.
+
+<hr>
+
+#### 5/12/22
+##### What did you do since last time?
+###### Chenxi: 
+- 
+###### Mohammad: 
+- 
+- 
+###### Anthony: 
+- 
+- 
+###### Fatemeh: 
+- 
+- 
+- 
+###### Qiang: 
+- 
+- 
+##### Kenneth: 
+- 
+
+##### What are you going to work on next?
+###### Chenxi: 
+- 
+###### Mohammad: 
+- 
+- 
+###### Anthony: 
+- 
+###### Fatemeh: 
+- 
+###### Qiang: 
+- 
+- 
+###### Kenneth: 
+- 
+
+##### Blocker?
+###### Chenxi: 
+- 
+###### Mohammad: 
+- 
+###### Anthony: 
+- 
+###### Fatemeh: 
+- 
+###### Qiang: 
+- 
+###### Kenneth: 
+- 
+<hr>
