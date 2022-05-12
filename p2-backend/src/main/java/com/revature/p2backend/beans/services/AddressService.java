@@ -1,6 +1,9 @@
 package com.revature.p2backend.beans.services;
 
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class AddressService {
     //TODO convert this into a service and add appropriate methods
     /*
