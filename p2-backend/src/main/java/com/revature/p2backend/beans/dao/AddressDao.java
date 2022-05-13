@@ -41,11 +41,10 @@ public class AddressDao implements HibernateDao<Address>{
     }//make connection to the table address
 
     @Override
-    public Address save(Address address) {
+    public void save(Address address) {
         Transaction tx = session.beginTransaction();
         session.save(address);
         tx.commit();
-        return address;
     }
 
     @Override
@@ -60,25 +59,15 @@ public class AddressDao implements HibernateDao<Address>{
         String hql = "FROM Address WHERE id = :id";
         TypedQuery<Address> query = session.createQuery(hql);
         query.setParameter("id", id);
-        return query.getSingleResult();
+        Address address = query.getSingleResult();
+        session.persist(address);
+        return address;
     }
 
     @Override
     public Address update(Address address) {
         Transaction tx = session.beginTransaction();
-        String hql = "UPDATE Address SET street = :street," +
-                " number = :houseNumber, city = :city," +
-                " zipCode = :zipCode WHERE id = :id";
-
-        TypedQuery<Address> query = session.createQuery(hql);
-        String street = address.getStreet();
-        String houseNumber = address.getNumber();
-        String city = address.getCity();
-        String zipCode = address.getZipCode();
-        query.setParameter("street", street);
-        query.setParameter("houseNumber", houseNumber);
-        query.setParameter("city", city);
-        query.setParameter("zipCode", zipCode);
+        session.merge(address);
         tx.commit();
         return address;
     }
