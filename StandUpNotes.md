@@ -308,6 +308,7 @@ Today: Continue studying the bean annotations.
 Blocker: Only time.
 
 <hr>
+
 #### 5/12/22
 ###### Chenxi: 
 - Yesterday: restart p2 project
