@@ -360,48 +360,46 @@ Blocker: Only time.
 <hr>
 
 
+
 5/13/22
 What did you do since last time?
-Chenxi:
+Chenxi: updated address controller and address service
 
-Mohammad:
+Mohammad: I worked on order_id service and control layer, see some tutorials for actuator and other features of spring boot
 
-Anthony:
+Anthony: could not figure out what was wrong with the orders
 
-Fatemeh:
+Fatemeh: worked on the service layer and API layer for the product had issues with the update but managed that
 
-Qiang:
+Qiang: studying hibernates, persist and save, update, merge.
 
-Kenneth:
+Kenneth: order situation, how we would do order items and checkout process
 
 What are you going to work on next?
-Chenxi:
+Chenxi: working on personal p2
 
-Mohammad:
+Mohammad: work on p2 and understand the whole code for the backend and test it.
 
-Anthony:
+Anthony: keep going on that
 
-Fatemeh:
+Fatemeh: work on more features for the product
 
-Qiang:
+Qiang: do low-level stuff, different states of transactions
 
-Kenneth:
+Kenneth: helping Anthony, look at the code
 
 Blocker?
 
-Chenxi:
+Chenxi: pay attention to details
 
-Mohammad:
+Mohammad: time and knowledge
 
-Anthony:
+Anthony: knowledge
 
-Fatemeh:
+Fatemeh: knowledge
 
-Qiang:
+Qiang: different states of a transaction
 
-Kenneth:
-
-
-
+Kenneth: time and knowledge
 
 
