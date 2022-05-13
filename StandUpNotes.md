@@ -358,3 +358,50 @@ Blocker: Only time.
 ###### Kenneth: 
 - time
 <hr>
+
+
+5/13/22
+What did you do since last time?
+Chenxi:
+
+Mohammad:
+
+Anthony:
+
+Fatemeh:
+
+Qiang:
+
+Kenneth:
+
+What are you going to work on next?
+Chenxi:
+
+Mohammad:
+
+Anthony:
+
+Fatemeh:
+
+Qiang:
+
+Kenneth:
+
+Blocker?
+
+Chenxi:
+
+Mohammad:
+
+Anthony:
+
+Fatemeh:
+
+Qiang:
+
+Kenneth:
+
+
+
+
+
