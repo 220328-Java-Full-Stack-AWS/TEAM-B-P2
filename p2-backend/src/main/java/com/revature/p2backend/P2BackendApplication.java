@@ -2,12 +2,9 @@ package com.revature.p2backend;
 
 
 
-import com.revature.p2backend.beans.controllers.OrdersController;
-import com.revature.p2backend.beans.dao.AddressDao;
-import com.revature.p2backend.beans.dao.OrderItemDao;
-import com.revature.p2backend.beans.dao.OrdersDao;
-import com.revature.p2backend.beans.dao.UserDao;
 
+import com.revature.p2backend.beans.dao.*;
+import com.revature.p2backend.beans.controllers.OrdersController;
 import com.revature.p2backend.beans.services.OrdersService;
 import com.revature.p2backend.entities.*;
 import com.revature.p2backend.beans.utilities.StorageManager;
@@ -32,6 +29,19 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(Product.class);
         context.start();
 
+
+//        User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
+//        UserDao userDao = context.getBean(UserDao.class);
+//
+//        Address address = new Address("123", "test", "test", "test", "test");
+//        fatemeh.setAddresses(address);
+//
+//        userDao.save(fatemeh);
+//        System.out.println(fatemeh.getAddresses());
+
+
+
+
         User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
         UserDao userDao = context.getBean(UserDao.class);
 
@@ -51,6 +61,7 @@ public class P2BackendApplication {
         ordersController.createNewOrder(orders2);
         System.out.println(orders);
         System.out.println(orders2);
+
 //        Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
 //        Product product1 = new Product("earring", "earring", 125.39, 50,Category.EARRINGS);
 //        Product product2 = new Product("necklace", "necklace", 199.99, 60, Category.NECKLACES);
