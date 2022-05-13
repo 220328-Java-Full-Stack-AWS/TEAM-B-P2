@@ -16,7 +16,6 @@ public class Product {
     @Column
     private String name; //added name column
 
-
     @Column
     private String description;
 
@@ -26,8 +25,8 @@ public class Product {
     @Column
     private Integer inventory;
 
-    @OneToOne(mappedBy = "productId")
-    private OrderItem orderItem;
+//    @OneToOne(mappedBy = "productId")
+//    private OrderItem orderItem;
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
@@ -39,6 +38,14 @@ public class Product {
 
 
     public Product(String name, String description, Double price, Integer inventory, Category category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
+        this.category = category;
+    }
+    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category) {
+        this.productId=id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -87,13 +94,13 @@ public class Product {
     }
 
 
-    public OrderItem getOrderItem() {
-        return orderItem;
-    }
-
-    public void setOrderItem(OrderItem orderItem) {
-        this.orderItem = orderItem;
-    }
+//    public OrderItem getOrderItem() {
+//        return orderItem;
+//    }
+//
+//    public void setOrderItem(OrderItem orderItem) {
+//        this.orderItem = orderItem;
+//    }
 
     public Category getCategory() {
         return category;
@@ -109,7 +116,7 @@ public class Product {
                 "productId=" + productId +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", orderItem=" + orderItem +
+//                ", orderItem=" + orderItem +
                 ", category=" + category +
                 '}';
     }

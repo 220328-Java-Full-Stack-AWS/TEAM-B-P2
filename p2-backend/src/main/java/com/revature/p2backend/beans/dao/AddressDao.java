@@ -40,7 +40,6 @@ public class AddressDao implements HibernateDao<Address>{
         this.storageManager = storageManager;
     }//make connection to the table address
 
-
     @Override
     public Address save(Address address) {
         Transaction tx = session.beginTransaction();
@@ -83,7 +82,6 @@ public class AddressDao implements HibernateDao<Address>{
         tx.commit();
         return address;
     }
-
 
     @Override
     public void delete(Address address) {
