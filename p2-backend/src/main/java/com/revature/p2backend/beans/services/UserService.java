@@ -97,7 +97,6 @@ public class UserService {
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.getUserName();
         user.getEmail();
-        user.getAddresses();
         return userDao.update(user);
     }
 

@@ -310,98 +310,73 @@ Blocker: Only time.
 <hr>
 
 #### 5/12/22
-##### What did you do since last time?
 ###### Chenxi: 
-- restart p2 project
+- Yesterday: restart p2 project
+- Today: continue p2
+- Blocker: Work independently on the project.
 ###### Mohammad: 
-- study hibernate spring
+- Yesterday: study hibernate spring
+- Today: studing hibernate spring 
+- Blocker: time and knowledge
 ###### Anthony: 
-- p2 update functionality
+- Yesterday: p2 update functionality
+- Today: controller and service layer
+- Blocker: time
 ###### Fatemeh: 
-- hibernate spring
-- review p1
-- 
+- Yesterday: hibernate spring, review p1
+- Today: apply knowlage to p2
+- Blocker: time and knowledge
 ###### Qiang: 
-- Learn Bean autowire by name, by id, inner bean, alias.
-- Bean scopes: Singleton, prototype, request, session, application.
-- I got some issue with database, Base on kyle feedback, I refactor the entities.
-##### Kenneth: 
-- user user story functionality done
-- four branches created for service layer
-
-##### What are you going to work on next?
-###### Chenxi: 
-- continue p2
-###### Mohammad: 
-- studing hibernate spring 
-- 
-###### Anthony: 
-- controller and service layer
-###### Fatemeh: 
-- application knowlage to p2
-###### Qiang: 
-- start wrriting dao layer and testing
+- Yesterday: Learn Bean autowire,Bean scopes, refactor code
+- Today: Ttart wrriting dao layer and testing
+- Blocker: entity relationships.
 ###### Kenneth: 
-- working on service layer
-
-##### Blocker?
-###### Chenxi: 
-- Work independently on the project.
-###### Mohammad: 
-- knowledge and time
-###### Anthony: 
-- time
-###### Fatemeh: 
-- time and knowledge
-###### Qiang: 
-- entity relationships.
-###### Kenneth: 
-- time
+- Yesterday:user user story functionality done, four branches created for service layer
+- Today: working on service layer
+- Blocker: time
 <hr>
+
 
 
 5/13/22
 What did you do since last time?
-Chenxi:
+Chenxi: updated address controller and address service
 
-Mohammad:
+Mohammad: I worked on order_id service and control layer, see some tutorials for actuator and other features of spring boot
 
-Anthony:
+Anthony: could not figure out what was wrong with the orders
 
-Fatemeh:
+Fatemeh: worked on the service layer and API layer for the product had issues with the update but managed that
 
-Qiang:
+Qiang: studying hibernates, persist and save, update, merge.
 
-Kenneth:
+Kenneth: order situation, how we would do order items and checkout process
 
 What are you going to work on next?
-Chenxi:
+Chenxi: working on personal p2
 
-Mohammad:
+Mohammad: work on p2 and understand the whole code for the backend and test it.
 
-Anthony:
+Anthony: keep going on that
 
-Fatemeh:
+Fatemeh: work on more features for the product
 
-Qiang:
+Qiang: do low-level stuff, different states of transactions
 
-Kenneth:
+Kenneth: helping Anthony, look at the code
 
 Blocker?
 
-Chenxi:
+Chenxi: pay attention to details
 
-Mohammad:
+Mohammad: time and knowledge
 
-Anthony:
+Anthony: knowledge
 
-Fatemeh:
+Fatemeh: knowledge
 
-Qiang:
+Qiang: different states of a transaction
 
-Kenneth:
-
-
-
+Kenneth: time and knowledge
 
 
