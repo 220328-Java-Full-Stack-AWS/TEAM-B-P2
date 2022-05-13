@@ -38,17 +38,17 @@ public class User {
     @Column(name="credit_card")
     private String creditCard;//added credit card
 
-    @ManyToMany(cascade={CascadeType.ALL})
-    @JoinTable(
-         name="user_address",
-         schema="public",
-         joinColumns={@JoinColumn(name="user_id")},
-         inverseJoinColumns={@JoinColumn(name="address_id")}
-    )
-    private Set<Address> addresses;
+//    @ManyToMany(cascade={CascadeType.ALL})
+//    @JoinTable(
+//         name="user_address",
+//         schema="public",
+//         joinColumns={@JoinColumn(name="user_id")},
+//         inverseJoinColumns={@JoinColumn(name="address_id")}
+//    )
+//    private Set<Address> addresses;
 
-    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
-    private List<Orders> orders = new LinkedList<>();
+//    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
+//    private List<Orders> orders = new LinkedList<>();
 
     public User() {
     }
@@ -60,7 +60,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.addresses = new HashSet<>();
+//        this.addresses = new HashSet<>();
     }
 
     public Integer getId() {
@@ -127,21 +127,21 @@ public class User {
         this.creditCard = creditCard;
     }
 
-    public Set<Address> getAddresses() {
-        return addresses;
-    }
+//    public Set<Address> getAddresses() {
+//        return addresses;
+//    }
+//
+//    public void setAddresses(Address address) {
+//        this.addresses.add(address);
+//    }
 
-    public void setAddresses(Address address) {
-        this.addresses.add(address);
-    }
-
-    public List<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Orders order) {
-        this.orders.add(order);
-    }
+//    public List<Orders> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(Orders order) {
+//        this.orders.add(order);
+//    }
 
 
     @Override
@@ -154,8 +154,8 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", addresses=" + addresses +
-                ", orders=" + orders +
+//                ", addresses=" + addresses +
+//                ", orders=" + orders +
                 '}';
     }
 }

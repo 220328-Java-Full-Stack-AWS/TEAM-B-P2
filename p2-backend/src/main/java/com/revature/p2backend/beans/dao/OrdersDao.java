@@ -36,11 +36,10 @@ public class OrdersDao implements HibernateDao<Orders>{
     }//make connection to the table orders
 
     @Override
-    public Orders save(Orders orders) {
+    public void save(Orders orders) {
         Transaction tx = session.beginTransaction();
         session.save(orders);
         tx.commit();
-        return orders;
     }
 
     @Override
@@ -69,13 +68,7 @@ public class OrdersDao implements HibernateDao<Orders>{
     @Override
     public Orders update(Orders orders) {
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("UPDATE Orders SET " +
-                "user = :user, orderTotal = :order_total " +
-                "where id = :id");
-        query.setParameter("user", orders.getUser());
-        query.setParameter("order_total", orders.getOrderTotal());
-        query.setParameter("id", orders.getId());
-        query.executeUpdate();
+        session.merge(orders);
         tx.commit();
         return orders;
     }

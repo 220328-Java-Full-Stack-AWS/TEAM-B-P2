@@ -42,11 +42,10 @@ public class AddressDao implements HibernateDao<Address>{
 
 
     @Override
-    public Address save(Address address) {
+    public void save(Address address) {
         Transaction tx = session.beginTransaction();
         session.save(address);
         tx.commit();
-        return address;
     }
 
     @Override
@@ -61,7 +60,9 @@ public class AddressDao implements HibernateDao<Address>{
         String hql = "FROM Address WHERE id = :id";
         TypedQuery<Address> query = session.createQuery(hql);
         query.setParameter("id", id);
-        return query.getSingleResult();
+        Address address = query.getSingleResult();
+        session.persist(address);
+        return address;
     }
 
     @Override
