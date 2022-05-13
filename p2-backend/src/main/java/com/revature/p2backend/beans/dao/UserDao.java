@@ -1,8 +1,8 @@
 package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.beans.utilities.StorageManager;
-import com.revature.p2backend.entities.User;
 
+import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

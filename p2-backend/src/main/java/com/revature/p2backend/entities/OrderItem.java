@@ -1,8 +1,6 @@
 package com.revature.p2backend.entities;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "order_item" , schema="public")
@@ -22,12 +20,11 @@ public class OrderItem {
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double
 
-
     @OneToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
     private Product productId;
 
-    public OrderItem(Integer quantity, Product productId,Orders orders) {
+    public OrderItem(Integer quantity, Product productId, Orders orders) {
         this.quantity = quantity;
         this.productId = productId;
         this.orders = orders;

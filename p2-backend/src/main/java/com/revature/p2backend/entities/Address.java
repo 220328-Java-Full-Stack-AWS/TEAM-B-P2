@@ -29,12 +29,13 @@ public class Address {
     @Column(name="zip_code")
     private String zipCode;
 
-
+    @OneToMany(mappedBy="address",fetch = FetchType.LAZY)
+    private List<Orders> orders;
 
     public Address() {
     }
 
-    public Address( String number, String street, String city, String state, String zipCode) {
+    public Address(String number, String street, String city, String state, String zipCode) {
         this.number = number;
         this.street = street;
         this.city = city;
@@ -91,7 +92,13 @@ public class Address {
         this.zipCode = zipCode;
     }
 
+    public List<Orders> getOrders() {
+        return orders;
+    }
 
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
 
     @Override
     public String toString() {
@@ -102,6 +109,7 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 }
