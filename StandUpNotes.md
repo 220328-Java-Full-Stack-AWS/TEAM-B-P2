@@ -218,7 +218,7 @@ Kenneth:No blockers, just waiting to move to the next level of team development.
 
 <hr>
 
--5/10/22
+#### -5/10/22
 
 Chenxi
     yesterday
@@ -274,3 +274,109 @@ Qiang
         focus on front end
     blocker
         uncertanity about front end UI
+
+#### -5/11/22
+Chenxi:
+Yesterday: Studied Hibernate 
+Today:Continue learning Hibernate & Spring.
+Blocker: Managing different syntax
+
+Mohammad:
+Yesterday: Studied Spring and watched educational tutorial about Spring boot.
+Today : Working on the project and the tinkering application.
+Blocker : Time & knowledge.
+
+Anthony:
+Practiced branch merging with git bash& studied Spring annotations.
+Today: Plan to do pair programing to use annotations and beans for our project.
+Blocker: Nothing. Just waiting.
+
+Fatemeh:
+Yesterday:Tinkered around with HQL, beans and controllers.
+Today: Hopefully, making progress in using controller and be able to hit the database using Postman. 
+Blocker: Time
+
+Qiang:
+Yesterday:Studied Spring and dependency injection.Tried to use the Spring without annotation and how to create beans, setter injection and construction injection. 
+Today:Learning Spring annotations.
+Blocker:Switching from plain java to annotations.
+
+Kenneth:
+Yesterday:Tinkered around on his branch. Added all annotations to the beans and the DAO layer.
+Added user service and user controller. Was able to hit it from Postman successfully with login information.
+Today: Continue studying the bean annotations. 
+Blocker: Only time.
+
+<hr>
+
+#### 5/12/22
+###### Chenxi: 
+- Yesterday: restart p2 project
+- Today: continue p2
+- Blocker: Work independently on the project.
+###### Mohammad: 
+- Yesterday: study hibernate spring
+- Today: studing hibernate spring 
+- Blocker: time and knowledge
+###### Anthony: 
+- Yesterday: p2 update functionality
+- Today: controller and service layer
+- Blocker: time
+###### Fatemeh: 
+- Yesterday: hibernate spring, review p1
+- Today: apply knowlage to p2
+- Blocker: time and knowledge
+###### Qiang: 
+- Yesterday: Learn Bean autowire,Bean scopes, refactor code
+- Today: Ttart wrriting dao layer and testing
+- Blocker: entity relationships.
+###### Kenneth: 
+- Yesterday:user user story functionality done, four branches created for service layer
+- Today: working on service layer
+- Blocker: time
+<hr>
+
+
+
+5/13/22
+What did you do since last time?
+Chenxi: updated address controller and address service
+
+Mohammad: I worked on order_id service and control layer, see some tutorials for actuator and other features of spring boot
+
+Anthony: could not figure out what was wrong with the orders
+
+Fatemeh: worked on the service layer and API layer for the product had issues with the update but managed that
+
+Qiang: studying hibernates, persist and save, update, merge.
+
+Kenneth: order situation, how we would do order items and checkout process
+
+What are you going to work on next?
+Chenxi: working on personal p2
+
+Mohammad: work on p2 and understand the whole code for the backend and test it.
+
+Anthony: keep going on that
+
+Fatemeh: work on more features for the product
+
+Qiang: do low-level stuff, different states of transactions
+
+Kenneth: helping Anthony, look at the code
+
+Blocker?
+
+Chenxi: pay attention to details
+
+Mohammad: time and knowledge
+
+Anthony: knowledge
+
+Fatemeh: knowledge
+
+Qiang: different states of a transaction
+
+Kenneth: time and knowledge
+
+

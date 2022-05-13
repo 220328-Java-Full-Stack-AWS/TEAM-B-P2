@@ -34,18 +34,16 @@ public class ProductDao implements HibernateDao<Product>{
     }//make connection to the table products
 
     @Override
-    public Product save(Product product) {
+    public void save(Product product) {
         Transaction tx = session.beginTransaction();
         session.save(product);
         tx.commit();
-        return product;
     }
 
     @Override
     public List<Product> getAll() {
         TypedQuery<Product> query = session.createQuery("FROM Product", Product.class);
         List<Product> products = query.getResultList();
-
         return products;
     }
 
@@ -54,7 +52,6 @@ public class ProductDao implements HibernateDao<Product>{
         TypedQuery<Product> query = session.createQuery("FROM Product WHERE id = :productId", Product.class);
         query.setParameter("productId", id);
         Product product = query.getSingleResult();
-
         return product;
     }
 
@@ -69,34 +66,40 @@ public class ProductDao implements HibernateDao<Product>{
 
     @Override
     public Product update(Product product) {
+        session.clear();
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("UPDATE Product SET " +
-                "name = :name, price = :price, description = :description, inventory = :inventory, category = :category " +
-                "WHERE id = :id");
-        query.setParameter("name", product.getName());
-        query.setParameter("price", product.getPrice());
-        query.setParameter("description", product.getDescription());
-        query.setParameter("inventory", product.getInventory());
-        query.setParameter("category", product.getCategory());
-        query.setParameter("id", product.getProductId());
-        query.executeUpdate();
+        session.update(product);
         tx.commit();
         return product;
     }
+//    @Override
+//    public Product update(Product product) {
+//        Transaction tx = session.beginTransaction();
+//        Query query = session.createQuery("UPDATE Product SET " +
+//                "name = :name, price = :price, description = :description, inventory = :inventory, category = :category " +
+//                "WHERE id = :id");
+//        query.setParameter("name", product.getName());
+//        query.setParameter("price", product.getPrice());
+//        query.setParameter("description", product.getDescription());
+//        query.setParameter("inventory", product.getInventory());
+//        query.setParameter("category", product.getCategory());
+//        query.setParameter("id", product.getProductId());
+//        query.executeUpdate();
+//        tx.commit();
+//        return product;
+//    }
 
-    public Product getByProductName(String name){
+    public List<Product> getByProductName(String name){
         TypedQuery<Product> query = session.createQuery("FROM Product WHERE name = :productName", Product.class);
         query.setParameter("productName", name);
-        Product product = query.getSingleResult();
-
-        return product;
+        List<Product> products = query.getResultList();
+        return products;
     }
 
     public List<Product> getByCategory(Category category){
         TypedQuery<Product> query = session.createQuery("FROM Product WHERE category = :category", Product.class);
         query.setParameter("category", category);
         List<Product> products = query.getResultList();
-
         return products;
     }
 
@@ -105,7 +108,6 @@ public class ProductDao implements HibernateDao<Product>{
         query.setParameter("lower", lower);
         query.setParameter("upper", upper);
         List<Product> products = query.getResultList();
-
         return products;
     }
 
@@ -114,7 +116,6 @@ public class ProductDao implements HibernateDao<Product>{
         TypedQuery<Product> query = session.createQuery("FROM Product WHERE name LIKE :substring", Product.class);
         query.setParameter("substring", newString);
         List<Product> products = query.getResultList();
-
         return products;
     }
     /**
@@ -143,3 +144,5 @@ public class ProductDao implements HibernateDao<Product>{
         return running;
     }
 }
+
+
