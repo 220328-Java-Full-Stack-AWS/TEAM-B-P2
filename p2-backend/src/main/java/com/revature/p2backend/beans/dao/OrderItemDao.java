@@ -35,11 +35,10 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
     }//make connection ot the table order_item
 
     @Override
-    public OrderItem save(OrderItem orderItem) {
+    public void save(OrderItem orderItem) {
         Transaction tx = session.beginTransaction();
         session.save(orderItem);
         tx.commit();
-        return orderItem;
     }
 
     @Override

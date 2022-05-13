@@ -13,7 +13,7 @@ import java.util.List;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="order_id")
+    @Column(name="order_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name="creation_date")
@@ -23,11 +23,11 @@ public class Orders {
 
     private Double orderTotal;//changed to Double from Big Decimal
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", referencedColumnName = "user_id")
     private User user;
 
