@@ -34,10 +34,11 @@ public class UserDao implements HibernateDao<User> {
     }
 
     @Override
-    public void save(User u) {
+    public User save(User u) {
         Transaction tx = session.beginTransaction();
         session.save(u);
         tx.commit();
+        return u;
     }
 
     @Override

@@ -34,10 +34,11 @@ public class ProductDao implements HibernateDao<Product>{
     }//make connection to the table products
 
     @Override
-    public void save(Product product) {
+    public Product save(Product product) {
         Transaction tx = session.beginTransaction();
         session.save(product);
         tx.commit();
+        return product;
     }
 
     @Override

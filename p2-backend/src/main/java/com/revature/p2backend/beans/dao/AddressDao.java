@@ -41,10 +41,11 @@ public class AddressDao implements HibernateDao<Address>{
     }//make connection to the table address
 
     @Override
-    public void save(Address address) {
+    public Address save(Address address) {
         Transaction tx = session.beginTransaction();
         session.save(address);
         tx.commit();
+        return address;
     }
 
     @Override

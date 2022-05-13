@@ -5,7 +5,7 @@ import org.springframework.context.Lifecycle;
 import java.util.List;
 
 public interface HibernateDao<T> extends Lifecycle {
-    public void save(T t);
+    public T save(T t);
 
     public List<T> getAll();
 

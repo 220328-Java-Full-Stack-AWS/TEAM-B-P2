@@ -1,6 +1,7 @@
 package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.beans.utilities.StorageManager;
+import com.revature.p2backend.entities.OrderItem;
 import com.revature.p2backend.entities.Orders;
 import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
@@ -36,10 +37,11 @@ public class OrdersDao implements HibernateDao<Orders>{
     }//make connection to the table orders
 
     @Override
-    public void save(Orders orders) {
+    public Orders save(Orders orders) {
         Transaction tx = session.beginTransaction();
         session.save(orders);
         tx.commit();
+        return orders;
     }
 
     @Override
