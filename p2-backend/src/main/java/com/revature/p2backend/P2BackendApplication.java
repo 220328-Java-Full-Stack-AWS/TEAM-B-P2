@@ -1,78 +1,67 @@
 package com.revature.p2backend;
 
+import com.revature.p2backend.beans.dao.UserDao;
 import com.revature.p2backend.entities.*;
-import com.revature.p2backend.repositories.OrderRepository;
-import com.revature.p2backend.repositories.UserRepository;
-import com.revature.p2backend.utilities.StorageManager;
-import com.revature.p2backend.utilities.TransactionManager;
+import com.revature.p2backend.beans.services.StorageManager;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootApplication
+//To enable auto configuration in Spring Boot
+@SpringBootApplication(scanBasePackages = "com.revature.p2backend.beans")
 public class  P2BackendApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(P2BackendApplication.class, args);
+	ConfigurableApplicationContext context =  SpringApplication.run(P2BackendApplication.class, args);
 
-		StorageManager storageManager = new StorageManager();
-		storageManager.addAnnotadtedClass(User.class);
-		storageManager.addAnnotadtedClass(Order.class);
-		storageManager.addAnnotadtedClass(OrderItem.class);
-		storageManager.addAnnotadtedClass(Product.class);
-		storageManager.addAnnotadtedClass(Category.class);
-		Session session = storageManager.inintializeDatasource();
+		//when we declared the StorageManager class @service, spring boot automatically
+		//called the constructor and made a bean object already for us
+		//now with context.getBean spring boot injects that bean object for us
+		//and we can assign it in StorageManager storageManager
+		StorageManager storageManager = context.getBean(StorageManager.class);
+        storageManager.addEntity(User.class);
+		storageManager.addEntity(Address.class);
+		storageManager.addEntity(Category.class);
+		storageManager.addEntity(OrderItem.class);
+		storageManager.addEntity(Orders.class);
+		storageManager.addEntity(Product.class);
 
 
 
-		User mohammad = new User("mohammadf", "MOHAMMAD", "mohammad", "foroutan",
-				"mforo@hotmail.com", "546646",
-				"63546", "Tampa", "FL");
+		context.start();
+		Session session = storageManager.getSession();
 
-		UserRepository userRepository = new UserRepository(session);
+		UserDao userDao = context.getBean(UserDao.class);
 
-		userRepository.save(mohammad);
-		mohammad.setUserName("mohammadfy");
-		userRepository.updateBySession(mohammad);
-		//userRepository.delete(mohammad);
-		//userRepository.deleteBySession(mohammad);
-		List<User> usersList = new ArrayList<>();
-		usersList = userRepository.getAll();
+		User mohammad = new User("mohammad", "foorutan", "mohammadf",
+				"mohammadf@usf.edu", "MOHAMMAD", "813654646", "4545");
 
-		for (User u : usersList) {
-			System.out.println("Username: " + u.getUserName());
+		userDao.save(mohammad);
+
+		mohammad.setPhoneNumber("000000");
+		userDao.update(mohammad);
+
+		User somayyeh = new User("somayyeh", "shamloo", "somayyehsh",
+				"somayyeh@gmail.com", "SOMAAYYEH", "564645", "546");
+
+		userDao.save(somayyeh);
+
+		List list = userDao.getAll();
+		for(int i = 0; i < list.size(); i++){
+			System.out.println(list.get(i));
 		}
 
-		User u =userRepository.getById(1);
-		System.out.println(u.getCity());
+       User user1 = userDao.getById(2);
+		System.out.println(user1.getEmail());
 
-		User u1 = userRepository.getByUsername("mohammadfy");
-		System.out.println(u1.getEmailAddress());
+		User user2 = userDao.getByUsername("mohammadf");
+		System.out.println(user2.getEmail());
 
 
-		OrderRepository orderRepository = new OrderRepository(session);
-		Order o1 = new Order(4500, mohammad);
-
-		orderRepository.save(o1);
-		o1.setTotal(7000.00);
-		orderRepository.update(o1);
-
-		List <Order> orderList = orderRepository.getAll();
-		for (Order o : orderList) {
-			System.out.println("prices: " + o.getTotal());
-		}
-
-		Order o2 = orderRepository.getById(1);
-		System.out.println("user_id for that oredre: " + o2.getTotal());
-
-    mohammad.setPhoneNumber("8136134540");
-    userRepository.update(mohammad);
-	//userRepository.deleteBySession(mohammad);
 
 
 

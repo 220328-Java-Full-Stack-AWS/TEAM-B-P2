@@ -10,41 +10,44 @@ public class OrderItem {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
+@Column(name="order_item_id")
+private Integer OrderItem;
 
 @Column
 private Integer quantity;
 
 
-@ManyToOne(fetch = FetchType.LAZY)
-private Order order;
+    @ManyToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="order_id" , referencedColumnName = "order_id" )
+    private Orders orders  ;
 
-@ManyToOne(fetch = FetchType.LAZY)
-private Product product;
+
+@Column(name="item_total_amount")
+private Double itemTotalAmount;//changed to Double
+
+
+
+    @OneToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="product_id" , referencedColumnName = "product_id")
+    private Product productId;
 
 
     public OrderItem() {
     }
 
 
-    public OrderItem(Integer quantity, Order order) {
+    public OrderItem(Integer quantity, Orders orders, Product productId) {
         this.quantity = quantity;
-        this.order = order;
+        this.orders = orders;
+        this.productId = productId;
     }
 
-
-    public OrderItem(Integer quantity, Order order, Product product) {
-        this.quantity = quantity;
-        this.order = order;
-        this.product = product;
+    public Integer getOrderItem() {
+        return OrderItem;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setOrderItem(Integer orderItem) {
+        OrderItem = orderItem;
     }
 
     public Integer getQuantity() {
@@ -55,19 +58,38 @@ private Product product;
         this.quantity = quantity;
     }
 
-    public Order getOrder() {
-        return order;
+    public Double getItemTotalAmount() {
+        return itemTotalAmount;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setItemTotalAmount(Double itemTotalAmount) {
+        this.itemTotalAmount = itemTotalAmount;
     }
 
-    public Product getProduct() {
-        return product;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
+    public Product getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Product productId) {
+        this.productId = productId;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "OrderItem=" + OrderItem +
+                ", quantity=" + quantity +
+                ", orders=" + orders +
+                ", itemTotalAmount=" + itemTotalAmount +
+                ", productId=" + productId +
+                '}';
     }
 }

@@ -1,71 +1,75 @@
 package com.revature.p2backend.entities;
 
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "product", schema = "p2")
+@Table(name = "products", schema = "p2")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "product_id")
+    private Integer productId;
 
-   @Column
-   private String name;
+    @Column
+    private String name;
 
-   @Column
-   private Double price;
 
-   @Column
-   private String description;
+    @Column
+    private String description;
 
-   @Column(name = "image_url")
-   private String imgeUrl;
+    @Column
+    private Double price;
 
-   @Column(name = "inventory_id")
-   private Integer inventoryId;
 
-   @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-   private List<OrderItem> orderItems;
 
-   @ManyToOne(fetch = FetchType.LAZY)
+    @Column
+    private Integer inventory;
+
+
+    @OneToOne(mappedBy = "productId")
+    private OrderItem orderItem;
+
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
+    @Type(type = "com.revature.p2backend.utilities.EnumConverter")
     private Category category;
 
 
     public Product() {
     }
 
-    public Product(String name, Double price, String description,
-                   String imgeUrl, Integer inventoryId,
-                   List<OrderItem> orderItems, Category category) {
+    public Product(String name, String description, Double price,
+                   Integer inventory, Category category) {
         this.name = name;
-        this.price = price;
         this.description = description;
-        this.imgeUrl = imgeUrl;
-        this.inventoryId = inventoryId;
-        this.orderItems = orderItems;
-        this.category = category;
-    }
-
-    public Product(String name, Double price, String description,
-                   String imgeUrl, Integer inventoryId, Category category) {
-        this.name = name;
         this.price = price;
-        this.description = description;
-        this.imgeUrl = imgeUrl;
-        this.inventoryId = inventoryId;
+        this.inventory = inventory;
         this.category = category;
     }
 
 
-    public Integer getId() {
-        return id;
+    public Product(String name, String description, Double price,
+                   Integer inventory, OrderItem orderItem,
+                   Category category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
+        this.orderItem = orderItem;
+        this.category = category;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -76,14 +80,6 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -92,28 +88,28 @@ public class Product {
         this.description = description;
     }
 
-    public String getImgeUrl() {
-        return imgeUrl;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setImgeUrl(String imgeUrl) {
-        this.imgeUrl = imgeUrl;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public Integer getInventoryId() {
-        return inventoryId;
+    public Integer getInventory() {
+        return inventory;
     }
 
-    public void setInventoryId(Integer inventoryId) {
-        this.inventoryId = inventoryId;
+    public void setInventory(Integer inventory) {
+        this.inventory = inventory;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public OrderItem getOrderItem() {
+        return orderItem;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
     }
 
     public Category getCategory() {
@@ -123,4 +119,19 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", inventory=" + inventory +
+                ", orderItem=" + orderItem +
+                ", category=" + category +
+                '}';
+    }
 }
+
+
