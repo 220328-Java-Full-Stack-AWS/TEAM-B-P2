@@ -23,7 +23,7 @@ private final UserDao userDao;
 }
 
 //public User save(User user) {
-    public User createUser (User user){
+    public User save (User user){
         userDao.save(user);
         return user;
     }
@@ -40,19 +40,19 @@ private final UserDao userDao;
     }
 
 //public List<User> getAll() {
-    public List<User> readAll(){
+    public List<User> getAll(){
         List list = userDao.getAll();
         return list;
     }
 
 //public User getById(Integer id) {
-    public User readById(Integer id){
+    public User getById(Integer id){
         User user = userDao.getById(id);
         return user;
     }
 
 //public User getByUsername(String userName) {
-    public User readByUsername(String userName){
+    public User getByUsername(String userName){
         User user = userDao.getByUsername(userName);
         return user;
     }
@@ -64,9 +64,9 @@ private final UserDao userDao;
     }
 
 //public User delete(User user) {
-    public User delete(User user){
-        User userDeleted = userDao.delete(user);
-        return userDeleted;
+    public void delete(User user){
+        userDao.delete(user);
+
     }
 
 

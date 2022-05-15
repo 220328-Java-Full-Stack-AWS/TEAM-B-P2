@@ -1,6 +1,6 @@
 package com.revature.p2backend.beans.dao;
 
-import com.revature.p2backend.beans.services.StorageManager;
+import com.revature.p2backend.beans.utilities.StorageManager;
 import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -82,8 +82,8 @@ public class UserDao implements HibernateDao<User> {
         return user;
     }
 
-    @Override
-    public User update(User user) {
+
+    public User updateByhql(User user) {
         Transaction tx = session.beginTransaction();
         //we do not even look at what the column names are in DBeaver
         //so in these guys : userName = :userName
@@ -107,14 +107,27 @@ public class UserDao implements HibernateDao<User> {
         return user;
     }
 
+    //ask why they did not use updateBysql
+    //and also why they are using merge
     @Override
-    public User delete(User user) {
+    public User update(User user) {
+        Transaction tx = session.beginTransaction();
+        session.merge(user);
+        tx.commit();
+        return user;
+    }
+
+
+
+
+    @Override
+    public void delete(User user) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("DELETE User WHERE id = :id");
         query.setParameter("id", user.getId());
         query.executeUpdate();
         tx.commit();
-        return user;
+
     }
 
 

@@ -4,7 +4,6 @@ package com.revature.p2backend.entities;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "products", schema = "p2")
@@ -36,7 +35,7 @@ public class Product {
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
-    @Type(type = "com.revature.p2backend.utilities.EnumConverter")
+    @Type(type = "com.revature.p2backend.beans.utilities.EnumConverter")
     private Category category;
 
 

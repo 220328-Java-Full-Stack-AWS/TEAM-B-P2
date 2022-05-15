@@ -1,4 +1,4 @@
-package com.revature.p2backend.beans.services;
+package com.revature.p2backend.beans.utilities;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,12 +11,12 @@ import java.util.List;
 
 
 // so for making this class a bean we put the @Service
-//on the above of the class and also put the class in service package
+//on the above of the class and also put the class in utilities package
 //because in main springboot configure classes only in bean package
 @Service
 public class StorageManager implements Lifecycle {
 
-    //This sis for Hibernate
+    //This is for Hibernate
   //Configuration config = new Configuration();
     //config.addAnnotatedClass(User.class)
     //SessionFactory sessionFactory = config.buildSessionFactory();

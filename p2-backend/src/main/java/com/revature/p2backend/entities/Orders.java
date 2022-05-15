@@ -1,6 +1,8 @@
 package com.revature.p2backend.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -9,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name="orders", schema = "p2")
+@JsonIgnoreProperties
 public class Orders {
 
 @Id
@@ -18,7 +21,7 @@ private Integer id;
 
 
 @Column(name="creation_date")
-private Timestamp creationDate;
+private String creationDate;
 
 @Column(name="order_total")
 private Double ordetTotal;
@@ -38,10 +41,8 @@ private Double ordetTotal;
     public Orders() {
     }
 
-    public Orders(Timestamp creationDate, Double ordetTotal,
-                  Address address, User user) {
+    public Orders(String creationDate, Address address, User user) {
         this.creationDate = creationDate;
-        this.ordetTotal = ordetTotal;
         this.address = address;
         this.user = user;
     }
@@ -54,11 +55,11 @@ private Double ordetTotal;
         this.id = id;
     }
 
-    public Timestamp getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 

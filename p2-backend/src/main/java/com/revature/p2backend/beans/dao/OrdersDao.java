@@ -1,6 +1,6 @@
 package com.revature.p2backend.beans.dao;
 
-import com.revature.p2backend.beans.services.StorageManager;
+import com.revature.p2backend.beans.utilities.StorageManager;
 import com.revature.p2backend.entities.Orders;
 import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
@@ -28,9 +28,6 @@ public class OrdersDao implements HibernateDao<Orders> {
     }
 
 
-
-
-
     @Override
     public Orders save(Orders order) {
         Transaction transaction = session.beginTransaction();
@@ -38,6 +35,7 @@ public class OrdersDao implements HibernateDao<Orders> {
         transaction.commit();
         return order;
     }
+
     public void updateBySession(Orders order){
         Transaction transaction = session.beginTransaction();
         session.update(order);
@@ -61,28 +59,31 @@ public class OrdersDao implements HibernateDao<Orders> {
 
     @Override
     public Orders getById(Integer id) {
-        String hql = "FROM Order WHERE id = :id";
-        TypedQuery<Orders> query = session.createQuery(hql, Orders.class);
-
+        TypedQuery<Orders> query = session.createQuery("FROM Orders where id = :id", Orders.class);
         query.setParameter("id", id);
-
-        Orders order= query.getSingleResult();
-
-        return order;
-
-    }
-
-    @Override
-    public Orders delete(Orders orders) {
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("DELETE Orders where id = :id");
-        query.setParameter("id", orders.getId());
-        query.executeUpdate();
+        Orders orders = query.getSingleResult();
         return orders;
     }
 
     @Override
+    public void delete(Orders orders) {
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("DELETE Orders where id = :id");
+        query.setParameter("id", orders.getId());
+        query.executeUpdate();
+
+    }
+
+    @Override
     public Orders update(Orders orders) {
+        Transaction tx = session.beginTransaction();
+        session.merge(orders);
+        tx.commit();
+        return orders;
+    }
+
+
+    public Orders updateByhql(Orders orders) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("UPDATE Orders SET " +
                 "user = :user, ordetTotal = :order_total " +
@@ -103,8 +104,6 @@ public class OrdersDao implements HibernateDao<Orders> {
     }
 
 
-
-
     @Override
     public void start() {
         this.session = storageManager.getSession();
@@ -113,7 +112,8 @@ public class OrdersDao implements HibernateDao<Orders> {
 
     @Override
     public void stop() {
-       running = false;
+        running = false;
+        session.close();
     }
 
     public StorageManager getStorageManager() {

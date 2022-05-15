@@ -20,7 +20,7 @@ public T getById (Integer id);
 
     public T update(T t);
 
-    public T delete(T t);
+    public void delete(T t);
 
 
 }

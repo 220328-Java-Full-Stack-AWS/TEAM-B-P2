@@ -1,4 +1,4 @@
-package com.revature.p2backend.beans.controller;
+package com.revature.p2backend.beans.controllers;
 
 import com.revature.p2backend.beans.services.Userservice;
 import com.revature.p2backend.entities.User;
@@ -17,27 +17,31 @@ public class UserController {
 
     @Autowired
     public UserController(Userservice userservice){
+
         this.userservice = userservice;
     }
 
 
 @GetMapping
 @ResponseStatus(HttpStatus.OK)
-public List<User> readAllUsers(){
-        return userservice.readAll();
+public List<User> getAllUsers(){
+        return userservice.getAll();
+
 }
 
 
 @PostMapping()
 @ResponseStatus(HttpStatus.OK)
 public User createUser(@RequestBody User user){
-        return userservice.createUser(user);
+
+        return userservice.save(user);
 }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public User updateUser(@RequestBody User user){
-        return userservice.update(user);
+        return
+                userservice.update(user);
     }
 
 
@@ -56,19 +60,14 @@ public User createUser(@RequestBody User user){
 
     switch (mode){
         case "username":
-            return userservice.readByUsername(usernameOrId);
+            return userservice.getByUsername(usernameOrId);
         case "id":
-            return userservice.readById(Integer.parseInt(usernameOrId));
+            return userservice.getById(Integer.parseInt(usernameOrId));
         default:
             throw new Exception("That is not a valid mode");
     }
 
 
     }
-
-
-
-
-
 
 }

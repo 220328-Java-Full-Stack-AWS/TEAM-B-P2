@@ -52,6 +52,7 @@ public class User {
     public User() {
     }
 
+
     public User(String firstName, String lastName, String userName,
                 String email, String password, String phoneNumber,
                 String creditCard) {
@@ -154,6 +155,14 @@ public class User {
 
     public void setOrders(List<Orders> orders) {
         this.orders = orders;
+    }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override
