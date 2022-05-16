@@ -26,6 +26,10 @@ public class Orders {
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
     private Address address;
 
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="billing_address_id", referencedColumnName =  "address_id")
+    private Address billingAddress;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", referencedColumnName = "user_id")
     private User user;
@@ -36,6 +40,14 @@ public class Orders {
     public Orders(String creationDate, Address address, User user) {
         this.creationDate = creationDate;
         this.address = address;
+        this.user = user;
+    }
+
+    //added constructor for create order with billing address
+    public Orders(String creationDate, Address address, Address billingAddress, User user) {
+        this.creationDate = creationDate;
+        this.address = address;
+        this.billingAddress = billingAddress;
         this.user = user;
     }
 
@@ -73,6 +85,14 @@ public class Orders {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     public User getUser() {
