@@ -379,8 +379,9 @@ Qiang: different states of a transaction
 
 Kenneth: time and knowledge
 
+<hr>
 
-5/16/22
+####5/16/22
 Chenxi:
 	Yesterday: Worked on coding challenges, looked into implementing shopping cart, worked on seperate billing address and shipping address
 	Today: Keep working on billing and shipping address 
