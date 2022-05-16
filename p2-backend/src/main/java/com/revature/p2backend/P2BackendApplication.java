@@ -3,6 +3,7 @@ package com.revature.p2backend;
 
 
 
+import com.revature.p2backend.beans.controllers.CartController;
 import com.revature.p2backend.beans.dao.*;
 import com.revature.p2backend.beans.controllers.OrdersController;
 import com.revature.p2backend.beans.services.OrdersService;
@@ -62,9 +63,14 @@ public class P2BackendApplication {
         System.out.println(orders);
         System.out.println(orders2);
 
-//        Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
-//        Product product1 = new Product("earring", "earring", 125.39, 50,Category.EARRINGS);
-//        Product product2 = new Product("necklace", "necklace", 199.99, 60, Category.NECKLACES);
+        Product product = new Product("watch", "watch", 500.25, 100,Category.BRACELETS);
+        Product product1 = new Product("earring", "earring", 125.39, 50,Category.EARRINGS);
+        Product product2 = new Product("necklace", "necklace", 199.99, 60, Category.NECKLACES);
+
+        ProductDao productDao = context.getBean(ProductDao.class);
+        productDao.save(product);
+        productDao.save(product1);
+        productDao.save(product2);
 //
 //        Cart cart = new Cart();
 //        cart.addProduct(product);

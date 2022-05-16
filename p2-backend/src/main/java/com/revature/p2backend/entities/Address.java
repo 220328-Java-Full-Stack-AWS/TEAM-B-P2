@@ -26,6 +26,10 @@ public class Address {
     @Column(name="zip_code")
     private String zipCode;
 
+    @OneToMany(mappedBy="address",fetch = FetchType.LAZY)
+    private List<Orders> orders;
+
+
 
 
     public Address() {
@@ -87,7 +91,6 @@ public class Address {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-
 
 
     @Override
