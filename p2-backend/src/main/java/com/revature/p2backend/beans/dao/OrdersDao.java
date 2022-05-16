@@ -36,10 +36,11 @@ public class OrdersDao implements HibernateDao<Orders>{
     }//make connection to the table orders
 
     @Override
-    public void save(Orders orders) {
+    public Orders save(Orders orders) {
         Transaction tx = session.beginTransaction();
         session.save(orders);
         tx.commit();
+        return orders;
     }
 
     @Override

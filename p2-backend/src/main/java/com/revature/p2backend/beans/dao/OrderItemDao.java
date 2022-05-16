@@ -6,6 +6,7 @@ import com.revature.p2backend.entities.OrderItem;
 import com.revature.p2backend.entities.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,10 +36,11 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
     }//make connection ot the table order_item
 
     @Override
-    public void save(OrderItem orderItem) {
+    public OrderItem save(OrderItem orderItem) {
         Transaction tx = session.beginTransaction();
         session.save(orderItem);
         tx.commit();
+        return orderItem;
     }
 
     @Override
