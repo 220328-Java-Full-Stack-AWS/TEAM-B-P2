@@ -41,7 +41,7 @@ public class  P2BackendApplication {
 		UserDao userDao = context.getBean(UserDao.class);
 
 		User mohammad = new User("mohammad", "foorutan", "mohammadf",
-				"mohammadf@usf.edu", "MOHAMMAD", "813654646", "4545");
+				"mohammadf@usf.edu", "MOHAMMAD", "813654646", "4556032987153858");
 
 		userDao.save(mohammad);
 
@@ -49,7 +49,7 @@ public class  P2BackendApplication {
 		userDao.update(mohammad);
 
 		User somayyeh = new User("somayyeh", "shamloo", "somayyehsh",
-				"somayyeh@gmail.com", "SOMAAYYEH", "564645", "546");
+				"somayyeh@gmail.com", "SOMAAYYEH", "564645", "4485305662760494");
 
 		userDao.save(somayyeh);
 

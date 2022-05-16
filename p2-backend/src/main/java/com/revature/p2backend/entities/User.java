@@ -1,6 +1,10 @@
 package com.revature.p2backend.entities;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,15 +28,18 @@ public class User {
   @Column(unique = true, name="user_name")
   private String userName;
 
+  @Email(message = "Email address is not correct")
   @Column
   private String email;
 
+  @NotNull(message = "You need to provide the password")
   @Column
    private String password;
 
   @Column(name="phone_number")
   private String phoneNumber;
 
+  @CreditCardNumber(message = "Credit card number is not valid")
   @Column(name="credit_card")
   private String creditCard;
 

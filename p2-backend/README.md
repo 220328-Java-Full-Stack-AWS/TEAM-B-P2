@@ -92,20 +92,36 @@ equivalent to the @Component annotation.
 
 
 Spring MVC (Web)
-@Controller - stereotype annotation that marks class as a controller (basically a servlet)
+@Controller - stereotype annotation that marks class as a controller 
+(basically a servlet)
+
 @Restcontroller - Implies @Controller and @ResponseBody
+
 @PathVariable - marks a parameter in a controller method to be populated by the correpsonding
+
 path variable
+
 @RequestMapping - maps a controller or method to a URL pattern
+
 @GetMapping - @RequestMapping that denotes the GET method
+
 @PostMapping - @RequestMapping that denotes the POST method
+
 @PutMapping - @RequestMapping that denotes the PUT method
+
 @DeleteMapping - @RequestMapping that denotes the DELETE method
+
 @RequestBody - Marks a parameter as a request payload that should be de-serialized from JSON/XML
-@ResponseBody - This annotation marks a return type to be serialized into JSON/XML payload
+
+@ResponseBody - This annotation marks a return type to be serialized into JSON/XML 
+payload
+
 @ResponseStatus - Use this annotation to set the response status for a successful method
+
 @RequestParam - Marks a parameter in a controller method to be populated with the value
+
 associated with a key in the request payload
+
 @RequestHeader - marks a parameter in a controller method to be populated with the value
 associated with a key in the request headers
 

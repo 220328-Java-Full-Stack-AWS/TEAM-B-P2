@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,17 +33,26 @@ public List<User> getAllUsers(){
 
 @PostMapping()
 @ResponseStatus(HttpStatus.OK)
-public User createUser(@RequestBody User user){
+public User createUser(@RequestBody @Valid User user){
 
         return userservice.save(user);
 }
 
-    @PutMapping
-    @ResponseStatus(HttpStatus.OK)
-    public User updateUser(@RequestBody User user){
-        return
-                userservice.update(user);
+@PutMapping
+@ResponseStatus(HttpStatus.OK)
+public User updateUser(@RequestBody User user){
+        return userservice.update(user);
     }
+
+
+    @PostMapping("/test")
+    @ResponseStatus(HttpStatus.OK)
+    public String testForCompleteUser(@RequestBody @Valid User user){
+
+        return "success";
+    }
+
+
 
 
     //http://localhost:8080/users/1
