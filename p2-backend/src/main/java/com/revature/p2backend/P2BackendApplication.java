@@ -45,6 +45,7 @@ public class P2BackendApplication {
 
         Orders orderWithBillingAddy = new Orders(String.valueOf(LocalDate.now()), address, billingAddress, fatemeh);
         ordersController.createNewOrder(orderWithBillingAddy);
+
         System.out.println(orderWithBillingAddy);
 
 
