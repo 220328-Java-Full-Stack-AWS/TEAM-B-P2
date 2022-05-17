@@ -1,6 +1,7 @@
 package com.revature.p2backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -32,7 +33,8 @@ public class Orders {
     private User user;
 
     @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY)
-    private List<OrderItem> orderItems = new LinkedList<OrderItem>();
+    @JsonManagedReference
+    private List<OrderItem> orderItems = new LinkedList<>();
 
     public Orders( String creationDate, Address address, User user) {
         this.creationDate = creationDate;

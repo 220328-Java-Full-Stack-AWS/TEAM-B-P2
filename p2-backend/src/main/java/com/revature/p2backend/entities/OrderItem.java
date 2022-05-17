@@ -1,5 +1,6 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.jsonschema.JsonSerializableSchema;
 
@@ -19,15 +20,16 @@ public class OrderItem {
     @Column
     private Integer quantity;
 
-    @ManyToOne(cascade={CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id" , referencedColumnName = "order_id" )
+    @JsonBackReference
     private Orders orders  ;
 
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double
 
 
-    @OneToOne(cascade={CascadeType.ALL})
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
     private Product productId;
 

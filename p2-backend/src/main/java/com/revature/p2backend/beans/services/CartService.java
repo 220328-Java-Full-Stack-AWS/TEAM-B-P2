@@ -1,14 +1,8 @@
 package com.revature.p2backend.beans.services;
 
 import com.revature.p2backend.Dto.CartDto;
-import com.revature.p2backend.beans.dao.AddressDao;
-import com.revature.p2backend.beans.dao.OrderItemDao;
-import com.revature.p2backend.beans.dao.OrdersDao;
-import com.revature.p2backend.beans.dao.UserDao;
-import com.revature.p2backend.entities.Address;
-import com.revature.p2backend.entities.OrderItem;
-import com.revature.p2backend.entities.Orders;
-import com.revature.p2backend.entities.User;
+import com.revature.p2backend.beans.dao.*;
+import com.revature.p2backend.entities.*;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +15,15 @@ public class CartService {
     private OrderItemDao orderItemDao;
     private AddressDao addressDao;
     private UserDao userDao;
+    private ProductDao productDao;
 
     @Autowired
-    public CartService(OrdersDao ordersDao, OrderItemDao orderItemDao, AddressDao addressDao, UserDao userDao){
+    public CartService(OrdersDao ordersDao, OrderItemDao orderItemDao, AddressDao addressDao, UserDao userDao, ProductDao productDao){
         this.ordersDao = ordersDao;
         this. orderItemDao = orderItemDao;
         this.addressDao = addressDao;
         this.userDao = userDao;
+        this.productDao = productDao;
     }
 
 //    public User getUser(Integer id){
@@ -44,10 +40,14 @@ public class CartService {
         Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getAddress(), cartDto.getUser());
         ordersDao.save(orders);
         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
-            OrderItem orderItem = new OrderItem(incomingOrderItem.getQuantity(), incomingOrderItem.getProductId(), orders);
+            Product product = productDao.getById(incomingOrderItem.getProductId().getProductId());
+
+            OrderItem orderItem = new OrderItem(incomingOrderItem.getQuantity(), product, orders);
             orderItemDao.save(orderItem);
+            orders.getOrderItems().add(incomingOrderItem);
             System.out.println(orderItem);
         }
+        ordersDao.update(orders);
     }
 
 }

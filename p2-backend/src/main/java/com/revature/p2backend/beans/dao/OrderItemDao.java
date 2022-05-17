@@ -78,6 +78,7 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
         query.setParameter("total", (orderItem.getProductId().getPrice()) * orderItem.getQuantity());
         query.setParameter("id", orderItem.getOrderItem());
         query.executeUpdate();
+        session.persist(orderItem);
         tx.commit();
         return orderItem;
     }

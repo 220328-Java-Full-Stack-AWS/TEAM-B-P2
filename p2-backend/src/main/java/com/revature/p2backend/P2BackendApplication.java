@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 @SpringBootApplication(scanBasePackages = "com.revature.p2backend.beans")
 public class P2BackendApplication {
@@ -70,6 +71,10 @@ public class P2BackendApplication {
         productDao.save(product);
         productDao.save(product1);
         productDao.save(product2);
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println(ordersController.getById("3"));
 //
 //        Cart cart = new Cart();
 //        cart.addProduct(product);
