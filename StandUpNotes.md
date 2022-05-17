@@ -406,3 +406,62 @@ Kenneth:
 	Yesterday: Worked on how to process cart from front end
 	Today: Keep working on how to process cart from front end
 	Blockers: Knowledge on deserializing json into java list
+	
+
+-5/17/2022
+Chenxi
+    yesterday
+        working on project
+    today
+        project objective
+        code challenge
+    blocker
+        time
+
+anthony
+    yesterday
+        typescript
+    today
+        testing 
+    blocker
+        knowledge
+
+fatemeh
+    yesterday
+        typescript
+        angular
+        project
+        testing
+    today
+        angular
+    blocker
+        knowledge time
+
+mohammad
+    yesterday
+        typescript
+        angular
+        project
+    today
+        typescript
+        angular
+    project
+        test with postman
+    blocker
+        time knowledge
+
+Qiang
+    yesterday
+        web mvc connect client
+    today
+        controller layer
+    blocker
+        mocking unit testing
+
+Kenneth
+    yesterday
+        checkout process
+    today
+        checkout process
+    blocker
+        knowledge and time
