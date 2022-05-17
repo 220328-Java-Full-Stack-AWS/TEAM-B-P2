@@ -15,7 +15,7 @@ public class OrderItem {
 
     @ManyToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="order_id" , referencedColumnName = "order_id" )
-    private Orders orders  ;
+    private Orders orders;
 
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double
@@ -28,6 +28,12 @@ public class OrderItem {
         this.quantity = quantity;
         this.productId = productId;
         this.orders = orders;
+    }
+
+    public OrderItem(Integer quantity, Double itemTotalAmount, Product productId) {
+        this.quantity = quantity;
+        this.itemTotalAmount = itemTotalAmount;
+        this.productId = productId;
     }
 
     public OrderItem() {

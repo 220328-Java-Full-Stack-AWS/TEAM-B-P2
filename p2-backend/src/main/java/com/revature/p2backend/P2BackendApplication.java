@@ -3,11 +3,13 @@ package com.revature.p2backend;
 
 
 
+import com.revature.p2backend.beans.controllers.CartController;
 import com.revature.p2backend.beans.dao.*;
 import com.revature.p2backend.beans.controllers.OrdersController;
 import com.revature.p2backend.beans.services.OrdersService;
 import com.revature.p2backend.entities.*;
 import com.revature.p2backend.beans.utilities.StorageManager;
+import com.revature.p2backend.entities.Cart;
 import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,14 +29,17 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(OrderItem.class);
         storageManager.addAnnotatedClass(Orders.class);
         storageManager.addAnnotatedClass(Product.class);
-
+        storageManager.addAnnotatedClass(com.revature.p2backend.entities.Cart.class);
         context.start();
+
 
 
         User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
         UserDao userDao = context.getBean(UserDao.class);
         Address address = new Address("123", "test", "test", "test", "test");
         Address billingAddress= new Address("8111", "billing address rd", "billing town", "billing state", "81111");
+
+
 
         userDao.save(fatemeh);
         AddressDao addressDao = context.getBean(AddressDao.class);
@@ -49,6 +54,18 @@ public class P2BackendApplication {
         System.out.println(orderWithBillingAddy);
 
 
+        Product necklace = new Product("necklace", "description", 10.99, 11);
+        Product tie = new Product("tie", "description", 10.99, 12);
+
+        OrderItem necklaces = new OrderItem(1,1.00, necklace);
+        OrderItem ties = new OrderItem(1,1.00, tie);
+        OrderItemDao orderItemDao = context.getBean(OrderItemDao.class);
+        orderItemDao.save(necklaces);
+        orderItemDao.save(ties);
+
+        Cart fatemahCart = new Cart(necklaces, fatemeh);
+        CartController cartController = context.getBean(CartController.class);
+        cartController.createNewCart(fatemahCart);
 
     }
 }
