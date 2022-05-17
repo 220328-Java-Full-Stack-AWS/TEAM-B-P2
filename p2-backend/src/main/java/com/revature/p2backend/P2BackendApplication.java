@@ -61,7 +61,7 @@ public class  P2BackendApplication {
        User user1 = userDao.getById(2);
 		System.out.println(user1.getEmail());
 
-		User user2 = userDao.getByUsername("mohammadf");
+		User user2 = userDao.getUserByUserName("mohammadf");
 		System.out.println(user2.getEmail());
 
 		//From here I am testing the Address class
@@ -93,13 +93,13 @@ public class  P2BackendApplication {
 
 
 		//Lests connect users with their addresses
-		System.out.println("Hello, The address for mohammad is: " + mohammad.getAddresses());
-
-		Set<Address> addressSetmohammd = new HashSet<>();
-		addressSetmohammd.add(mohammadAddress1);
-		addressSetmohammd.add(mohammadAddress2);
-		mohammad.setAddresses(addressSetmohammd);
-		System.out.println("Hell, The addresses for mohammad are:" + mohammad.getAddresses());
+//		System.out.println("Hello, The address for mohammad is: " + mohammad.getAddresses());
+//
+//		Set<Address> addressSetmohammd = new HashSet<>();
+//		addressSetmohammd.add(mohammadAddress1);
+//		addressSetmohammd.add(mohammadAddress2);
+//		mohammad.setAddresses(addressSetmohammd);
+//		System.out.println("Hell, The addresses for mohammad are:" + mohammad.getAddresses());
 
 		//From here I am testing Orders
 

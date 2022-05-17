@@ -11,52 +11,62 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="user", schema = "p2")
+@Table(name="users", schema = "p2")
 public class User {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name="user_id")
-  private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Integer id;
 
-  @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-  @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-  @Column(unique = true, name="user_name")
-  private String userName;
+    @Column(unique = true, name = "user_name")
+    private String userName;
 
-  @Email(message = "Email address is not correct")
-  @Column
-  private String email;
+    @Email(message = "Email address is not correct")
+    @Column
+    private String email;
 
-  @NotNull(message = "You need to provide the password")
-  @Column
-   private String password;
+    @NotNull(message = "You need to provide the password")
+    @Column
+    private String password;
 
-  @Column(name="phone_number")
-  private String phoneNumber;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
-  @CreditCardNumber(message = "Credit card number is not valid")
-  @Column(name="credit_card")
-  private String creditCard;
+    @CreditCardNumber(message = "Credit card number is not valid")
+    @Column(name = "credit_card")
+    private String creditCard;
 
-    @ManyToMany(cascade={CascadeType.ALL})
-    @JoinTable(
-            name="user_address",
-            schema="p2",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="address_id")}
-    )
-    private Set<Address> addresses = new HashSet<Address>();
-
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-  private List<Orders> orders = new LinkedList<>();
+//    @ManyToMany(cascade={CascadeType.ALL})
+//    @JoinTable(
+//            name="user_address",
+//            schema="p2",
+//            joinColumns={@JoinColumn(name="user_id")},
+//            inverseJoinColumns={@JoinColumn(name="address_id")}
+//    )
+//    private Set<Address> addresses = new HashSet<Address>();
+//
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//  private List<Orders> orders = new LinkedList<>();
 
     public User() {
+    }
+
+    public User(String firstName, String lastName, String userName,
+                String email, String password, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
 
@@ -71,26 +81,6 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.creditCard = creditCard;
     }
-
-    public void addOrder(Orders order){
-        this.orders.add(order);
-}
-
-    public void removeOrder(Orders order){
-        this.orders.remove(order);
-}
-
-
-     public Orders getOrderById(Integer id){
-        for (Orders order : orders){
-            if(order.getId().equals(id)){
-                return order;
-            }
-        }
-
-    return null;
-    }
-
 
     public Integer getId() {
         return id;
@@ -156,21 +146,6 @@ public class User {
         this.creditCard = creditCard;
     }
 
-    public List<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Orders> orders) {
-        this.orders = orders;
-    }
-
-    public Set<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
-    }
 
     @Override
     public String toString() {
@@ -183,8 +158,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", creditCard='" + creditCard + '\'' +
-                ", addresses=" + addresses +
-                ", orders=" + orders +
                 '}';
     }
 }

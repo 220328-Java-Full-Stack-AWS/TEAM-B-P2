@@ -27,6 +27,7 @@ public class AddressDao implements HibernateDao<Address> {
 
     @Autowired
     public  AddressDao(StorageManager storageManager){
+
         this.storageManager = storageManager;
     }
 

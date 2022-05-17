@@ -24,14 +24,12 @@ public class Product {
     @Column
     private Double price;
 
-
-
     @Column
     private Integer inventory;
 
 
-    @OneToOne(mappedBy = "productId")
-    private OrderItem orderItem;
+//    @OneToOne(mappedBy = "productId")
+//    private OrderItem orderItem;
 
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
@@ -52,14 +50,21 @@ public class Product {
     }
 
 
-    public Product(String name, String description, Double price,
-                   Integer inventory, OrderItem orderItem,
-                   Category category) {
+    public Product(String name, String description,
+                   Double price, Integer inventory) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.inventory = inventory;
-        this.orderItem = orderItem;
+    }
+
+    public Product(Integer productId, String name, String description,
+                   Double price, Integer inventory, Category category) {
+        this.productId = productId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
         this.category = category;
     }
 
@@ -103,13 +108,6 @@ public class Product {
         this.inventory = inventory;
     }
 
-    public OrderItem getOrderItem() {
-        return orderItem;
-    }
-
-    public void setOrderItem(OrderItem orderItem) {
-        this.orderItem = orderItem;
-    }
 
     public Category getCategory() {
         return category;
@@ -127,7 +125,6 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", inventory=" + inventory +
-                ", orderItem=" + orderItem +
                 ", category=" + category +
                 '}';
     }

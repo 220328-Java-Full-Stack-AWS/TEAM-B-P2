@@ -330,7 +330,3 @@ while the singleton scope should be used for stateless beans.
 To change the default(Singleton):
 @Component
 @Scope(value="prototype")
-
-
-
-If you intend to use Hibernate specific annotations, which you can find here, you must import these annotations from the hibernate.validator.constraints package. Examples of these annotations include @CreditCardNumber, which allows validation of credit card number syntax (not validity of the actual credit card) or @Range to check if a numerical value lies between a specified minimum and maximum value (inclusive).

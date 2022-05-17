@@ -30,7 +30,6 @@ public class UserDao implements HibernateDao<User> {
         this.storageManager = storageManager;
     }
 
-
     @Override
     public User save(User user) {
         Transaction transaction = session.beginTransaction();
@@ -73,12 +72,11 @@ public class UserDao implements HibernateDao<User> {
         return user;
     }
 
-    public User getByUsername(String userName) {
-
-        String hql = "FROM User WHERE userName = :userName";
-        TypedQuery<User> query = session.createQuery(hql, User.class);
-        query.setParameter("userName", userName);
+    public User getUserByUserName(String username) {
+        TypedQuery<User> query = session.createQuery("FROM User WHERE userName = :username ", User.class);
+        query.setParameter("username", username);
         User user = query.getSingleResult();
+        session.persist(user);
         return user;
     }
 
@@ -117,9 +115,6 @@ public class UserDao implements HibernateDao<User> {
         return user;
     }
 
-
-
-
     @Override
     public void delete(User user) {
         Transaction tx = session.beginTransaction();
@@ -130,6 +125,35 @@ public class UserDao implements HibernateDao<User> {
 
     }
 
+    public Boolean isUsernameUnique(String username) {
+
+        TypedQuery<User> query = session.createQuery("FROM User WHERE userName = :username", User.class);
+        query.setParameter("username", username);
+        if(query.getResultList().isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    public Boolean isUserEmailUnique(String email){
+        TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email", User.class);
+        query.setParameter("email", email);
+        if(query.getResultList().isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+
+
+
+
 
     @Override
     public void start() {
@@ -139,7 +163,9 @@ public class UserDao implements HibernateDao<User> {
 
     @Override
     public void stop() {
-       running = false;
+
+        running = false;
+        session.close();
     }
 
     @Override
