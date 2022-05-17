@@ -23,6 +23,7 @@ public class CartDao implements HibernateDao<Cart>{
     private final StorageManager storageManager;
     private boolean running = false;//Used to tell if the bean is running
     private Session session;//session that becomes usable upon start, see below
+    private OrdersDao ordersDao;
 
 
     /**
