@@ -11,12 +11,11 @@ import java.util.List;
 public class OrderItemService {
 
     private final OrderItemDao orderItemDao;
-    private final OrdersService ordersService;
+
 
     @Autowired
-    public OrderItemService(OrderItemDao orderItemDao, OrdersService ordersService) {
+    public OrderItemService(OrderItemDao orderItemDao) {
         this.orderItemDao = orderItemDao;
-        this.ordersService = ordersService;
     }
 
     public OrderItem craeteOrderItem(OrderItem orderItem){

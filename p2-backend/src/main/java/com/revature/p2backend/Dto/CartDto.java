@@ -15,10 +15,10 @@ public class CartDto {
     public CartDto() {
     }
 
-    public CartDto(LinkedList<OrderItem> orderItemList, Address address, User user) {
-        this.orderItemList = orderItemList;
+    public CartDto(Address address, User user) {
         this.address = address;
         this.user = user;
+        this.orderItemList = new LinkedList<>();
     }
 
     public LinkedList<OrderItem> getOrderItemList() {
