@@ -35,8 +35,6 @@ public class OrderItemController {
         return orderItemService.createOrderItem(orderItem);
     }
 
-
-
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public List<OrderItem> getAllOrderItems(){

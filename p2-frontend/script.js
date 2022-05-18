@@ -13,7 +13,7 @@ async function orderCreate(){
     "addressId": 3,
     "userId": 1,
     "orderTotal": 287,
-    "orderItems": [{
+    "cartItems": [{
         "itemTotalAmount":10,
         "quantity":1,
         "productId":3

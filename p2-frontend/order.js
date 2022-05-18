@@ -1,5 +1,5 @@
 
-let newOrderResourceURL = "http://localhost:8080/orders/newFlatOrder";
+let newOrderResourceURL = "http://localhost:8080/cart/newOrder";
 
 export async function createNewOrder(newOrder) {
     let response = await fetch(
