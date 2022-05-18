@@ -42,6 +42,12 @@ public class Product {
         this.inventory = inventory;
     }
 
+    //add new cunstructor
+    public Product(Integer id) {
+        this.productId =id;
+
+    }
+
 
     public Product(String name, String description, Double price, Integer inventory, Category category) {
         this.name = name;

@@ -74,9 +74,9 @@ public class OrderItemDao implements HibernateDao<OrderItem> {
                 "orders = :order, productId = :product, quantity = :quantity, itemTotalAmount = :total " +
                 "where OrderItem = :id");
         query.setParameter("order", orderItem.getOrders());
-        query.setParameter("product", orderItem.getProductId());
+        query.setParameter("product", orderItem.getProduct());
         query.setParameter("quantity", orderItem.getQuantity());
-        query.setParameter("total", (orderItem.getProductId().getPrice()) * orderItem.getQuantity());
+        query.setParameter("total", (orderItem.getProduct().getPrice()) * orderItem.getQuantity());
         query.setParameter("id", orderItem.getOrderItem());
         query.executeUpdate();
         tx.commit();

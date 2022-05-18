@@ -1,6 +1,7 @@
 package com.revature.p2backend.beans.controllers;
 
 
+import com.revature.p2backend.Dto.FlatOrderItemDto;
 import com.revature.p2backend.beans.services.OrderItemService;
 import com.revature.p2backend.entities.OrderItem;
 import com.revature.p2backend.entities.Orders;
@@ -27,13 +28,20 @@ public class OrderItemController {
         return orderItemService.craeteOrderItem(orderItem);
     }
 
+    //added
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderItem createNewOrderItem(@RequestBody FlatOrderItemDto orderItem){
+        return orderItemService.createOrderItem(orderItem);
+    }
+
+
+
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public List<OrderItem> getAllOrderItems(){
         return orderItemService.getAllOrderItems();
     }
-
-
 
 
    @DeleteMapping()
@@ -47,7 +55,6 @@ public class OrderItemController {
     public OrderItem updateOrderItem(@RequestBody OrderItem orderItem){
         return orderItemService.updateOrderItem(orderItem);
     }
-
 
     @GetMapping("byId")
     @ResponseStatus(HttpStatus.OK)

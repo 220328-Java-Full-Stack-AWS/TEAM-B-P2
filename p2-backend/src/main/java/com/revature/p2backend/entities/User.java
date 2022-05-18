@@ -1,5 +1,8 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -37,6 +40,7 @@ public class User {
 
 
 //    @ManyToMany(cascade={CascadeType.ALL})
+//    @JsonBackReference
 //    @JoinTable(
 //         name="user_address",
 //         schema="public",
@@ -44,8 +48,10 @@ public class User {
 //         inverseJoinColumns={@JoinColumn(name="address_id")}
 //    )
 //    private Set<Address> addresses;
-
+//
+//
 //    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
+//    @JsonManagedReference
 //    private List<Orders> orders = new LinkedList<>();
 
 

@@ -1,6 +1,8 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -22,22 +24,25 @@ public class Orders {
     @Column(name="order_total")
     private Double orderTotal;//changed to Double from Big Decimal
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
+    @JsonBackReference
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name="user_id", referencedColumnName = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY)
+    //removed fetch
+    @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<OrderItem> orderItems = new LinkedList<OrderItem>();
 
-    public Orders(String creationDate, Address address, User user) {
-        this.creationDate = creationDate;
-        this.address = address;
-        this.user = user;
-    }
+//    public Orders(String creationDate, Integer addressId, Integer userId) {
+//        this.creationDate = creationDate;
+//      //  this.address.setAddressId(addressId);
+//        this.user.setId(userId);
+//    }
 
     public Orders() {
 
@@ -87,8 +92,8 @@ public class Orders {
         return orderItems;
     }
 
-    public void setOrderItems(OrderItem orderItem) {
-        this.orderItems.add(orderItem);
+    public void setOrderItems(List<OrderItem> orderItems) {
+      this.orderItems =  orderItems;
     }
 
     @Override
@@ -97,9 +102,8 @@ public class Orders {
                 "id=" + id +
                 ", creationDate=" + creationDate +
                 ", OrderTotal=" + orderTotal +
-                ", address=" + address +
-                ", user=" + user +
-                ", orderItems=" + orderItems +
+                ", address=" + address.toString() +
+                ", user=" + user.toString() +
                 '}';
     }
 }

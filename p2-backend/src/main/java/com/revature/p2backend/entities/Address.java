@@ -1,6 +1,7 @@
 package com.revature.p2backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,6 +31,7 @@ public class Address {
     private String zipCode;
 
     @OneToMany(mappedBy="address",fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Orders> orders;
 
     public Address() {
@@ -109,7 +111,6 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
-                ", orders=" + orders +
                 '}';
     }
 }

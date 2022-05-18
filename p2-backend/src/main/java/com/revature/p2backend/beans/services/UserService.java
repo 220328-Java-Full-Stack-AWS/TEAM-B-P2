@@ -79,7 +79,9 @@ public class UserService {
     public User getUserByUserId(User user){
         return userDao.getById(user.getId());
     }
-
+    public User getUserByUserId(Integer id){
+        return userDao.getById(id);
+    }
     /**
      * This method is to update a users information. Since it is only receiving partial
      * information, it takes in a UserDto (this does not include some typical user information)

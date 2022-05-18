@@ -1,5 +1,7 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,22 +15,26 @@ public class OrderItem {
     @Column
     private Integer quantity;
 
-    @ManyToOne(cascade={CascadeType.ALL})
+    //removed cascade={CascadeType.ALL}
+
+    @ManyToOne()
+    @JsonBackReference
     @JoinColumn(name="order_id" , referencedColumnName = "order_id" )
     private Orders orders  ;
 
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double
 
-    @OneToOne(cascade={CascadeType.ALL})
+    //removed cascade={CascadeType.ALL}
+    @OneToOne()
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
-    private Product productId;
+    private Product product;//change name
 
-    public OrderItem(Integer quantity, Product productId, Orders orders) {
-        this.quantity = quantity;
-        this.productId = productId;
-        this.orders = orders;
-    }
+//    public OrderItem(Integer quantity, Product productId, Orders orders) {
+//        this.quantity = quantity;
+//        this.productId = productId;
+//        this.orders = orders;
+//    }
 
     public OrderItem() {
         
@@ -66,12 +72,12 @@ public class OrderItem {
         this.itemTotalAmount = itemTotalAmount;
     }
 
-    public Product getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public void setProduct(Product productId) {
+        this.product = productId;
     }
 
     @Override
@@ -81,7 +87,6 @@ public class OrderItem {
                 ", quantity=" + quantity +
                 ", orders=" + orders +
                 ", itemTotalAmount=" + itemTotalAmount +
-                ", productId=" + productId +
                 '}';
     }
 }

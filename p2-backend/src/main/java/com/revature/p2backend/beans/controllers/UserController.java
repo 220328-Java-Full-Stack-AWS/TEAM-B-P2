@@ -2,6 +2,7 @@ package com.revature.p2backend.beans.controllers;
 
 import com.revature.p2backend.Dto.UserDto;
 import com.revature.p2backend.beans.services.UserService;
+import com.revature.p2backend.entities.Address;
 import com.revature.p2backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -88,4 +89,13 @@ public class UserController {
         System.out.println("successfully updated user");
         return userService.update(userDto);
     }
+
+    @GetMapping("/getbyuserid")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserByUserName(@RequestParam("id") Integer id) {
+        System.out.println("Address view function from address controller");
+        return userService.getUserByUserId(id);
+    }
+
+
 }

@@ -13,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+
 import java.time.LocalDate;
 
 @SpringBootApplication(scanBasePackages = "com.revature.p2backend.beans")
@@ -29,6 +30,10 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(Product.class);
 
         context.start();
+
+      //  Orders myOrder = new Orders("564564588" , 1,1);
+
+
 
 
 
