@@ -41,10 +41,10 @@ public class CartService {
         ordersDao.save(orders);
         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
             Product product = productDao.getById(incomingOrderItem.getProductId().getProductId());
-
             OrderItem orderItem = new OrderItem(incomingOrderItem.getQuantity(), product, orders);
+            orderItem.setItemTotalAmount(orderItem.getQuantity() * orderItem.getProductId().getPrice());
             orderItemDao.save(orderItem);
-            orders.getOrderItems().add(incomingOrderItem);
+            orders.getOrderItems().add(orderItem);
             System.out.println(orderItem);
         }
         ordersDao.update(orders);
