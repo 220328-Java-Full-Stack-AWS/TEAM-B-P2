@@ -68,7 +68,6 @@ public class ProductDao implements HibernateDao<Product>{
 
     @Override
     public Product update(Product product) {
-        session.clear();
         Transaction tx = session.beginTransaction();
         session.update(product);
         tx.commit();

@@ -39,13 +39,17 @@ public class CartService {
     public void checkout(CartDto cartDto){
         Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getAddress(), cartDto.getUser());
         ordersDao.save(orders);
+        orders.setOrderTotal(0.0);
         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
             Product product = productDao.getById(incomingOrderItem.getProductId().getProductId());
             OrderItem orderItem = new OrderItem(incomingOrderItem.getQuantity(), product, orders);
             orderItem.setItemTotalAmount(orderItem.getQuantity() * orderItem.getProductId().getPrice());
+            product.setInventory(orderItem.getProductId().getInventory() - orderItem.getQuantity());
+            productDao.update(product);
             orderItemDao.save(orderItem);
             orders.getOrderItems().add(orderItem);
             System.out.println(orderItem);
+            orders.setOrderTotal(orders.getOrderTotal() + orderItem.getItemTotalAmount());
         }
         ordersDao.update(orders);
     }
