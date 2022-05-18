@@ -379,4 +379,89 @@ Qiang: different states of a transaction
 
 Kenneth: time and knowledge
 
+<hr>
 
+####5/16/22
+Chenxi:
+	Yesterday: Worked on coding challenges, looked into implementing shopping cart, worked on seperate billing address and shipping address
+	Today: Keep working on billing and shipping address 
+	Blockers: Knowledge on git version
+Mohammad:
+	Yesterday: Worked on project, started from scratch, tested methods, added validation for user, studied for QC
+	Today: Study for QC and start learning angular
+	Blockers: Time and knowledge
+Anthony:
+	Yesterday:
+	Today: 
+	Blockers:
+Fatemeh:
+	Yesterday: Studied hibernate and spring, worked some on product features, added couple of validations, watched tutorial on junit
+	Today: Starting to learn angular and study for QC
+	Blockers: Knowledge on testing
+Qiang:
+	Yesterday: Finished DAO using hibernate and integration testing on DAO and Service Layer, started server with spring boot.
+	Today: Finish REST API design and controller layer
+	Blockers: How to connect controller to service layer and knowledge on testing
+Kenneth:
+	Yesterday: Worked on how to process cart from front end
+	Today: Keep working on how to process cart from front end
+	Blockers: Knowledge on deserializing json into java list
+	
+
+-5/17/2022
+Chenxi
+    yesterday
+        working on project
+    today
+        project objective
+        code challenge
+    blocker
+        time
+
+anthony
+    yesterday
+        typescript
+    today
+        testing 
+    blocker
+        knowledge
+
+fatemeh
+    yesterday
+        typescript
+        angular
+        project
+        testing
+    today
+        angular
+    blocker
+        knowledge time
+
+mohammad
+    yesterday
+        typescript
+        angular
+        project
+    today
+        typescript
+        angular
+    project
+        test with postman
+    blocker
+        time knowledge
+
+Qiang
+    yesterday
+        web mvc connect client
+    today
+        controller layer
+    blocker
+        mocking unit testing
+
+Kenneth
+    yesterday
+        checkout process
+    today
+        checkout process
+    blocker
+        knowledge and time

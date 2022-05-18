@@ -36,6 +36,24 @@ public class P2BackendApplication {
 
 
 
+        User fatemeh = new User("Fatemeh","Goudarzi","FatemehGoudarzi","FGoudarzi@gmail.com","123","123456789");
+        UserDao userDao = context.getBean(UserDao.class);
+        Address address = new Address("123", "test", "test", "test", "test");
+        Address billingAddress= new Address("8111", "billing address rd", "billing town", "billing state", "81111");
+
+        userDao.save(fatemeh);
+        AddressDao addressDao = context.getBean(AddressDao.class);
+        addressDao.save(address);
+
+
+        OrdersController ordersController = context.getBean(OrdersController.class);
+
+        Orders orderWithBillingAddy = new Orders(String.valueOf(LocalDate.now()), address, billingAddress, fatemeh);
+        ordersController.createNewOrder(orderWithBillingAddy);
+
+        System.out.println(orderWithBillingAddy);
+
+
 
     }
 }
