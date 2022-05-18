@@ -1,20 +1,13 @@
-package com.revature.p2backend.Dto;
+package com.revature.p2backend;
 
-public class FlatOrderItemDto {
-   // private String creationDate;
+public class CartItem {
+
     private Double itemTotalAmount;
     private Integer quantity;
     private Integer orderId;
     private Integer productId;
 
 
-//    public String getCreationDate() {
-//        return creationDate;
-//    }
-//
-//    public void setCreationDate(String creationDate) {
-//        this.creationDate = creationDate;
-//    }
 
     public Double getItemTotalAmount() {
         return itemTotalAmount;

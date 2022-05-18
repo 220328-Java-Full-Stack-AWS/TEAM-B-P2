@@ -1,6 +1,6 @@
 package com.revature.p2backend.beans.controllers;
 
-import com.revature.p2backend.Dto.FlatOrderDto;
+import com.revature.p2backend.Cart;
 import com.revature.p2backend.beans.services.OrdersService;
 import com.revature.p2backend.entities.Orders;
 import com.revature.p2backend.entities.User;
@@ -39,14 +39,6 @@ public class OrdersController {
     public void createNewOrder(@RequestBody Orders orders){
         ordersService.createOrder(orders);
     }
-
-    @CrossOrigin
-    @PostMapping("/newFlatOrder")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void createNewFlatOrder(@RequestBody FlatOrderDto flatOrderDto){
-        ordersService.createFlatOrder(flatOrderDto);
-    }
-
 
     @PutMapping("/updateOrder")
     @ResponseStatus(HttpStatus.ACCEPTED)

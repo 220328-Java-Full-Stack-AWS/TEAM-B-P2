@@ -1,28 +1,62 @@
 package com.revature.p2backend;
 
-import com.revature.p2backend.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.LinkedList;
 import java.util.List;
 
+@JsonIgnoreProperties
 public class Cart {
 
-    List<Product> cart = new LinkedList<>();
+    private String creationDate;
+    private Double orderTotal;
+    private Integer addressId;
+    private Integer userId;
 
-    public void addProduct(Product product){
-        cart.add(product);
+
+    private List<CartItem> cartItems;
+
+
+
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void removeProduct(Product product){
-        cart.remove(product);
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Double getOrderTotal() {
+        return orderTotal;
+    }
+
+    public void setOrderTotal(Double orderTotal) {
+        this.orderTotal = orderTotal;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
 
-    public List<Product> getCart() {
-        return cart;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setCart(List<Product> cart) {
-        this.cart = cart;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItem(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
+
+
 }

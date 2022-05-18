@@ -1,14 +1,13 @@
 package com.revature.p2backend.beans.services;
 
-import com.revature.p2backend.Dto.FlatOrderDto;
+
+import com.revature.p2backend.Cart;
 import com.revature.p2backend.beans.dao.OrdersDao;
 import com.revature.p2backend.entities.*;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -39,30 +38,29 @@ public class OrdersService {
         ordersDao.save(orders);
     }
 
-    public void createFlatOrder(FlatOrderDto flatOrder){
-        User user = userService.getUserByUserId(flatOrder.getUserId());
-        Address address = addressService.getAddressById(flatOrder.getAddressId());
-
+    public void createNewOrder(Cart cart){
+        User user = userService.getUserByUserId(cart.getUserId());
+        Address address = addressService.getAddressById(cart.getAddressId());
         Orders orders = new Orders();
-        List<OrderItem> orderItems = buildOrders(flatOrder, orders);
-        orders.setOrderItems( orderItems);
-        orders.setCreationDate(flatOrder.getCreationDate());
-        orders.setOrderTotal(flatOrder.getOrderTotal());
+        List<OrderItem> orderItems = buildOrders(cart, orders);
+        orders.setOrderItems(orderItems);
+        orders.setCreationDate(cart.getCreationDate());
+        orders.setOrderTotal(cart.getOrderTotal());
         orders.setUser(user);
         orders.setAddress(address);
         ordersDao.save(orders);
     }
 
-    private List<OrderItem>  buildOrders(FlatOrderDto flatOrder, Orders orders) {
+    private List<OrderItem>  buildOrders(Cart cart, Orders orders) {
         List<OrderItem> orderItems = new ArrayList<>();
-        flatOrder.getOrderItems().forEach(flatOrderItem -> {
+        cart.getCartItems().forEach(cartItem -> {
 
             OrderItem orderItem = new OrderItem();
             orderItem.setOrders(orders);
-            Product product = productService.getByProductId(flatOrderItem.getProductId());
+            Product product = productService.getByProductId(cartItem.getProductId());
             orderItem.setProduct(product);
-            orderItem.setQuantity(flatOrderItem.getQuantity());
-            orderItem.setItemTotalAmount(flatOrderItem.getItemTotalAmount());
+            orderItem.setQuantity(cartItem.getQuantity());
+            orderItem.setItemTotalAmount(cartItem.getItemTotalAmount());
             orderItems.add(orderItem);
 
         });

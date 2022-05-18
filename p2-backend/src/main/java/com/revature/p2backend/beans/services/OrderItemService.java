@@ -1,7 +1,6 @@
 package com.revature.p2backend.beans.services;
 
-import com.revature.p2backend.Dto.FlatOrderDto;
-import com.revature.p2backend.Dto.FlatOrderItemDto;
+import com.revature.p2backend.CartItem;
 import com.revature.p2backend.beans.dao.OrderItemDao;
 import com.revature.p2backend.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +32,12 @@ private final ProductService productService;
    }
 
 
-    public OrderItem createOrderItem(FlatOrderItemDto flatOrderItem){
+    public OrderItem createOrderItem(CartItem cartItem){
         OrderItem item= new OrderItem();
-        Orders order = orderService.getOrdersById(flatOrderItem.getOrderId());
-        Product product = productService.getByProductId(flatOrderItem.getProductId());
-        item.setItemTotalAmount(flatOrderItem.getItemTotalAmount());
-        item.setQuantity(flatOrderItem.getQuantity());
+        Orders order = orderService.getOrdersById(cartItem.getOrderId());
+        Product product = productService.getByProductId(cartItem.getProductId());
+        item.setItemTotalAmount(cartItem.getItemTotalAmount());
+        item.setQuantity(cartItem.getQuantity());
         item.setOrders(order);
         item.setProduct(product);
         return orderItemDao.save(item);
@@ -66,10 +65,5 @@ public OrderItem updateOrderItem(OrderItem orderItem){
 public List<OrderItem> getOrderItemsByOrder(Orders order){
     return orderItemDao.getOrderItemsByOrder(order);
 }
-
-
-
-
-
 
 }

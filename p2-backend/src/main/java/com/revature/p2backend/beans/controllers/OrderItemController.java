@@ -1,7 +1,7 @@
 package com.revature.p2backend.beans.controllers;
 
 
-import com.revature.p2backend.Dto.FlatOrderItemDto;
+import com.revature.p2backend.CartItem;
 import com.revature.p2backend.beans.services.OrderItemService;
 import com.revature.p2backend.entities.OrderItem;
 import com.revature.p2backend.entities.Orders;
@@ -31,7 +31,7 @@ public class OrderItemController {
     //added
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.OK)
-    public OrderItem createNewOrderItem(@RequestBody FlatOrderItemDto orderItem){
+    public OrderItem createNewOrderItem(@RequestBody CartItem orderItem){
         return orderItemService.createOrderItem(orderItem);
     }
 
