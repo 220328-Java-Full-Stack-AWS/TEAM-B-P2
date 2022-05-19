@@ -60,5 +60,4 @@ public class CartService {
         orders.setOrderTotal(orderTotal);
         ordersDao.update(orders);
     }
-
 }
