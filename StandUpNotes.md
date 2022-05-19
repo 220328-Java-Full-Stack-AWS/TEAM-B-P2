@@ -406,3 +406,293 @@ Kenneth:
 	Yesterday: Worked on how to process cart from front end
 	Today: Keep working on how to process cart from front end
 	Blockers: Knowledge on deserializing json into java list
+	
+
+-5/17/2022
+Chenxi
+    yesterday
+        working on project
+    today
+        project objective
+        code challenge
+    blocker
+        time
+
+anthony
+    yesterday
+        typescript
+    today
+        testing 
+    blocker
+        knowledge
+
+fatemeh
+    yesterday
+        typescript
+        angular
+        project
+        testing
+    today
+        angular
+    blocker
+        knowledge time
+
+mohammad
+    yesterday
+        typescript
+        angular
+        project
+    today
+        typescript
+        angular
+    project
+        test with postman
+    blocker
+        time knowledge
+
+Qiang
+    yesterday
+        web mvc connect client
+    today
+        controller layer
+    blocker
+        mocking unit testing
+
+Kenneth
+    yesterday
+        checkout process
+    today
+        checkout process
+    blocker
+        knowledge and time
+__________________________________________________________
+5/18/2022
+Chenxi
+    Yesterday:
+        P2 orderItemList function.
+        code challenge.
+    Today:
+        learning angular.
+    Blocker:
+        Time.
+
+Antony
+    Yesterday:
+        Worked on order, order item creation.
+    Today:
+        Keep working on the reason of getting Null order items & will be learning angular.
+    Blocker:
+       Knowledge.
+
+Kenneth
+    Yesterday:
+        Got the Cart functionality working. Fixed some bugs such as getting infinit loop.
+    Today:
+        Will be learning angular.
+    Blocker:
+        Lack of Knowledge.
+    
+Mohammed:
+    Yesterday:
+        Learning Angular & working on cart and order functionality. 
+    Today:
+        Will be contiuning angular.
+    Blocker:
+        Time & Knowledge.
+
+Chench:
+    Yesterday:
+        Finished login controller and populated the database.
+    Today:
+        Will be working on product controller and populating the database.
+    Blocker:
+        Data transformation in java.
+
+Fatemeh:
+    Yesterday:
+        Worked on Cart functionality & Got it working.
+    Today:
+        Will be working on the frontend.
+    Blocker:
+        Time & Knowledge.
+	
+
+#Stand Up Notes for 5/19/22
+
+##Chenxi:
+
+What did you do since last time?
+
+Yesterday learned angular and made simple login page
+
+What are you going to work on today?
+
+Develop more front end for P2
+
+Blocker(s)?
+
+Time
+
+##Mohammad:
+
+What did you do since last time?
+
+Studied angular, was able to do routing and emitting
+
+What are you going to work on today?
+
+Implement in his branch
+
+Blocker(s)? 
+
+Knowledge and time
+
+##Anthony:
+
+What did you do since last time?
+
+I just studied angular 
+
+What are you going to work on today?
+
+Try to develop some login and register functionality for my P2 frontend
+
+Blocker(s)? 
+
+Knowledge
+
+##Fatemeh:
+
+What did you do since last time?
+
+Learning angular
+
+What are you going to work on today?
+
+Continuing that
+
+Blocker(s)?
+
+Knowledge and time
+
+##Qiang:
+
+What did you do since last time?
+
+Did unit testing for login and register controller
+
+What are you going to work on today?
+
+Continue working on testing for other layers
+
+Blocker(s)?
+
+Confused with JUNIT lifecycle method, can run tests one by one but not all at once
+
+##Kenneth: 
+
+What did you do since last time?
+
+Learning angular, made a navbar application that goes from page to page
+
+What are you going to work on today?	
+
+Continue working on that
+
+Blocker(s)?
+
+Time and knowledge
+
+
+____________________________________________________________________
+
+
+#Stand Up Notes for 5/20/22
+
+##Chenxi:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)?
+
+
+
+##Mohammad:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)? 
+
+
+
+##Anthony:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)? 
+
+
+
+##Fatemeh:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)?
+
+
+
+##Qiang:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)?
+
+
+
+##Kenneth: 
+
+What did you do since last time?
+
+
+
+What are you going to work on today?	
+
+
+
+Blocker(s)?
+
+
+
+
+____________________________________________________________________
+
