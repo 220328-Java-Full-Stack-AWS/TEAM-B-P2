@@ -11,8 +11,7 @@ export class AuthService
   login(email: string, password: string)
   {
     if (email === 'test@test.com' && password === '123456') {
-      localStorage.setItem('email', email);
-      alert('Login Successful');
+      localStorage.setItem('username', email);
       return true;
     }
     alert('Login Failed');
