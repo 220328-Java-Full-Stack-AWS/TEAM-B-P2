@@ -515,4 +515,93 @@ Fatemeh:
         Will be working on the frontend.
     Blocker:
         Time & Knowledge.
+	
+
+#Stand Up Notes for 5/19/22
+
+##Chenxi:
+
+What did you do since last time?
+
+Yesterday learned angular and made simple login page
+
+What are you going to work on today?
+
+Develop more front end for P2
+
+Blocker(s)?
+
+Time
+
+##Mohammad:
+
+What did you do since last time?
+
+Studied angular, was able to do routing and emitting
+
+What are you going to work on today?
+
+Implement in his branch
+
+Blocker(s)? 
+
+Knowledge and time
+
+##Anthony:
+
+What did you do since last time?
+
+I just studied angular 
+
+What are you going to work on today?
+
+Try to develop some login and register functionality for my P2 frontend
+
+Blocker(s)? 
+
+Knowledge
+
+##Fatemeh:
+
+What did you do since last time?
+
+Learning angular
+
+What are you going to work on today?
+
+Continuing that
+
+Blocker(s)?
+
+Knowledge and time
+
+##Qiang:
+
+What did you do since last time?
+
+Did unit testing for login and register controller
+
+What are you going to work on today?
+
+Continue working on testing for other layers
+
+Blocker(s)?
+
+Confused with JUNIT lifecycle method, can run tests one by one but not all at once
+
+##Kenneth: 
+
+What did you do since last time?
+
+Learning angular, made a navbar application that goes from page to page
+
+What are you going to work on today?	
+
+Continue working on that
+
+Blocker(s)?
+
+Time and knowledge
+
+
 ____________________________________________________________________
