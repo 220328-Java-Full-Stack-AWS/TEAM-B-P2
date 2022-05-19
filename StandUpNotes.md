@@ -605,3 +605,94 @@ Time and knowledge
 
 
 ____________________________________________________________________
+
+
+#Stand Up Notes for 5/20/22
+
+##Chenxi:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)?
+
+
+
+##Mohammad:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)? 
+
+
+
+##Anthony:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)? 
+
+
+
+##Fatemeh:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)?
+
+
+
+##Qiang:
+
+What did you do since last time?
+
+
+
+What are you going to work on today?
+
+
+
+Blocker(s)?
+
+
+
+##Kenneth: 
+
+What did you do since last time?
+
+
+
+What are you going to work on today?	
+
+
+
+Blocker(s)?
+
+
+
+
+____________________________________________________________________
+
