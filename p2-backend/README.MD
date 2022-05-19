@@ -1,7 +1,7 @@
 # Project 2 - E-Commerce SPA
 [A Note About P2](https://github.com/220328-Java-Full-Stack-AWS/Curriculum-Notes/blob/main/P2.md)
 ## Executive Summary
-The E-Commerce Single-Page Application will allow consumers to browse, search, and buy products. Users will be able to browse our catelog of products, or search for a specific item, and add these to a cart. Users can register accounts which includes a profile. There are a number of stretch goals to choose from. Please update this text to summarize additional features. This text is fairly generic, your project will be unique, this text should be re-written to reflect your final deliverable.
+The E-Commerce Single-Page Application will allow consumers to browse, search, and buy products. Users will be able to browse our catelog of products, or search for a specific item, and add these to a cartService. Users can register accounts which includes a profile. There are a number of stretch goals to choose from. Please update this text to summarize additional features. This text is fairly generic, your project will be unique, this text should be re-written to reflect your final deliverable.
 
 
 # Tech Stack
@@ -50,12 +50,12 @@ The persistence layer shall use Hibernate ORM to translate between the database 
 
 #### User:
  - As a user, I have a profile which I can view.
- - As a user, I can browse products and add them to my cart.
- - As a user, I can remove items from my cart.
- - As a user, I can checkout to purchase the items in my cart.
+ - As a user, I can browse products and add them to my cartService.
+ - As a user, I can remove items from my cartService.
+ - As a user, I can checkout to purchase the items in my cartService.
 
 ### Stretch Goals:
- - As a User, I should be able to select an amount of an item to add to my cart as I am adding an item
+ - As a User, I should be able to select an amount of an item to add to my cartService as I am adding an item
  - As a User, I should be able to search the product list to better find the item(s) I am interested in
  - As a User, I should be able to see and purchase items that are on sale for a lower price.
  - As a User, I should be able to see a list of featured products on the main page of the application

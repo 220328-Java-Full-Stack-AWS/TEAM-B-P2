@@ -1,26 +1,32 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "order_item" , schema="public")
+@JsonIgnoreProperties
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="order_item_id")
-    private Integer OrderItem;
+    private Integer id;
 
     @Column
     private Integer quantity;
 
-    @ManyToOne(cascade={CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id" , referencedColumnName = "order_id" )
+    @JsonBackReference
     private Orders orders  ;
 
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double
 
-    @OneToOne(cascade={CascadeType.ALL})
+    @OneToOne(fetch = FetchType.LAZY)
+
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
     private Product productId;
 
@@ -34,12 +40,12 @@ public class OrderItem {
         
     }
 
-    public Integer getOrderItem() {
-        return OrderItem;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderItem(Integer orderItem) {
-        OrderItem = orderItem;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getQuantity() {
@@ -77,7 +83,7 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "OrderItem=" + OrderItem +
+                "id=" + id +
                 ", quantity=" + quantity +
                 ", orders=" + orders +
                 ", itemTotalAmount=" + itemTotalAmount +

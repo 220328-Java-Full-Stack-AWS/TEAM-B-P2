@@ -44,6 +44,8 @@ public class OrdersDao implements HibernateDao<Orders>{
         return orders;
     }
 
+
+
     @Override
     public List<Orders> getAll() {
         TypedQuery<Orders> query = session.createQuery("FROM Orders", Orders.class);

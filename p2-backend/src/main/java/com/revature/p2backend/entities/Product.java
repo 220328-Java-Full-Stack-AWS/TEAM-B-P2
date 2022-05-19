@@ -1,11 +1,13 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
+@JsonIgnoreProperties
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

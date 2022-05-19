@@ -46,7 +46,7 @@ public class AuthController {
     @GetMapping
     ResponseEntity<User> userLogin(@RequestBody AuthDto authDto){
         try{
-            userService.authenticateUser(authDto);
+            User user = userService.authenticateUser(authDto);
             System.out.println("Successful login");
             return new ResponseEntity<>(HttpStatus.OK);
         }

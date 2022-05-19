@@ -6,7 +6,7 @@ public enum Category {
     NECKLACES{
         @Override
         public String toString() {
-            return "NECkLACES";
+            return "NECKLACES";
         }
     },
 

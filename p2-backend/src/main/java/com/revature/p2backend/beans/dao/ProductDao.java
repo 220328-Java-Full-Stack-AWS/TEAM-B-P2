@@ -38,6 +38,7 @@ public class ProductDao implements HibernateDao<Product>{
         Transaction tx = session.beginTransaction();
         session.save(product);
         tx.commit();
+
         return product;
     }
 
@@ -71,6 +72,7 @@ public class ProductDao implements HibernateDao<Product>{
         Transaction tx = session.beginTransaction();
         session.update(product);
         tx.commit();
+        session.persist(product);
         return product;
     }
 //    @Override
