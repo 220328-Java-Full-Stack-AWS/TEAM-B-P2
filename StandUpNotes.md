@@ -465,3 +465,54 @@ Kenneth
         checkout process
     blocker
         knowledge and time
+__________________________________________________________
+5/18/2022
+Chenxi
+    Yesterday:
+        P2 orderItemList function.
+        code challenge.
+    Today:
+        learning angular.
+    Blocker:
+        Time.
+
+Antony
+    Yesterday:
+        Worked on order, order item creation.
+    Today:
+        Keep working on the reason of getting Null order items & will be learning angular.
+    Blocker:
+       Knowledge.
+
+Kenneth
+    Yesterday:
+        Got the Cart functionality working. Fixed some bugs such as getting infinit loop.
+    Today:
+        Will be learning angular.
+    Blocker:
+        Lack of Knowledge.
+    
+Mohammed:
+    Yesterday:
+        Learning Angular & working on cart and order functionality. 
+    Today:
+        Will be contiuning angular.
+    Blocker:
+        Time & Knowledge.
+
+Chench:
+    Yesterday:
+        Finished login controller and populated the database.
+    Today:
+        Will be working on product controller and populating the database.
+    Blocker:
+        Data transformation in java.
+
+Fatemeh:
+    Yesterday:
+        Worked on Cart functionality & Got it working.
+    Today:
+        Will be working on the frontend.
+    Blocker:
+        Time & Knowledge.
+____________________________________________________________________
