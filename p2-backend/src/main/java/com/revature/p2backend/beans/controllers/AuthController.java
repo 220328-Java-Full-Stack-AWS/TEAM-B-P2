@@ -4,12 +4,10 @@ import com.revature.p2backend.Dto.AuthDto;
 import com.revature.p2backend.beans.services.UserService;
 import com.revature.p2backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *This class is specifically for the get request for logging into the site
@@ -43,12 +41,30 @@ public class AuthController {
      * @param authDto
      * @return
      */
-    @GetMapping
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public User userLogin(@RequestBody AuthDto authDto){
+//        try{
+//            User user = userService.authenticateUser(authDto);
+//            System.out.println("Successful login");
+//            return user;
+//        }
+//        catch(Exception e){
+//            //e.printStackTrace();
+//            System.out.println("Username or password incorrect");
+//            return null;
+//        }
+//    }
+
+    @PostMapping
     ResponseEntity<User> userLogin(@RequestBody AuthDto authDto){
         try{
             User user = userService.authenticateUser(authDto);
             System.out.println("Successful login");
-            return new ResponseEntity<>(HttpStatus.OK);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Responded", "User login controller invoked");
+            return new ResponseEntity<>(user, headers, HttpStatus.OK);
         }
         catch(Exception e){
             //e.printStackTrace();
