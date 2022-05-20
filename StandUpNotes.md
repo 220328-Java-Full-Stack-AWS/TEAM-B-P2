@@ -611,88 +611,80 @@ ____________________________________________________________________
 
 ##Chenxi:
 
-What did you do since last time?
+Yesterday:
 
+learned about angular, worked on the backend
 
+Today:
 
-What are you going to work on today?
+working on front end and backend
 
-
-
-Blocker(s)?
-
+Blocker:
+Time
 
 
 ##Mohammad:
 
-What did you do since last time?
+Yesterday:
+studied angular and testing, feel better about angular
 
+Today:
+working on p2
 
-
-What are you going to work on today?
-
-
-
-Blocker(s)? 
-
-
+Blocker:
+Time and knowledge
 
 ##Anthony:
 
-What did you do since last time?
+Yesterday:
+work on login functionality
 
+Today:
+continue working on login
 
-
-What are you going to work on today?
-
-
-
-Blocker(s)? 
-
+Blocker:
+knowledge
 
 
 ##Fatemeh:
 
-What did you do since last time?
+Yesterday:
+continue studying angular, searching routing, and making a plan for our p2
 
+Today:
 
+working on the front end
 
-What are you going to work on today?
+Blocker:
 
-
-
-Blocker(s)?
-
-
+time and knowledge
 
 ##Qiang:
 
-What did you do since last time?
+Yesterday:
 
+I finished angular logging and register
 
+Today:
 
-What are you going to work on today?
+persist data to the backend
 
+Blocker:
 
+spring log API syntax
 
-Blocker(s)?
+##Kenneth:
 
+Yesterday:
 
+was able to log in the user, view all the product
 
-##Kenneth: 
+Today:
 
-What did you do since last time?
+discuss what features to add to the project
 
+Blocker:
 
-
-What are you going to work on today?	
-
-
-
-Blocker(s)?
-
-
-
-
+how to receive the response from the backend
 ____________________________________________________________________
 
