@@ -1,1 +1,6 @@
-<p>search-box works!</p>
+<input type = "text" [(ngModel)] = 'entry'>
+<button (click) = 'search(entry)'>Search</button>
+<p>{{result | json}}</p>
+<img [src] = 'image'>
+
+
