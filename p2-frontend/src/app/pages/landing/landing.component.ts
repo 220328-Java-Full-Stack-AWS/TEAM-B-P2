@@ -1,3 +1,4 @@
+import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { BannerComponent } from 'src/app/component/banner/banner.component';
 
@@ -8,9 +9,10 @@ import { BannerComponent } from 'src/app/component/banner/banner.component';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService:  ProductService) { }
 
   ngOnInit(): void {
+    this.productService.setSelectedCategory("");
   }
 
 }

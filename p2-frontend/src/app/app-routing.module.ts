@@ -8,7 +8,8 @@ import { UserViewComponent } from './pages/user-view/user-view.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: "",
+    pathMatch: 'full',
     component: LandingComponent
   },
   {

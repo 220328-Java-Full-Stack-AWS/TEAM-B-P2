@@ -1,3 +1,4 @@
+import { CategoryType } from './../constraints/constants';
 import { IProduct } from './../IProduct';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,6 +11,7 @@ export class ProductService {
 
   baseUrl: string = "http://localhost:8080/products";
   products: IProduct[] = [];
+  selectedCategory="";
 
   constructor(private http: HttpClient) { }
 
@@ -37,8 +39,12 @@ export class ProductService {
   }
 
 
-  setProducts(products: IProduct[]) {
-    this.products = products;
+  setSelectedCategory(category : CategoryType | "") {
+    this.selectedCategory = category;
+  }
+
+  getSelectedCategory() {
+    return this.selectedCategory ;
   }
 
 }
