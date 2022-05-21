@@ -34,9 +34,11 @@ public class Product {
     @Type(type = "com.revature.p2backend.beans.utilities.EnumConverter")
     private Category category;
 
-
     @Column
     private String keywords;
+
+    @Column
+    private String imageUrl;
 
     public Product() {
     }
@@ -47,8 +49,6 @@ public class Product {
         this.price = price;
         this.inventory = inventory;
     }
-
-
     public Product(String name, String description, Double price, Integer inventory, Category category) {
         this.name = name;
         this.description = description;
@@ -56,13 +56,14 @@ public class Product {
         this.inventory = inventory;
         this.category = category;
     }
-    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category) {
+    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category,String Keywords,String imageUrl) {
         this.productId=id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.inventory = inventory;
         this.category = category;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getProductId() {
@@ -129,6 +130,11 @@ public class Product {
     public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
+
+    public String getImageUrl() {return imageUrl;}
+
+    public void setImageUrl(String imageUrl) {this.imageUrl = imageUrl;}
+
 
     @Override
     public String toString() {
