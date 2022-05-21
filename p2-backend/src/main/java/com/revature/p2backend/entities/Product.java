@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
@@ -16,7 +17,8 @@ public class Product {
     @Column(name="product_id")
     private Integer productId ;
 
-    @Column
+    @Column(nullable = false)
+    @NotNull
     private String name; //added name column
 
     @Column
@@ -31,7 +33,8 @@ public class Product {
 //    @OneToOne(mappedBy = "productId")
 //    private OrderItem orderItem;
 
-    @Column(name = "category")
+    @Column(name = "category" , nullable = false)
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Type(type = "com.revature.p2backend.beans.utilities.EnumConverter")
     private Category category;
@@ -39,44 +42,23 @@ public class Product {
     @Column
     private String keywords; //added
 
+    @Column(unique = true , nullable = false)
+    @NotNull
+    private String sku; //added
+
     @Column
     @Min(value = 5, message = "Min discount should not be less than 5")
     @Max(value = 95, message = "Max discount should not be greater than 5")
     private Integer discount;//added
 
-    @Column
+    @Column(nullable = false)
+    @NotNull
     private String imageUrl;//added
 
     public Product() {
     }
 
-    public Product(String name, String description, Double price, Integer inventory) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.inventory = inventory;
-    }
-    public Product(String name, String description, Double price, Integer inventory, Category category,Integer discount, String Keywords,String imageUrl) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.inventory = inventory;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.keywords= keywords;
-        this.discount=discount;
-    }
-    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category,Integer discount, String Keywords,String imageUrl) {
-        this.productId=id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.inventory = inventory;
-        this.discount=discount;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.keywords=keywords;
-    }
+
     public Integer getProductId() {
         return productId;
     }
@@ -128,15 +110,27 @@ public class Product {
     public String getImageUrl() {return imageUrl;}
     public void setImageUrl(String imageUrl) {this.imageUrl = imageUrl;}
 
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
     @Override
     public String toString() {
         return "Product{" +
                 "productId=" + productId +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-//                ", orderItem=" + orderItem +
+                ", inventory=" + inventory +
                 ", category=" + category +
+                ", keywords='" + keywords + '\'' +
+                ", sku='" + sku + '\'' +
+                ", discount=" + discount +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 
