@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class SearchService {
 
-  getSearchResult(searchInput : String): Observable<any>{
+  getSearchResult(searchInput? : String): Observable<any>{
     return this.http.get('http://localhost:8080/products/all' + searchInput);
   }
 

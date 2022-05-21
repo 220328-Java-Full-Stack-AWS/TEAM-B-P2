@@ -1,3 +1,4 @@
+import { ProductService } from 'src/app/services/product.service';
 import { SearchService } from './../../services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/IProduct';
@@ -8,32 +9,14 @@ import { IProduct } from 'src/app/IProduct';
   styleUrls: ['./search-box.component.css']
 })
 export class SearchBoxComponent implements OnInit {
-  entry : String = "";
-  image : String = "";
+  entry : string = "";
+  image : string = "";
 
-  result : IProduct = {
-    productId : 0,
-    name : "",
-    description : "",
-    price : 0,
-    inventory : 0
+  search(input: string){
+    this.productService.setKeywordFilter(input);
   }
 
-  search(input: String){
-    this.searchService.getSearchResult(input)
-    .subscribe((data:any) => {
-      console.log(data)
-      this.result = {
-        productId:data.productId,
-        name : data.name,
-        description : data.stats[0].base_stat,
-        price : data.stats[1].base_stat,
-        inventory : data.stats[2].base_stat,
-      }
-    })
-  }
-
-  constructor(private searchService : SearchService) { }
+  constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
   }

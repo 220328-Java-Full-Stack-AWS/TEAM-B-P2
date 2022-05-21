@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +18,9 @@ import { BannerComponent } from './component/banner/banner.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { SearchService } from './services/search.service';
+import { CategoryComponent} from './component/category/category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 
 
 
@@ -32,15 +36,18 @@ import { SearchService } from './services/search.service';
     SearchBoxComponent,
     HeaderComponent,
     LandingComponent,
-    BannerComponent
+    BannerComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

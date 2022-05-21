@@ -34,6 +34,10 @@ public class Product {
     @Type(type = "com.revature.p2backend.beans.utilities.EnumConverter")
     private Category category;
 
+
+    @Column
+    private String keywords;
+
     public Product() {
     }
 
@@ -116,6 +120,14 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
 
     @Override
