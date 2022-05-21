@@ -1,6 +1,6 @@
-import { IProduct } from 'src/app/IProduct';
+import { IProduct } from 'src/app/types/IProduct';
 import { Component, OnInit } from '@angular/core';
-import { CategoryType } from 'src/app/constraints/constants';
+import { CategoryType } from 'src/app/types/constants';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 

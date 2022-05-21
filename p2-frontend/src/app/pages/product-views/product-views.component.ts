@@ -1,5 +1,5 @@
-import { CategoryType } from './../../constraints/constants';
-import { IProduct } from 'src/app/IProduct';
+import { CategoryType } from '../../types/constants';
+import { IProduct } from 'src/app/types/IProduct';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
@@ -36,21 +36,14 @@ export class ProductViewsComponent implements OnInit {
     else {
       keyword = this.route.snapshot.paramMap.get('keyword')?.toLocaleLowerCase() ?? "";
     }
-    this.productService.viewAllProducts().subscribe((data: IProduct[]) => {
-      const categorizedProducts = categoryType in CategoryType
-        ? data.reduce((acc, p) => {
-          if (p.category === categoryType) {
-            acc.push(p);
-          }
-          return acc;
-        }, [] as IProduct[])
-        :
-        data;
-
-      this.productList = (keyword === "" || keyword == null) ? categorizedProducts : categorizedProducts.filter(p => p.keywords.includes(keyword) ||
-        p.description.toLocaleLowerCase().includes(keyword) ||
-        p.name.toLowerCase().includes(keyword));
-    });
+    if (categoryType in CategoryType) {
+      this.productService.viewCategorizedProducts(categoryType as CategoryType).subscribe((data: IProduct[]) => {
+        this.productList = this.productService.filterByKeywords(data, keyword);
+      })
+    } else {
+      this.productService.viewAllProducts().subscribe((data: IProduct[]) => {
+        this.productList = this.productService.filterByKeywords(data, keyword);
+      })
+    }
   }
-
 }

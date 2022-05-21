@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './component/app.component';
+import { AppComponent } from './app.component';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { UserViewComponent } from './pages/user-view/user-view.component';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,8 @@ import { HeaderComponent } from './component/header/header.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { CategoryComponent} from './component/category/category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductComponent } from './component/product/product.component'
+import { ProductComponent } from './component/product/product.component';
+import { FeaturedProductsComponent } from './component/featured-products/featured-products.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProductComponent } from './component/product/product.component'
     LandingComponent,
     BannerComponent,
     CategoryComponent,
-    ProductComponent
+    ProductComponent,
+    FeaturedProductsComponent
   ],
   imports: [
     BrowserModule,

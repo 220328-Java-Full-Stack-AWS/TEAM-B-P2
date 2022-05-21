@@ -1,4 +1,4 @@
-import { CategoryType } from "./constraints/constants";
+import { CategoryType } from "./constants";
 
 export interface IProduct {
   productId : number;
