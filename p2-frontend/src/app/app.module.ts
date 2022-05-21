@@ -17,12 +17,8 @@ import { SearchBoxComponent } from './component/search-box/search-box.component'
 import { BannerComponent } from './component/banner/banner.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LandingComponent } from './pages/landing/landing.component';
-import { SearchService } from './services/search.service';
 import { CategoryComponent} from './component/category/category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
-
-
 
 @NgModule({
   declarations: [
@@ -47,7 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     BrowserAnimationsModule,
     MatButtonModule,
   ],
-  providers: [AuthService, SearchService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

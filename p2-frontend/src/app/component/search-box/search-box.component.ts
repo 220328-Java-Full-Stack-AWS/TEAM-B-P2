@@ -1,7 +1,6 @@
-import { ProductService } from 'src/app/services/product.service';
-import { SearchService } from './../../services/search.service';
+
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/IProduct';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -11,12 +10,12 @@ import { IProduct } from 'src/app/IProduct';
 export class SearchBoxComponent implements OnInit {
   entry : string = "";
   image : string = "";
+  constructor( private router: Router) { }
 
-  search(input: string){
-    this.productService.setKeywordFilter(input);
+  search(keyword: string){
+    this.router.navigate(['/product-views', { keyword }]);
   }
 
-  constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
   }

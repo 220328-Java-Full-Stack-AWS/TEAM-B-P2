@@ -5,6 +5,8 @@ import com.revature.p2backend.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +24,7 @@ public class ProductController {
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.OK)
-    public Product persistNewProduct(@RequestBody Product newProduct) {
+    public Product persistNewProduct(@Valid @RequestBody Product newProduct) {
         return productService.save(newProduct);
     }
 

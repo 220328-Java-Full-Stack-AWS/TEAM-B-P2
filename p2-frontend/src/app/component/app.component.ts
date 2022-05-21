@@ -10,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'front-end-testing';
 
-  constructor(private productService: ProductService) { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.productService.getAll();
+
   }
 }

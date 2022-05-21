@@ -1,4 +1,4 @@
-import { IProduct, ProductDao } from './../IProduct';
+import { IProduct } from './../IProduct';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
@@ -10,7 +10,6 @@ export class ProductService {
 
   baseUrl: string = "http://localhost:8080/products";
   products: IProduct[] = [];
-  keywordFilter = "";
 
   constructor(private http: HttpClient) { }
 
@@ -37,34 +36,11 @@ export class ProductService {
     return throwError(() => new Error(errorMessage));
   }
 
-  getAll() : void {
-    this.viewAllProducts().subscribe((data: ProductDao[]) => {
-      const result =  data.map(p => ({
-        ...p,
-        keywordList: p.keywords ? p.keywords.split(',') : [],
-      }));
-      console.log('getAll', result)
-      this.products = result;
-    })
 
+  setProducts(products: IProduct[]) {
+    this.products = products;
   }
 
-  getProducts():  IProduct[] {
-    return this.products;
-  }
-
-  setKeywordFilter(value: string) {
-    this.keywordFilter = value;
-  }
-
-  getFilteredData() : IProduct[] {
-    if(this.keywordFilter === "" || this.keywordFilter == null) {
-     return  this.products;
-    } else {
-     return this.products.filter(p => p.keywordList?.includes(this.keywordFilter))
-    }
-
-  }
 }
 
 export class Product {

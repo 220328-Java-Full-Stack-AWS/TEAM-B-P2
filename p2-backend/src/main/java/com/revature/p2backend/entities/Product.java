@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "products")
@@ -35,10 +37,15 @@ public class Product {
     private Category category;
 
     @Column
-    private String keywords;
+    private String keywords; //added
 
     @Column
-    private String imageUrl;
+    @Min(value = 5, message = "Min discount should not be less than 5")
+    @Max(value = 95, message = "Max discount should not be greater than 5")
+    private Integer discount;//added
+
+    @Column
+    private String imageUrl;//added
 
     public Product() {
     }
@@ -49,23 +56,27 @@ public class Product {
         this.price = price;
         this.inventory = inventory;
     }
-    public Product(String name, String description, Double price, Integer inventory, Category category) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.inventory = inventory;
-        this.category = category;
-    }
-    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category,String Keywords,String imageUrl) {
-        this.productId=id;
+    public Product(String name, String description, Double price, Integer inventory, Category category,Integer discount, String Keywords,String imageUrl) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.inventory = inventory;
         this.category = category;
         this.imageUrl = imageUrl;
+        this.keywords= keywords;
+        this.discount=discount;
     }
-
+    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category,Integer discount, String Keywords,String imageUrl) {
+        this.productId=id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
+        this.discount=discount;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.keywords=keywords;
+    }
     public Integer getProductId() {
         return productId;
     }
@@ -106,33 +117,15 @@ public class Product {
         this.inventory = inventory;
     }
 
+    public Category getCategory() {return category;}
 
-//    public OrderItem getOrderItem() {
-//        return orderItem;
-//    }
-//
-//    public void setOrderItem(OrderItem orderItem) {
-//        this.orderItem = orderItem;
-//    }
+    public void setCategory(Category category) {this.category = category;}
 
-    public Category getCategory() {
-        return category;
-    }
+    public String getKeywords() {return keywords;}
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
-    }
+    public void setKeywords(String keywords) {this.keywords = keywords;}
 
     public String getImageUrl() {return imageUrl;}
-
     public void setImageUrl(String imageUrl) {this.imageUrl = imageUrl;}
 
 
@@ -145,5 +138,13 @@ public class Product {
 //                ", orderItem=" + orderItem +
                 ", category=" + category +
                 '}';
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
     }
 }

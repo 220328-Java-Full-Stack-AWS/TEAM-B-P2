@@ -2,6 +2,7 @@ import { IProduct } from 'src/app/IProduct';
 import { Component, OnInit } from '@angular/core';
 import { CategoryType } from 'src/app/constraints/constants';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -10,11 +11,12 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CategoryComponent implements OnInit {
 
-  public  categoryTypes = Object.values(CategoryType);
-  constructor(private productService: ProductService) { }
+  public categoryTypes = Object.values(CategoryType);
+  constructor(private productService: ProductService,
+    private router: Router) { }
   result: IProduct[] = [];
   onClick(type: CategoryType): void {
-    console.log(this.productService.getProducts().filter(p => p.category === type));
+    this.router.navigate(['/product-views', { category: type }]);
   }
 
   ngOnInit(): void {

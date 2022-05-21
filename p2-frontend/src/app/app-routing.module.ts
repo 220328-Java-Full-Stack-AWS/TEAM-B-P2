@@ -1,3 +1,4 @@
+import { LandingComponent } from './pages/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductViewsComponent } from './pages/product-views/product-views.component';
@@ -6,6 +7,10 @@ import { UserRegistrationComponent } from './pages/user-registration/user-regist
 import { UserViewComponent } from './pages/user-view/user-view.component';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: LandingComponent
+  },
   {
     path: 'product-views',
     component: ProductViewsComponent

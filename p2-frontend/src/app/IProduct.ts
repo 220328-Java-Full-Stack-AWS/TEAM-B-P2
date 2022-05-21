@@ -1,7 +1,6 @@
-import { Product } from './services/product.service';
 import { CategoryType } from "./constraints/constants";
 
-export interface ProductDao {
+export interface IProduct {
   productId : number;
   name : String;
   description : String;
@@ -9,8 +8,4 @@ export interface ProductDao {
   inventory : number;
   category : CategoryType;
   keywords: string;
-}
-
-export interface IProduct extends ProductDao {
-  keywordList : string[];
 }
