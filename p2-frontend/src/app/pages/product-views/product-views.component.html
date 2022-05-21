@@ -1,6 +1,4 @@
-<p>product-views works!</p>
-<label>View Products</label>
-<br>
 <ul *ngFor="let product of productList">
-    <li><pre>{{product | json}}</pre></li>
+    <app-product [item]="product"></app-product>
 </ul>
+

@@ -3,6 +3,7 @@ import com.revature.p2backend.beans.services.ProductService;
 import com.revature.p2backend.entities.Category;
 import com.revature.p2backend.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +45,7 @@ public class ProductController {
 
     @GetMapping("/search/cat")
     @ResponseStatus(HttpStatus.OK)
-    public List<Product> getProdcutByCategory(@RequestParam ("category") Category category){
-        System.out.println(category.toString());
+    public List<Product> getProductByCategory(@RequestParam ("category") Category category){
         return productService.getByProductCategory(category);
     }
 

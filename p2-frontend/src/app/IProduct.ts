@@ -8,4 +8,5 @@ export interface IProduct {
   inventory : number;
   category : CategoryType;
   keywords: string;
+  imageUrl:string;
 }

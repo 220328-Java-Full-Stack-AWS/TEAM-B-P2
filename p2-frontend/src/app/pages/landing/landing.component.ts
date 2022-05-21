@@ -1,6 +1,6 @@
 import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { BannerComponent } from 'src/app/component/banner/banner.component';
+
 
 @Component({
   selector: 'app-landing',
