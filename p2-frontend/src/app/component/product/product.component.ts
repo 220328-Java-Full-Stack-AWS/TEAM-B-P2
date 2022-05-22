@@ -11,10 +11,10 @@ export class ProductComponent implements OnInit, AfterContentInit  {
 
   itemNewPrice=0;
   @Input() item? : IProduct;
+  @Input() show?: boolean;
 
   constructor(private router: Router) {
    }
-
   ngOnInit(): void {
 
   }

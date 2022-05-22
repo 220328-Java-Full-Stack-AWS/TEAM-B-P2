@@ -56,6 +56,7 @@ section {
 	color:  #ffffff;
 	margin: 20px 0 12px;
 	padding: 0;
+  pointer-events: none;
 }
 
 .footer-distributed .footer-links a{
@@ -165,12 +166,10 @@ section {
 	cursor: pointer;
 	/* background-color:  #33383b; */
 	border-radius: 2px;
-
 	font-size: 20px;
 	color: #ffffff;
 	text-align: center;
 	line-height: 35px;
-
 	margin-right: 3px;
 	margin-bottom: 5px;
 }

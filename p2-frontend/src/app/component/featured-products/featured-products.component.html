@@ -1,7 +1,11 @@
-<swiper [navigation]="true" [pagination]="{ clickable: true }" [slidesPerView]="3" [spaceBetween]="10" [pagination]="{
-  clickable: true
-}" class="mySwiper">
-  <ng-template swiperSlide *ngFor="let product of productList">
-    <app-product [item]="product"></app-product>
-  </ng-template>
-</swiper>
+
+  <mat-card-title>best sellers</mat-card-title>
+  <swiper [navigation]="true" [pagination]="{ clickable: true }" [slidesPerView]="3" [spaceBetween]="10" [pagination]="{
+    clickable: true
+  }" class="mySwiper">
+    <ng-template swiperSlide *ngFor="let product of productList">
+      <app-product [item]="product" [show]="false"></app-product>
+    </ng-template>
+  </swiper>
+
+
