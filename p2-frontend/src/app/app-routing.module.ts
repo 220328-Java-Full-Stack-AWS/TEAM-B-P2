@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductViewsComponent } from './pages/product-views/product-views.component';
+import { UserAddressComponent } from './pages/user-address/user-address.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 import { UserViewComponent } from './pages/user-view/user-view.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'user-registration',
     component: UserRegistrationComponent
+  },
+  {
+    path: 'user-address',
+    component: UserAddressComponent
   }
 ];
 

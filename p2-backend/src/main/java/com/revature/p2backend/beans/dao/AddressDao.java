@@ -51,8 +51,9 @@ public class AddressDao implements HibernateDao<Address>{
     @Override
     public List<Address> getAll() {
         String hql = "FROM Address";
-        TypedQuery<Address> query = session.createQuery(hql);
-        return query.getResultList();
+        TypedQuery<Address> query = session.createQuery(hql, Address.class);
+        List<Address> address = query.getResultList();
+        return address;
     }
 
     @Override

@@ -39,5 +39,5 @@ public class AddressService {
         addressDao.delete(address);
     }
 
-
+    public List<Address> getAllAddress() {return addressDao.getAll();}
 }
