@@ -1,8 +1,19 @@
-<button mat-icon-button color="primary" (click)="onHome()" >
-  <mat-icon>home</mat-icon>
+
+
+<button mat-icon-button color="primary">
+  <mat-icon>favorite</mat-icon>
 </button>
-<a routerLink="/user-view" routerLinkActive="active">User view</a> |
-<a routerLink="/user-login" routerLinkActive="active">User login</a> |
-<a routerLink="/user-registration" routerLinkActive="active">Register user</a>
+
+
+<a routerLink="/user-view" routerLinkActive="active">User</a>  |
+<a routerLink="/user-login" routerLinkActive="active">Login</a> |
+<a routerLink="/user-registration" routerLinkActive="active">Register</a>
+<a routerLink="/shopping" routerLinkActive="active">
+  <button mat-icon-button color="primary">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+</a>
 <hr>
 <router-outlet></router-outlet>
+
+

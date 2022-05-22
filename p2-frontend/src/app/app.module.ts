@@ -1,6 +1,10 @@
+import { FooterComponent } from './component/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { SwiperModule } from 'swiper/angular';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { NgModule } from '@angular/core';
@@ -23,8 +27,8 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { CategoryComponent} from './component/category/category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './component/product/product.component';
-import { FeaturedProductsComponent } from './component/featured-products/featured-products.component'
-
+import { FeaturedProductsComponent } from './component/featured-products/featured-products.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,11 @@ import { FeaturedProductsComponent } from './component/featured-products/feature
     BannerComponent,
     CategoryComponent,
     ProductComponent,
-    FeaturedProductsComponent
+    FeaturedProductsComponent,
+    ProductDetailsComponent,
+    FooterComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -51,6 +59,9 @@ import { FeaturedProductsComponent } from './component/featured-products/feature
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatGridListModule,
+    SwiperModule,
+    FontAwesomeModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

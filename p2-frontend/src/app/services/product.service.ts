@@ -23,6 +23,13 @@ export class ProductService {
       )
   }
 
+  viewProductById(id:string): Observable<any> {
+    return this.http.get<object>(this.baseUrl + `/id/${id}`, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      )
+  }
 
   viewCategorizedProducts(category: CategoryType): Observable<any> {
     return this.http.get<object>(this.baseUrl + `/search/cat?category=${category}`, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
@@ -54,7 +61,6 @@ export class ProductService {
   getSelectedCategory() {
     return this.selectedCategory ;
   }
-
 
   filterByKeywords(data: IProduct[], keyword: string) {
     return (keyword === "" || keyword == null) ? data : data.filter(p => p.keywords.includes(keyword) ||

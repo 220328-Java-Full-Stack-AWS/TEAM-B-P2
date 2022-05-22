@@ -1,4 +1,7 @@
-<ul *ngFor="let product of productList">
-  <app-product [item]="product"></app-product>
-</ul>
-
+<swiper [navigation]="true" [pagination]="{ clickable: true }" [slidesPerView]="3" [spaceBetween]="10" [pagination]="{
+  clickable: true
+}" class="mySwiper">
+  <ng-template swiperSlide *ngFor="let product of productList">
+    <app-product [item]="product"></app-product>
+  </ng-template>
+</swiper>

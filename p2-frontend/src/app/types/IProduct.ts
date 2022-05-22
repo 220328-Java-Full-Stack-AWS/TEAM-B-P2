@@ -6,6 +6,7 @@ export interface IProduct {
   description : String;
   price : number;
   inventory : number;
+  discount:number;
   category : CategoryType;
   keywords: string;
   imageUrl:string;

@@ -1,17 +1,40 @@
 import { IProduct } from 'src/app/types/IProduct';
-import { Component,Input, OnInit } from '@angular/core';
+import { AfterContentInit, Component,Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, AfterContentInit  {
+
+  itemNewPrice=0;
   @Input() item? : IProduct;
 
-  constructor() { }
+  constructor(private router: Router) {
+   }
 
   ngOnInit(): void {
+
   }
+  ngAfterContentInit() : void {
+    const price = this.item?.price ?? 0;
+    const discount = this.item?.discount ?? 0
+    this.itemNewPrice = (price * (100 - discount))/100;
+  }
+  onClick(){
+    this.router.navigate([`/product-details/${this.item?.productId}`]);
+  }
+  onAddToCartClick(){
+    /* if loggein
+      Add this.item to Shopping Cart
+
+      else
+      */
+      this.router.navigate(['/user-registration']);
+
+  }
+
 
 }
