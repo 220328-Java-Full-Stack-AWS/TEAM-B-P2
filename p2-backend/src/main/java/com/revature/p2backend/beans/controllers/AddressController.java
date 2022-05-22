@@ -33,6 +33,13 @@ public class AddressController {
         return addressService.getAddressById(address.getAddressId());
     }
 
+    @PostMapping("/currentaddress")
+    @ResponseStatus(HttpStatus.OK)
+    public Address viewAddressWithPost(@RequestBody Address address) {
+        System.out.println("Address view function from address controller");
+        return addressService.getAddressById(address.getAddressId());
+    }
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<Address> getAllAddress(@RequestBody Address address) {
