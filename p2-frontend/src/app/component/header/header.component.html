@@ -1,0 +1,45 @@
+<header>
+    <a
+        class="logo-container"
+        routerLink="/"
+    >
+        <img
+            class="logo"
+            src="/assets/logo-placeholder-image.png"
+            alt=""
+        />
+    </a>
+    <div class="options">
+        <a
+            class="option"
+            routerLink="/product-views"
+        >Shop</a>
+
+        <a
+            *ngIf="user; else signin"
+            class="option"
+            (click)="signOut()"
+        >Sign Out</a>
+        <ng-template
+            #signin
+            class="option"
+        >
+            <a routerLink="user-login">Sign In</a>
+        </ng-template>
+
+        <a
+            class="option"
+            routerLink="user-registration"
+        >Sign Up</a>
+        <a
+            class="cart"
+            routerLink="/cart"
+        >
+            <span class="material-symbols-outlined">
+                shopping_cart
+            </span>
+        </a>
+    </div>
+
+</header>
+<router-outlet></router-outlet>
