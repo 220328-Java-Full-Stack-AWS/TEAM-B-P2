@@ -45,10 +45,10 @@ export class AuthService {
 
 
 export class AuthDto {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 
-  constructor(_username: String, _password: String) {
+  constructor(_username: string, _password: string) {
     this.username = _username;
     this.password = _password;
   }

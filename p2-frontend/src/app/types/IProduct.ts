@@ -2,8 +2,8 @@ import { CategoryType } from "./constants";
 
 export interface IProduct {
   productId : number;
-  name : String;
-  description : String;
+  name : string;
+  description : string;
   price : number;
   inventory : number;
   discount:number;

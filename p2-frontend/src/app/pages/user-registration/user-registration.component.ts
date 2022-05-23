@@ -12,13 +12,13 @@ export class UserRegistrationComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  username: String = "";
-  password: String = "";
-  fName: String = "";
-  lName: String = "";
-  email: String = "";
+  username: string = "";
+  password: string = "";
+  fName: string = "";
+  lName: string = "";
+  email: string = "";
 
-  onClickRegister(username: String, password: String, fName: String, lName: String, email: String) {
+  onClickRegister(username: string, password: string, fName: string, lName: string, email: string) {
     let user = new User(this.username, this.password, this.fName, this.lName, this.email, "");
     let options = {
       headers: new HttpHeaders({

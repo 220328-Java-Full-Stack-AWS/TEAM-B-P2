@@ -59,19 +59,19 @@ export class UserService {
 
 export class User {
   id: number | undefined;
-  userName: String;
-  password: String;
-  firstName: String;
-  lastName: String;
-  email: String;
-  phone: String;
+  userName: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
 
-  constructor(_username: String, _password: String, _fName: String, _lName: String, _email: String, _phone: String) {
+  constructor(_username: string, _password: string, _fName: string, _lName: string, _email: string, _phone: string) {
     this.userName = _username;
     this.password = _password;
     this.firstName = _fName;
     this.lastName = _lName;
     this.email = _email;
-    this.phone = _phone;
+    this.phoneNumber = _phone;
   }
 }

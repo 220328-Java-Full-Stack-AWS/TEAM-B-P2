@@ -71,14 +71,14 @@ export class ProductService {
 }
 
 export class Product {
-  category: String;
-  description: String;
+  category: string;
+  description: string;
   inventory: number;
-  name: String;
+  name: string;
   price: number;
   productId: number;
 
-  constructor(_category: String, _description: String, _inventory: number, _name: String, _price: number, _productId: number) {
+  constructor(_category: string, _description: string, _inventory: number, _name: string, _price: number, _productId: number) {
     this.category = _category;
     this.description = _description;
     this.inventory = _inventory;

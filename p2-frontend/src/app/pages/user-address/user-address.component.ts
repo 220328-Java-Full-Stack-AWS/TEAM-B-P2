@@ -105,7 +105,7 @@ export class UserAddressComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let token = localStorage.getItem("currentLoginUser")
+    let token = localStorage.getItem("currentUser")
 
     if (!token) {
       window.alert("user not logged in.")

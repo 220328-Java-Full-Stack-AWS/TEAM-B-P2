@@ -25,15 +25,15 @@ export class UserUpdateComponent implements OnInit {
   
 
   onClick(_username: string, _password: string, _firstName: string, _lastName: string, _email: string, _phone: string): void {
-    const local = localStorage.getItem("currentUser")
-    if (!local)
-      return;
-      const u: User | undefined = JSON.parse(local);
-    if (!u)
-      return;
-    const userId = u.id;
+    // const local = localStorage.getItem("currentUser")
+    // if (!local)
+    //   return;
+    //   const u: User = JSON.parse(local);
+    // if (!u)
+    //   return;
+    // const userId = u.id;
 
-    this.user.id = userId;
+    // this.user.id = userId;
     this.user.userName = _username;
     this.user.password = _password;
     this.user.firstName = _firstName;
@@ -65,14 +65,16 @@ export class UserUpdateComponent implements OnInit {
     }
     else {
       console.log("current User", token);
-      let u = JSON.parse(token);
+      let u: User = JSON.parse(token);
+      this.user = u;
+      this.username = u.userName;
+      this.firstName = u.firstName;
+      this.email = u.email;
+      this.lastName = u.lastName;
+      this.password = u.password;
+      this.phone = u.phoneNumber;
       console.log(u);
-      this.userService.getUserByUsername(u.userName).subscribe(
-        (data) => {
-          console.log("returned data: ", data)
-          this.user = data;
-          console.log("this is the user that is currently logged in", this.user)
-        })
+      
     }
   }
 
