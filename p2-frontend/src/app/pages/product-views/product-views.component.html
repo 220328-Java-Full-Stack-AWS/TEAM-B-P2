@@ -1,7 +1,24 @@
-<p>product-views works!</p>
-<label>View Products</label>
-<input type="submit" id="view-all-products" (click)="viewProducts()">
-<br>
-<ul *ngFor="let product of productList">
-    <li>{{product}}</li>
-</ul>
+<div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Inventory</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Product Id</th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let product of productList; let i = index">
+                    <td>{{product.category}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.inventory}}</td>
+                    <td>{{product.name}}</td>
+                    <td>${{product.price}}</td>
+                    <td>{{product.productId}}</td>
+                    <td><input type="number" min="0" name="quantity" id="quantity"></td>
+                    <td><input (click)="addToCart(this.product, this.quantity)" type="submit" value="Add to cart"></td>
+                </tr>
+            </tbody>
+    </table>

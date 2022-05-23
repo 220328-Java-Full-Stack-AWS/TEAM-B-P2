@@ -1,0 +1,35 @@
+<ng-container *ngIf="products.length != 0">
+    <div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Inventory</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Product Id</th>
+                    <th>Quantity</th>
+                </tr>
+                <tbody>
+                    <tr *ngFor="let product of products; let i = index">
+                        <td>{{product.productId.category}}</td>
+                        <td>{{product.productId.description}}</td>
+                        <td>{{product.productId.inventory}}</td>
+                        <td>{{product.productId.name}}</td>
+                        <td>${{product.productId.price}}</td>
+                        <td>{{product.productId.productId}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td><input (click)="removeProduct(this.product)" type="submit" value="delete"></td>
+                    </tr>
+                </tbody>
+        </table>
+        <p>Order Total: ${{grandTotal}}</p>
+        <input (click)="removeAllProducts()" type="submit" value="delete">
+        <input (click)="goToCheckout()" type="submit" value="checkout">
+    </div>
+</ng-container>
+
+<ng-container *ngIf="products.length == 0">
+    <p>Put some items in your cart</p>
+</ng-container>
