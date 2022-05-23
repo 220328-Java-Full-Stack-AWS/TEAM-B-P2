@@ -12,6 +12,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+
   login(body: object, options: object): Observable<any> {
     console.log("Post: ", this.baseUrl, body, options)
     return this.http.post<User>(this.baseUrl, JSON.stringify(body), options)
@@ -19,6 +20,15 @@ export class AuthService {
         retry(3),
         catchError(this.errorHandler)
     )
+
+  login(body: object): Observable<any> {
+    console.log("Post: ", this.baseUrl, body)
+    return this.http.post<any>(this.baseUrl, JSON.stringify(body), {headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+      .pipe(
+        retry(3),
+        catchError(this.errorHandler),
+      )
+
   }
 
 

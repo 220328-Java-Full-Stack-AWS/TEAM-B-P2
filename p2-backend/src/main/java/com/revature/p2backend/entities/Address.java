@@ -37,12 +37,13 @@ public class Address {
     public Address() {
     }
 
-    public Address(String number, String street, String city, String state, String zipCode) {
+    public Address(String number, String street, String city, String state, String zipCode, User userId) {
         this.number = number;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.userId = userId;
     }
 
 
@@ -103,6 +104,13 @@ public class Address {
         this.orders = orders;
     }
 
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
 
     @Override
     public String toString() {
@@ -114,6 +122,7 @@ public class Address {
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", orders=" + orders +
+                ", userId=" + userId +
                 '}';
     }
 }

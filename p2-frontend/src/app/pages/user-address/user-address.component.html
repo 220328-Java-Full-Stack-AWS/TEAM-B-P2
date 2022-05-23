@@ -1,0 +1,17 @@
+<p>user-address works!</p>
+<div>
+    <input type="number" name="number" [(ngModel)]='number' placeholder="Street Number">
+    <input type="street" name="street" [(ngModel)]='street' placeholder="Street">
+    <input type="city" name="city" [(ngModel)]='city' placeholder="City">
+    <input type="state" name="state" [(ngModel)]='state' placeholder="State">
+    <input type="text" name="zipCode" [(ngModel)]='zipCode' placeholder="Zip Code">
+
+    <button type="add" name="add" (click)="addNewAddress()">Add New Address</button>
+
+
+    <button type="update" name="update" (click)="changeAddress()">Change My Address</button>
+    <button type="delete" name="delete" (click)="deleteAddress()">Delete My Address</button>
+
+</div>
+
+<h3></h3>

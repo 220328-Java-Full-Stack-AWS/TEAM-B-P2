@@ -1,0 +1,7 @@
+export enum CategoryType {
+  RINGS = "RINGS",
+  NECKLACES = "NECKLACES",
+  BRACELETS = "BRACELETS",
+  EARRINGS = "EARRINGS",
+  WATCHES = "WATCHES"
+}

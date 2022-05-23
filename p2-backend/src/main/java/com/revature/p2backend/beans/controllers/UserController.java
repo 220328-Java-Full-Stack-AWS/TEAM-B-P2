@@ -48,6 +48,7 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
+
     /**
      * This is the create user method. It receives all the parts for a user
      * object, sends it to the service layer. The service layer responds back
@@ -80,7 +81,7 @@ public class UserController {
      * as we do not want to allow for username and email updates. The UserDto gets
      * migrated to a User object in the UserService class and then sent back to the
      * UserDao to be updated.
-     * @param userDto
+     * @param user
      * @return
      */
     @PutMapping("/update")

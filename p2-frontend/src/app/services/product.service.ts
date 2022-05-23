@@ -1,3 +1,5 @@
+import { CategoryType } from '../types/constants';
+import { IProduct } from '../types/IProduct';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
@@ -8,12 +10,29 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 export class ProductService {
 
   baseUrl: string = "http://localhost:8080/products";
+  products: IProduct[] = [];
+  selectedCategory="";
 
   constructor(private http: HttpClient) { }
 
   viewAllProducts(): Observable<any> {
-    console.log("made it to product service view all products");
     return this.http.get<object>(this.baseUrl + "/all", { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      )
+  }
+
+  viewProductById(id:string): Observable<any> {
+    return this.http.get<object>(this.baseUrl + `/id/${id}`, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      )
+  }
+
+  viewCategorizedProducts(category: CategoryType): Observable<any> {
+    return this.http.get<object>(this.baseUrl + `/search/cat?category=${category}`, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -32,6 +51,21 @@ export class ProductService {
     }
     console.log(errorMessage);
     return throwError(() => new Error(errorMessage));
+  }
+
+
+  setSelectedCategory(category : CategoryType | "") {
+    this.selectedCategory = category;
+  }
+
+  getSelectedCategory() {
+    return this.selectedCategory ;
+  }
+
+  filterByKeywords(data: IProduct[], keyword: string) {
+    return (keyword === "" || keyword == null) ? data : data.filter(p => p.keywords.includes(keyword) ||
+      p.description.toLocaleLowerCase().includes(keyword) ||
+      p.name.toLowerCase().includes(keyword));
   }
 
 }
