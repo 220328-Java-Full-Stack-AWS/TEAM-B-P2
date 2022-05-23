@@ -22,8 +22,8 @@ phases:
       - cd p2-frontend
       - npm install
       - npm install -g @angular/cli
-      - ng build
       - npm i --save @fortawesome/fontawesome-svg-core
+      - ng build
       - cd ../..
   post_build:
     commands:
