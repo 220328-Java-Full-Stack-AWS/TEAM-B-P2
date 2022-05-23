@@ -24,7 +24,7 @@ phases:
       - npm install -g @angular/cli
       - npm i --save @fortawesome/fontawesome-svg-core
       - ng build
-      - cd ../..
+      - cd ..
   post_build:
     commands:
       - echo ============================post-build================================
@@ -32,6 +32,8 @@ phases:
       - ls -al
       - cd p2-frontend/dist/front-end-testing
       - aws s3 cp "./" "s3://p2-s3-bucket/" --recursive
+      - pwd
+      - ls -al
       - cd ../../../..
       - pwd
       - mv target/p2-backend-0.0.1.war ROOT.war
