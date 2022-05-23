@@ -1,6 +1,5 @@
 package com.revature.p2backend.Dto;
 
-//This class is for login
 public class AuthDto {
     private String username;
     private String password;

@@ -1,40 +1,34 @@
 package com.revature.p2backend.entities;
 
+
 public enum Category {
 
     NECKLACES{
         @Override
         public String toString() {
-            return "Necklaces";
+            return "NECKLACES";
         }
     },
 
     RINGS{
         @Override
         public String toString() {
-            return "Rings";
+            return "RINGS";
         }
     },
 
     BRACELETS{
         @Override
         public String toString() {
-            return "Bracelets";
+            return "BRACELETS";
         }
     },
 
     EARRINGS{
         @Override
         public String toString() {
-            return "Earrings";
+            return "EARRINGS";
         }
     }
-
-
-
-
-
-
-
 
 }

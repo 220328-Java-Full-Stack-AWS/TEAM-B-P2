@@ -1,7 +1,7 @@
 package com.revature.p2backend.Dto;
 
+import java.util.HashSet;
 
-//This class is a partial of the User class
 public class UserDto {
     private Integer id;
     private String firstName;

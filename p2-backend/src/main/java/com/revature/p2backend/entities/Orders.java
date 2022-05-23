@@ -1,30 +1,28 @@
 package com.revature.p2backend.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name="orders", schema = "p2")
+@Table(name="orders" , schema="public")
 @JsonIgnoreProperties
 public class Orders {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="order_id", unique = true, nullable = false)
+    private Integer id;
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name="order_id")
-private Integer id;
+    @Column(name="creation_date")
+    private String creationDate;
 
-
-@Column(name="creation_date")
-private String creationDate;
-
-@Column(name="order_total")
-private Double ordetTotal;
+    @Column(name="order_total")
+    private Double orderTotal;//changed to Double from Big Decimal
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
@@ -39,24 +37,27 @@ private Double ordetTotal;
     private User user;
 
     @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY)
-    private List<OrderItem> orderItems = new LinkedList<OrderItem>();
+    @JsonManagedReference
+    private List<OrderItem> orderItems;
 
 
-    public Orders() {
-    }
-
-    public Orders(String creationDate, Address address, User user) {
+    public Orders( String creationDate, Address address, User user) {
+        this.orderItems = new LinkedList<>();
         this.creationDate = creationDate;
         this.address = address;
         this.user = user;
     }
 
-    public Orders(String creationDate, Address address,
-                  Address billingAddress, User user) {
+    //added constructor for create order with billing address
+    public Orders(String creationDate, Address address, Address billingAddress, User user) {
         this.creationDate = creationDate;
         this.address = address;
         this.billingAddress = billingAddress;
         this.user = user;
+    }
+
+    public Orders() {
+
     }
 
     public Integer getId() {
@@ -75,12 +76,12 @@ private Double ordetTotal;
         this.creationDate = creationDate;
     }
 
-    public Double getOrdetTotal() {
-        return ordetTotal;
+    public Double getOrderTotal() {
+        return orderTotal;
     }
 
-    public void setOrdetTotal(Double ordetTotal) {
-        this.ordetTotal = ordetTotal;
+    public void setOrderTotal(Double orderTotal) {
+        this.orderTotal = orderTotal;
     }
 
     public Address getAddress() {
@@ -89,6 +90,14 @@ private Double ordetTotal;
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     public User getUser() {
@@ -103,16 +112,8 @@ private Double ordetTotal;
         return orderItems;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public Address getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setOrderItems(OrderItem orderItem) {
+        this.orderItems.add(orderItem);
     }
 
     @Override
@@ -120,10 +121,22 @@ private Double ordetTotal;
         return "Orders{" +
                 "id=" + id +
                 ", creationDate=" + creationDate +
-                ", ordetTotal=" + ordetTotal +
+                ", OrderTotal=" + orderTotal +
                 ", address=" + address +
                 ", user=" + user +
-                ", orderItems=" + orderItems +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Orders orders = (Orders) o;
+        return Objects.equals(id, orders.id) && Objects.equals(address, orders.address) && Objects.equals(billingAddress, orders.billingAddress) && Objects.equals(orderItems, orders.orderItems);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, address, billingAddress, orderItems);
     }
 }

@@ -1,16 +1,15 @@
 package com.revature.p2backend.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name="address" , schema="p2")
+@Table(name="address" , schema="public")
 @JsonIgnoreProperties
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="address_id")
@@ -34,13 +33,10 @@ public class Address {
     @OneToMany(mappedBy="address",fetch = FetchType.LAZY)
     private List<Orders> orders;
 
-
-
     public Address() {
     }
 
-    public Address(String number, String street, String city,
-                   String state, String zipCode) {
+    public Address(String number, String street, String city, String state, String zipCode) {
         this.number = number;
         this.street = street;
         this.city = city;
@@ -101,6 +97,7 @@ public class Address {
         return orders;
     }
 
+
     public void setOrders(List<Orders> orders) {
         this.orders = orders;
     }
@@ -117,5 +114,18 @@ public class Address {
                 ", zipCode='" + zipCode + '\'' +
                 ", orders=" + orders +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(addressId, address.addressId) && number.equals(address.number) && street.equals(address.street) && city.equals(address.city) && state.equals(address.state) && zipCode.equals(address.zipCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(addressId, number, street, city, state, zipCode);
     }
 }

@@ -10,26 +10,35 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-//To make this class a bean
+/**
+ * This Dao is for CRUD functionality on addresses. The
+ * CRUD is implemented from the HibernateDao interface for
+ * basic functionality. The Hibernate Dao implements
+ * the lifecycle phases and forces methods Start, stop
+ * and isRunning.
+ */
 @Repository
-public class AddressDao implements HibernateDao<Address> {
-
-    //we need this to get the session object to
-    //make a connection with database
-    //then with that session we can start a transaction and
-    //and then make a connection with adress objects and database
-    //to make those objects persistent
+public class AddressDao implements HibernateDao<Address>{
+    /**
+     * This is the StorageManager we will use and call throughout this class. It will
+     * give us access to all the StorageManager methods with in the StorageManager class.
+     * The StorageManager is also marked as a "service" bean. We have not Autowired this class
+     * declaration, as it is not a good practice.
+     */
     private final StorageManager storageManager;
-    private boolean running = false;
-    private Session session;
+    private boolean running = false; //Used to tell if the bean is running
 
+    private Session session; //session that becomes usable upon start, see below
 
-
+    /**
+     * This is a constructor and is better practice to Autowire here. This initializes the
+     * StorageManager without having to initialize it to null or as a new object which would make it tightly coupled.
+     * @param storageManager
+     */
     @Autowired
-    public  AddressDao(StorageManager storageManager){
-
+    public AddressDao(StorageManager storageManager){
         this.storageManager = storageManager;
-    }
+    }//make connection to the table address
 
     @Override
     public Address save(Address address) {
@@ -46,7 +55,6 @@ public class AddressDao implements HibernateDao<Address> {
         return query.getResultList();
     }
 
-
     @Override
     public Address getById(Integer id) {
         String hql = "FROM Address WHERE id = :id";
@@ -57,7 +65,6 @@ public class AddressDao implements HibernateDao<Address> {
         return address;
     }
 
-
     @Override
     public Address update(Address address) {
         Transaction tx = session.beginTransaction();
@@ -67,35 +74,41 @@ public class AddressDao implements HibernateDao<Address> {
     }
 
     @Override
-    public void delete(Address address) {
+    public Address delete(Address address) {
         Transaction tx = session.beginTransaction();
         String hql = "DELETE FROM Address WHERE id = :id";
         TypedQuery<Address> query = session.createQuery(hql);
         query.setParameter("id", address.getAddressId());
         query.executeUpdate();
         tx.commit();
+        return address;
     }
 
-
+    /**
+     * This method will start the component and establish a usable session
+     * for the rest of the class.
+     */
     @Override
     public void start() {
         this.session = storageManager.getSession();
         running = true;
     }
 
-
+    /**
+     * Will destroy the connection when complete.
+     */
     @Override
     public void stop() {
         running = false;
         session.close();
     }
 
+    /**
+     * This will return a boolean if this component/bean is running.
+     * @return
+     */
     @Override
     public boolean isRunning() {
         return running;
     }
-
-
-
-
 }

@@ -1,6 +1,5 @@
 package com.revature.p2backend.beans.services;
 
-
 import com.revature.p2backend.Dto.AuthDto;
 import com.revature.p2backend.Dto.UserDto;
 import com.revature.p2backend.beans.dao.UserDao;
@@ -8,36 +7,49 @@ import com.revature.p2backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * This class performs actions/services for the user.
+ */
 @Service
 public class UserService {
+    /**
+     * This is the UserDao we will use and call throughout this class. It will
+     * give us access to all the UserDao methods with in the UserDao class.
+     * The UserDao is also marked as a "repository" bean. We have not Autowired this class
+     * declaration, as it is not a good practice.
+     */
+    private final UserDao userDao;
 
-private final UserDao userDao;
-
-//this is the constructor and it has @Autowired
-    //because it wants to search the dependency which is the userDao
-    //bean when want to instantiate the UserService bean
-
+    /**
+     * This is a constructor and is better practice to Autowire here. This initializes the
+     * UserDao without having to initialize it to null or as a new object which would make it tightly coupled.
+     * @param userDao
+     */
     @Autowired
     public UserService(UserDao userDao){
-    this.userDao = userDao;
-}
-
-//public User save(User user) {
-public Integer save(User user){
-    if(!userDao.isUsernameUnique(user.getUserName())){
-        return 1;
-    }
-    else if (!userDao.isUserEmailUnique(user.getEmail())) {
-        return 2;
-    }
-    else {
-        userDao.save(user);
-        return 0;
+        this.userDao = userDao;
     }
 
-}
+    /**
+     * This method will return an Integer to the UserController layer.
+     * Based on that number it will return an appropriate response to the front
+     * end. It takes in a user to send to the user dao to create a new user.
+     * @param user
+     * @return
+     */
+    public Integer save(User user){
+            if(!userDao.isUsernameUnique(user.getUserName())){
+                return 1;
+            }
+            else if (!userDao.isUserEmailUnique(user.getEmail())) {
+                return 2;
+            }
+            else {
+                userDao.save(user);
+                return 0;
+            }
+
+    }
 
     /**
      * This method is to authenticate a user. It takes in an AuthDto,
@@ -58,42 +70,16 @@ public Integer save(User user){
         }
     }
 
-
-//public User updateBySession(User user) {
-    public User updateBySession(User user){
-        userDao.updateBySession(user);
-        return user;
-    }
-
-//public void deleteBySession(User user) {
-    public void deleteBySession(User user){
-        userDao.deleteBySession(user);
-    }
-
-//public List<User> getAll() {
-    public List<User> getAll(){
-        List list = userDao.getAll();
-        return list;
-    }
-
-//public User getById(Integer id) {
-public User getUserByUserId(Integer id){
-
-    return userDao.getById(id);
-}
-
+    /**
+     * This simply returns a user based on user id. The user id comes from the
+     * User controller in a request body.
+     * @param user
+     * @return
+     */
     public User getUserByUserId(User user){
-
         return userDao.getById(user.getId());
     }
 
-//public User getUserByUserName(String username) {
-    public User getByUsername(String userName){
-        User user = userDao.getUserByUserName(userName);
-        return user;
-    }
-
-//public User update(User user) {
     /**
      * This method is to update a users information. Since it is only receiving partial
      * information, it takes in a UserDto (this does not include some typical user information)
@@ -113,18 +99,5 @@ public User getUserByUserId(Integer id){
         user.getEmail();
         return userDao.update(user);
     }
-
-//public User delete(User user) {
-    public void delete(User user){
-        userDao.delete(user);
-
-    }
-
-
-
-
-
-
-
 
 }

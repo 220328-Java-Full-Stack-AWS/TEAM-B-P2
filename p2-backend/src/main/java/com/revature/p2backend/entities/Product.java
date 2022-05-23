@@ -1,32 +1,30 @@
 package com.revature.p2backend.entities;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "products", schema = "p2")
+@Table(name = "products")
+@JsonIgnoreProperties
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
-    private Integer productId;
+    @Column(name="product_id")
+    private Integer productId ;
 
     @Column
-    private String name;
-
+    private String name; //added name column
 
     @Column
     private String description;
 
     @Column
-    private Double price;
+    private Double price;//changed to Double
 
     @Column
     private Integer inventory;
-
 
 //    @OneToOne(mappedBy = "productId")
 //    private OrderItem orderItem;
@@ -36,31 +34,26 @@ public class Product {
     @Type(type = "com.revature.p2backend.beans.utilities.EnumConverter")
     private Category category;
 
-
     public Product() {
     }
 
-    public Product(String name, String description, Double price,
-                   Integer inventory, Category category) {
+    public Product(String name, String description, Double price, Integer inventory) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
+    }
+
+
+    public Product(String name, String description, Double price, Integer inventory, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.inventory = inventory;
         this.category = category;
     }
-
-
-    public Product(String name, String description,
-                   Double price, Integer inventory) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.inventory = inventory;
-    }
-
-    public Product(Integer productId, String name, String description,
-                   Double price, Integer inventory, Category category) {
-        this.productId = productId;
+    public Product(Integer id,String name, String description, Double price, Integer inventory, Category category) {
+        this.productId=id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -109,6 +102,14 @@ public class Product {
     }
 
 
+//    public OrderItem getOrderItem() {
+//        return orderItem;
+//    }
+//
+//    public void setOrderItem(OrderItem orderItem) {
+//        this.orderItem = orderItem;
+//    }
+
     public Category getCategory() {
         return category;
     }
@@ -121,13 +122,10 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "productId=" + productId +
-                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", inventory=" + inventory +
+//                ", orderItem=" + orderItem +
                 ", category=" + category +
                 '}';
     }
 }
-
-

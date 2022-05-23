@@ -8,18 +8,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.List;
-
+/**
+ * This controller is for the user and will send certain response status's back
+ * based on what is received from the front end. It is used for viewing the current
+ * user information (a get), to register a new user (post) and to update a user (put)
+ * The update does not update the email or username.
+ */
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
+    /**
+     * This is the UserService we will use and call throughout this class. It will
+     * give us access to all the user service methods with in the UserService class.
+     * The UserService is also marked as a "service" bean. We have not Autowired this,
+     * as it is not a good practice.
+     */
     private final UserService userService;
-
+    /**
+     * This is a constructor and is better practice to Autowire here. This initializes the
+     * user service without having to initialize it to null or as a new object which would make it tightly coupled.
+     * @param userService
+     */
     @Autowired
     public UserController(UserService userService){
-
         this.userService = userService;
     }
 
@@ -37,14 +48,6 @@ public class UserController {
         return userService.getUserByUserId(user);
     }
 
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllUsers(){
-        return userService.getAll();
-
-}
-
     /**
      * This is the create user method. It receives all the parts for a user
      * object, sends it to the service layer. The service layer responds back
@@ -54,10 +57,10 @@ public class UserController {
      * @return
      */
     @PostMapping("/register")
-    ResponseEntity<User> createUser(@RequestBody User user) {
+    ResponseEntity<User> createUser(@RequestBody User user){
 
         Integer result = userService.save(user);
-        switch (result) {
+        switch(result){
             case 0:
                 System.out.println("Successfully created new user");
                 return new ResponseEntity<>(HttpStatus.OK);
@@ -65,8 +68,7 @@ public class UserController {
                 System.out.println("Username is not unique");
                 return new ResponseEntity<>(HttpStatus.CONFLICT);
             case 2:
-                System.out.println("User email is not unique");
-                ;
+                System.out.println("User email is not unique");;
             default:
                 System.out.println("unable to create user");
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -86,43 +88,4 @@ public class UserController {
         System.out.println("successfully updated user");
         return userService.update(userDto);
     }
-
-
-
-
-    @PostMapping("/test")
-    @ResponseStatus(HttpStatus.OK)
-    public String testForCompleteUser(@RequestBody @Valid User user){
-
-        return "success";
-    }
-
-
-
-
-    //http://localhost:8080/users/1
-    //or http://localhost:8080/users/kplummer
-    //http://localhost:8080/users/@PathVariable
-    //in Headers @RequestHeader :  mode    usename
-    //or in Headres @RequestHeader : mode      id
-    //{} in GetMapping means that the value of username or password
-    //should come after /users
-    @GetMapping("/{usernameOrId}")
-    @ResponseStatus(HttpStatus.OK)
-    public User readUserByUsernameOrId(@PathVariable String usernameOrId,
-                                       @RequestHeader("mode") String mode)
-                                       throws Exception{
-
-    switch (mode){
-        case "username":
-            return userService.getByUsername(usernameOrId);
-        case "id":
-            return userService.getUserByUserId(Integer.parseInt(usernameOrId));
-        default:
-            throw new Exception("That is not a valid mode");
-    }
-
-
-    }
-
 }

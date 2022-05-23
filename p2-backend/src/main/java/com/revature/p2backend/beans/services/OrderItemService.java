@@ -1,59 +1,65 @@
 package com.revature.p2backend.beans.services;
 
-import com.revature.p2backend.beans.dao.OrderItemDoa;
+import com.revature.p2backend.beans.dao.OrderItemDao;
+
 import com.revature.p2backend.entities.OrderItem;
 import com.revature.p2backend.entities.Orders;
+
+import com.revature.p2backend.entities.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+
 
 @Service
 public class OrderItemService {
 
-    private final OrderItemDoa orderItemDoa;
+    private final OrderItemDao orderItemDao;
+
 
     @Autowired
-    public OrderItemService(OrderItemDoa orderItemDoa){
-        this.orderItemDoa = orderItemDoa;
+    public OrderItemService(OrderItemDao orderItemDao) {
+
+        this.orderItemDao = orderItemDao;
     }
 
-    //public OrderItem save(OrderItem orderItem) {
-    public  OrderItem createOrderItem(OrderItem orderItem){
-        return orderItemDoa.save(orderItem);
+    public OrderItem craeteOrderItem(OrderItem orderItem){
+
+        return orderItemDao.save(orderItem);
     }
 
-    //public List<OrderItem> getAll() {
+
+
     public List<OrderItem> getAllOrderItems(){
 
-        return orderItemDoa.getAll();
+        return orderItemDao.getAll();
     }
 
 
-    //public OrderItem getById(Integer id) {
     public OrderItem getOrderItemById(Integer id){
-        return orderItemDoa.getById(id);
+
+        return orderItemDao.getById(id);
     }
 
 
-    //public void delete(OrderItem orderItem) {
-    public void deleteOrderItem(OrderItem orderItem){
+    public OrderItem deleteOrderItem(OrderItem orderItem){
 
-        orderItemDoa.delete(orderItem);
+        orderItemDao.delete(orderItem);
+        return orderItem;
     }
 
 
-    //public OrderItem update(OrderItem orderItem) {
     public OrderItem updateOrderItem(OrderItem orderItem){
 
-        return orderItemDoa.update(orderItem);
+        return orderItemDao.update(orderItem);
     }
 
-
-    //public List<OrderItem> getOrderItemsByOrder (Orders o){
     public List<OrderItem> getOrderItemsByOrder(Orders order){
-        return orderItemDoa.getOrderItemsByOrder(order);
+
+        return orderItemDao.getOrderItemsByOrder(order);
     }
+
 
 }

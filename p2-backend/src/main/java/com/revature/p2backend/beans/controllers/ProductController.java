@@ -1,19 +1,18 @@
 package com.revature.p2backend.beans.controllers;
-
-
 import com.revature.p2backend.beans.services.ProductService;
 import com.revature.p2backend.entities.Category;
 import com.revature.p2backend.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.Optional;
+
+import static com.revature.p2backend.entities.Category.NECKLACES;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
     private final ProductService productService;
 
     @Autowired
@@ -75,7 +74,12 @@ public class ProductController {
     @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.OK)
     public void deleteProduct(@RequestBody Product product) {
-        productService.delete(product);
+       productService.delete(product);
     }
 
 }
+
+
+
+
+

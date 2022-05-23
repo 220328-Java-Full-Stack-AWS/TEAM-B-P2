@@ -17,41 +17,30 @@ public class OrdersController {
 
     @Autowired
     public OrdersController(OrdersService ordersService){
-
         this.ordersService = ordersService;
     }
 
     @GetMapping("/byCurrentUser")
     @ResponseStatus(HttpStatus.OK)
     public List<Orders> getByUser(@RequestBody User user){
-
         return ordersService.getOrdersByUser(user);
     }
 
     @GetMapping("/byOrderId")
     @ResponseStatus(HttpStatus.OK)
     public Orders getById(@RequestHeader("id") String id){
-
         return ordersService.getOrdersById(Integer.parseInt(id));
     }
 
     @PostMapping("/newOrder")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void createNewOrder(@RequestBody Orders orders){
-
         ordersService.createOrder(orders);
     }
 
     @PutMapping("/updateOrder")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateOrder(@RequestBody Orders orders){
-
         ordersService.updateOrder(orders);
     }
-
-
-
-
-
-
 }

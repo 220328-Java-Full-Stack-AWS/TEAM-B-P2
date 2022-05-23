@@ -1,6 +1,5 @@
 package com.revature.p2backend.beans.services;
 
-
 import com.revature.p2backend.beans.dao.ProductDao;
 import com.revature.p2backend.entities.Category;
 import com.revature.p2backend.entities.Product;
@@ -8,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
-
-
     //TODO convert this into a service and add appropriate methods
     /*
     examples of methods: view
@@ -66,5 +64,7 @@ public class ProductService {
     public void delete(Product product){
         productDao.delete(product);
     }
+
+
 
 }
