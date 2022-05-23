@@ -29,6 +29,9 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(Product.class);
 
         context.start();
+        User user = new User("t", "t", "t", "t", "t", "t");
+        UserDao userDao = context.getBean(UserDao.class);
+        userDao.save(user);
 
     }
 }

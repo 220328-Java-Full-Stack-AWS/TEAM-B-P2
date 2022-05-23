@@ -14,6 +14,7 @@ import { ContentComponent } from './content/content.component';
 import { AuthService } from './services/auth.service';
 import { ProductViewsComponent } from './pages/product-views/product-views.component';
 import { SearchBoxComponent } from './component/search-box/search-box.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchBoxComponent } from './component/search-box/search-box.component'
     UserRegistrationComponent,
     ContentComponent,
     ProductViewsComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

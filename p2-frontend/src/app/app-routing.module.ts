@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductViewsComponent } from './pages/product-views/product-views.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserViewComponent } from './pages/user-view/user-view.component';
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'user-registration',
     component: UserRegistrationComponent
+  },
+  {
+    path: 'user-update',
+    component: UserUpdateComponent
   }
 ];
 
