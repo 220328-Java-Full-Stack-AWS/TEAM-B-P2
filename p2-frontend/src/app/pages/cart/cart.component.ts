@@ -1,3 +1,4 @@
+import { OrderItem } from 'src/app/services/order-item.service';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -8,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public products: any = [];
+  public orderItems: OrderItem[] = [];
   public grandTotal: number = 0;
   constructor(private cartService: CartService) { }
   // cartItems = sessionStorage.getItem("product");
@@ -40,7 +41,7 @@ export class CartComponent implements OnInit {
     // this.cartItems
     this.cartService.getProducts()
       .subscribe(res=>{
-        this.products = res;
+        this.orderItems = res;
         this.grandTotal = this.cartService.getTotalPrice();
       })
 
