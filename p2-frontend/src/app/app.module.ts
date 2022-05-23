@@ -17,12 +17,13 @@ import { SearchBoxComponent } from './component/search-box/search-box.component'
 import { HeaderComponent } from "./component/header/header.component";
 import { ProductComponent } from './component/product/product.component';
 import { ProductsComponent } from './component/products/products.component';
-import { CustomBtn } from "./component/custom-btn/custom-btn.component";
+import { AddToCartBtn } from "./component/add-to-cart-btn/add-to-cart-btn.component";
 import { CartComponent } from './pages/cart/cart.component';
 import { CartItemComponent } from './component/cart-item/cart-item.component';
 import { PlaceOrderBtnComponent } from './component/place-order-btn/place-order-btn.component';
 import { CheckoutBtnComponent } from './component/checkout-btn/checkout-btn.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CartIconComponent } from './component/cart-icon/cart-icon.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +38,13 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     HeaderComponent,
     ProductComponent,
     ProductsComponent,
-    CustomBtn,
+    AddToCartBtn,
     CartComponent,
     CartItemComponent,
     PlaceOrderBtnComponent,
     CheckoutBtnComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CartIconComponent
 
   ],
   imports: [
