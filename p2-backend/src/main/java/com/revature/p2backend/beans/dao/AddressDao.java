@@ -2,6 +2,7 @@ package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.beans.utilities.StorageManager;
 import com.revature.p2backend.entities.Address;
+import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,15 @@ public class AddressDao implements HibernateDao<Address>{
         Address address = query.getSingleResult();
         session.persist(address);
         return address;
+    }
+
+    public List<Address> getAddressByUser(User user){
+
+        TypedQuery<Address> query = session.createQuery("FROM Address WHERE userId = :user", Address.class);
+        query.setParameter("user", user);
+        List<Address> addresses = query.getResultList();
+        //session.persist(addresses);
+        return addresses;
     }
 
     @Override

@@ -48,6 +48,7 @@ public class UserController {
         return userService.getUserByUserId(user);
     }
 
+
     /**
      * This is the create user method. It receives all the parts for a user
      * object, sends it to the service layer. The service layer responds back
