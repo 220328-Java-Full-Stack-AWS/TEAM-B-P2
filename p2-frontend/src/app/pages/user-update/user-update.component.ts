@@ -5,7 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-user-update',
   templateUrl: './user-update.component.html',
-  styleUrls: ['./user-update.component.css']
+  styleUrls: ['./user-update.component.scss']
 })
 export class UserUpdateComponent implements OnInit {
 
@@ -25,6 +25,15 @@ export class UserUpdateComponent implements OnInit {
   
 
   onClick(_username: string, _password: string, _firstName: string, _lastName: string, _email: string, _phone: string): void {
+    const local = localStorage.getItem("currentUser")
+    if (!local)
+      return;
+      const u: User | undefined = JSON.parse(local);
+    if (!u)
+      return;
+    const userId = u.id;
+
+    this.user.id = userId;
     this.user.userName = _username;
     this.user.password = _password;
     this.user.firstName = _firstName;
@@ -42,7 +51,7 @@ export class UserUpdateComponent implements OnInit {
       console.log("trying to update data with: ", data)
       this.user = data;
       console.log("logged in user ", this.user);
-      localStorage.setItem("currentUser", this.user.userName);
+      localStorage.setItem("currentUser", JSON.stringify(this.user));
     })
 
     
@@ -56,7 +65,9 @@ export class UserUpdateComponent implements OnInit {
     }
     else {
       console.log("current User", token);
-      this.userService.getUserByUsername(token).subscribe(
+      let u = JSON.parse(token);
+      console.log(u);
+      this.userService.getUserByUsername(u.userName).subscribe(
         (data) => {
           console.log("returned data: ", data)
           this.user = data;

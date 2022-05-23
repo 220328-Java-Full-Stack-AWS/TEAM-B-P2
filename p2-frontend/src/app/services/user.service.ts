@@ -58,6 +58,7 @@ export class UserService {
 }
 
 export class User {
+  id: number | undefined;
   userName: String;
   password: String;
   firstName: String;

@@ -24,16 +24,16 @@ export class CartComponent implements OnInit {
   }
 
   goToCheckout(){
-    let token = localStorage.getItem('currentUser:')
+    let token = localStorage.getItem('currentUser')
     if(!token){
       alert("You are not logged in");
     }
     else{
       let user = JSON.parse(token);
-      this.cartService.checkout(this.cartService.cartItemList, user).subscribe((data) =>{
+      this.cartService.checkout(this.cartService.orderItemList, user).subscribe((data) => {
         console.log('this is the data from the back', data);
       });
-      console.log("go to checkout:", token, this.cartService.cartItemList);
+      console.log("go to checkout:", user, this.cartService.orderItemList);
     }
   }
 

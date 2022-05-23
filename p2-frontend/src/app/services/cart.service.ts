@@ -11,7 +11,7 @@ import { User } from './user.service';
 export class CartService {
 
 
-  public cartItemList: OrderItem[]=[];
+  public orderItemList: OrderItem[]=[];
   public productList = new BehaviorSubject<OrderItem[]>([]);
   constructor(private orderItemService: OrderItemService, private http: HttpClient) { }
 
@@ -26,34 +26,34 @@ export class CartService {
   // }
 
   addToCart(product: IProduct){
-    let orderItem = this.cartItemList.find(item => item.product.productId === product.productId)
+    let orderItem = this.orderItemList.find(item => item.productId.productId === product.productId)
 
     if(orderItem){
       orderItem.quantity++;
     }
     else{
       orderItem = new OrderItem(product, 1)
-      this.cartItemList.push(orderItem);
+      this.orderItemList.push(orderItem);
     }
 
-    this.productList.next(this.cartItemList)
-    console.log(this.cartItemList);
+    this.productList.next(this.orderItemList)
+    console.log(this.orderItemList);
 
   }
 
   removeCartItem(product: OrderItem){
     console.log("made it to remove cart item");
-    this.cartItemList.map((a:OrderItem, index: number)=>{
+    this.orderItemList.map((a:OrderItem, index: number)=>{
       if(product === a){
-        this.cartItemList.splice(index, 1);
+        this.orderItemList.splice(index, 1);
       }
     })
-    this.productList.next(this.cartItemList);
+    this.productList.next(this.orderItemList);
   }
 
   removeAllCartItems(){
-    this.cartItemList = [];
-    this.productList.next(this.cartItemList);
+    this.orderItemList = [];
+    this.productList.next(this.orderItemList);
   }
 
   // getTotalProductPrice(): number{
@@ -66,8 +66,8 @@ export class CartService {
 
   getTotalPrice(): number{
     let grandTotal = 0;
-    this.cartItemList.forEach((a:OrderItem)=>{
-      const itemTotalAmount= (100-a.product.discount)*a.product.price/100*a.quantity
+    this.orderItemList.forEach((a:OrderItem)=>{
+      const itemTotalAmount= (100-a.productId.discount)*a.productId.price/100*a.quantity
       grandTotal += itemTotalAmount;
     })
     return grandTotal;
@@ -76,9 +76,10 @@ export class CartService {
   checkout(orderItemList: any[], user: User): Observable<any> {
     let cartDto = new CartDto(orderItemList, user);
     console.log('This is the cart we want to pass', cartDto);
-    return this.http.post<any>(this.url, JSON.stringify(cartDto), {headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
-    .pipe(
-      retry(1),
+    console.log('This is the cart we want to pass', JSON.stringify(cartDto));
+    return this.http.post<any>(this.url, JSON.stringify(cartDto), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+      .pipe(
+      retry(0),
       catchError(this.errorHandler),
     );
   }

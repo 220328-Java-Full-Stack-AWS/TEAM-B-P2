@@ -12,13 +12,13 @@ export class OrderItemService {
 }
 
 export class OrderItem {
-  product: IProduct;
+  productId: IProduct;
   orderId: number;
   quantity:number;
 
 
   constructor(product : IProduct ,orderId: number) {
-    this.product = {...product, discount : product.discount ?? 0};
+    this.productId = {...product, discount : product.discount ?? 0};
     this.orderId = orderId;
     this.quantity=1;
 
