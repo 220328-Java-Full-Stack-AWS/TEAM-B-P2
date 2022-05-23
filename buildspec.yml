@@ -28,6 +28,7 @@ phases:
   post_build:
     commands:
       - echo ============================post-build================================
+      - ls -al
       - cd p2-frontend/dist/front-end-testing
       - aws s3 cp "./" "s3://p2-s3-bucket/" --recursive
       - cd ../../../..
