@@ -20,7 +20,7 @@ public class OrderItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id" , referencedColumnName = "order_id" )
     @JsonBackReference
-    private Orders orders  ;
+    private Orders orders;
 
     @Column(name="item_total_amount")
     private Double itemTotalAmount;//changed to Double

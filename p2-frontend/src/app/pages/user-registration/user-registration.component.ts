@@ -19,7 +19,7 @@ export class UserRegistrationComponent implements OnInit {
   email: String = "";
 
   onClickRegister(username: String, password: String, fName: String, lName: String, email: String) {
-    let user = new User(this.username, this.password, this.fName, this.lName, this.email);
+    let user = new User(this.username, this.password, this.fName, this.lName, this.email, "");
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

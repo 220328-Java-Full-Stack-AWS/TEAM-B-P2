@@ -73,11 +73,11 @@ public class UserService {
     /**
      * This simply returns a user based on user id. The user id comes from the
      * User controller in a request body.
-     * @param user
+     * @param username
      * @return
      */
-    public User getUserByUserId(User user){
-        return userDao.getById(user.getId());
+    public User getUserByUsername(String username){
+        return userDao.getUserByUserName(username);
     }
 
     /**
@@ -89,6 +89,7 @@ public class UserService {
      * @return
      */
     public User update(User user){
+
         return userDao.update(user);
     }
 

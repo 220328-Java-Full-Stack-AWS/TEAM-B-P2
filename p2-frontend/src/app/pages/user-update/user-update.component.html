@@ -1,0 +1,30 @@
+<p>user-update works!</p>
+<h1>Update User Info</h1>
+<div>
+    <label>Current Username: {{user.userName}}</label> | 
+    <label>New Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username">
+    <br>
+    <label>Current Password: {{user.password}}</label> |
+    <label>New Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password">
+    <br>
+    <label>Current First Name: {{user.firstName}}</label> |
+    <label>New First Name:</label>
+    <input type="text" id="fName" name="firstName" [(ngModel)]="firstName">
+    <br>
+    <label>Current Last Name: {{user.lastName}}</label> |
+    <label>New Last Name:</label>
+    <input type="text" id="lName" name="lastName" [(ngModel)]="lastName">
+    <br>
+    <label>Current Email: {{user.email}}</label> |
+    <label>New Email:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="email">
+    <br>
+    <label>Current Phone #: {{user.phoneNumber}}</label> |
+    <label>New Phone:</label>
+    <input type="text" id="phone" name="phone" [(ngModel)]="phone">
+</div>
+
+<input type="submit" value="Update Info" name="Update"
+    (click)="onClick((username), (password), (firstName), (lastName), (email), (phone))">

@@ -32,9 +32,7 @@ public class Address {
     @OneToMany(mappedBy="address",fetch = FetchType.LAZY)
     private List<Orders> orders;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id" , referencedColumnName = "user_id")
-    private User userId;
+
 
     public Address() {
     }

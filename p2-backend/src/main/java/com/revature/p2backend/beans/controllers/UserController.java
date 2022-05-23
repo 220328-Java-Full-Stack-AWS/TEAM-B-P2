@@ -37,15 +37,15 @@ public class UserController {
     /**
      * This method receives a request from the body (get) as the user id and then sends back
      * the user information.
-     * @param user
+     * @paramuser
      * @return
      */
     //TODO possibly figure out a way to not send the password back
     @GetMapping("/currentuser")
     @ResponseStatus(HttpStatus.OK)
-    public User viewUser(@RequestBody User user){
+    public User viewUser(@RequestHeader("username") String username){
         System.out.println("You are now viewing the user");
-        return userService.getUserByUserId(user);
+        return userService.getUserByUsername(username);
     }
 
 

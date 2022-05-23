@@ -32,14 +32,6 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(Product.class);
 
         context.start();
-        User user = new User("username", "password", "first", "last", "email@email.com", "1234567890");
-        UserDao userdao = context.getBean(UserDao.class);
-        //AddressDao addressDao = context.getBean(AddressDao.class);
-        //AddressService addressService = context.getBean(AddressService.class);
-        AddressController addressController = context.getBean(AddressController.class);
-        userdao.save(user);
-        Address address = new Address("12", "stree", "city", "state", "12345", user);
-        addressController.createAddress(address);
-        addressController.getAddressesByUser(user);
+
     }
 }
