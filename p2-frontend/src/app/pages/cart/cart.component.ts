@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
   }
 
   goToCheckout(){
-    let token = sessionStorage.getItem('currentUser:')
+    let token = localStorage.getItem('currentUser:')
     if(!token){
       alert("You are not logged in");
     }

@@ -22,7 +22,7 @@ export class ProductViewsComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router) { }
 
-  @Input() quantity: number = 0;
+  // @Input() quantity: number = 0;
 
   // TODO to look
   // public productList: any[] = [
