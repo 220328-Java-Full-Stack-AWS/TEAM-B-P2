@@ -40,7 +40,7 @@ phases:
       - cd ..
       - pwd
       - ls -al
-      - cd..
+      - cd ..
       - pwd
       - ls -al
       - cd ..
@@ -50,7 +50,7 @@ phases:
       - pwd
       - ls- al
       - cd p2-backend
-      - mv target/p2-backend-0.0.1.war ROOT.war
+      - mv /codebuild/output/src877076733/src/p2-backend/target/p2-backend-0.0.1.war ROOT.war
 artifacts:
   files:
     - ROOT.war
