@@ -1,6 +1,7 @@
 import { IProduct } from 'src/app/types/IProduct';
 import { AfterContentInit, Component,Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ export class ProductComponent implements OnInit, AfterContentInit  {
   @Input() item? : IProduct;
   @Input() show?: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cartService: CartService) {
    }
   ngOnInit(): void {
 
@@ -27,13 +28,7 @@ export class ProductComponent implements OnInit, AfterContentInit  {
     this.router.navigate([`/product-details/${this.item?.productId}`]);
   }
   onAddToCartClick(){
-    /* if loggein
-      Add this.item to Shopping Cart
-
-      else
-      */
-      this.router.navigate(['/user-registration']);
-
+    this.cartService.addToCart(this.item)
   }
 
 

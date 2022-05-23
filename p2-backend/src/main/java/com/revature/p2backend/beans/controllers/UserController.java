@@ -80,12 +80,12 @@ public class UserController {
      * as we do not want to allow for username and email updates. The UserDto gets
      * migrated to a User object in the UserService class and then sent back to the
      * UserDao to be updated.
-     * @param userDto
+     * @param user
      * @return
      */
     @PutMapping("/update")
-    public User updateUser(@RequestBody UserDto userDto){
+    public User updateUser(@RequestBody User user){
         System.out.println("successfully updated user");
-        return userService.update(userDto);
+        return userService.update(user);
     }
 }

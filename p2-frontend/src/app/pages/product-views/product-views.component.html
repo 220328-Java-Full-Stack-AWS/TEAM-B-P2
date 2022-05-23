@@ -1,5 +1,32 @@
+<!-- TODO too look
+<div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Inventory</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Product Id</th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let product of productList; let i = index">
+                    <td>{{product.category}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.inventory}}</td>
+                    <td>{{product.name}}</td>
+                    <td>${{product.price}}</td>
+                    <td>{{product.productId}}</td>
+                    <td><input type="number" min="0" name="quantity" id="quantity"></td>
+                    <td><input (click)="addToCart(this.product, this.quantity)" type="submit" value="Add to cart"></td>
+                </tr>
+            </tbody>
+    </table> -->
+
+
 <mat-grid-list cols="5" rowHeight="1:1.4">
-  <mat-grid-tile *ngFor="let product of productList">
-    <app-product [item]="product" [show]="false"></app-product>
-  </mat-grid-tile>
+    <mat-grid-tile *ngFor="let product of productList">
+        <app-product [item]="product" [show]="false"></app-product>
+    </mat-grid-tile>
 </mat-grid-list>
