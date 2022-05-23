@@ -34,7 +34,7 @@ phases:
       - aws s3 cp "./" "s3://p2-s3-bucket/" --recursive
       - pwd
       - ls -al
-      - cd ../../../..
+      - cd ../../..
       - pwd
       - mv target/p2-backend-0.0.1.war ROOT.war
 artifacts:
