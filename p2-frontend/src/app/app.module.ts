@@ -22,8 +22,12 @@ import { ContentComponent } from './content/content.component';
 import { AuthService } from './services/auth.service';
 import { ProductViewsComponent } from './pages/product-views/product-views.component';
 import { SearchBoxComponent } from './component/search-box/search-box.component';
+<<<<<<< HEAD
+import { UserAddressComponent } from './pages/user-address/user-address.component';
+=======
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+>>>>>>> 5c22040f43b7c4c83befe034782d7dbb95dea39d
 
 import { BannerComponent } from './component/banner/banner.component';
 import { LandingComponent } from './pages/landing/landing.component';
@@ -43,6 +47,9 @@ import { LandingSection1Component } from './component/landing-section1/landing-s
     ContentComponent,
     ProductViewsComponent,
     SearchBoxComponent,
+<<<<<<< HEAD
+    UserAddressComponent
+=======
     CartComponent,
     CheckoutComponent,
     HeaderComponent,
@@ -56,6 +63,7 @@ import { LandingSection1Component } from './component/landing-section1/landing-s
     LandingSection1Component,
 
 
+>>>>>>> 5c22040f43b7c4c83befe034782d7dbb95dea39d
   ],
   imports: [
     BrowserModule,

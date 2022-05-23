@@ -10,11 +10,18 @@ import { AuthDto, AuthService } from '../../services/auth.service';
 })
 export class UserLoginComponent implements OnInit {
 
+<<<<<<< HEAD
+  constructor(private authService: AuthService) { }
+  user: any;
+  username: String = "";
+  password: String = "";
+=======
   constructor(private authService: AuthService, private userService: UserService) { }
 
   username: string = "";
   password: string = "";
   
+>>>>>>> 5c22040f43b7c4c83befe034782d7dbb95dea39d
 
   onClickLogin(username: string, password: string): void {
     let authDto = new AuthDto(this.username, this.password);
@@ -25,6 +32,14 @@ export class UserLoginComponent implements OnInit {
     else {
       window.location.href = "./product-views";
     }
+<<<<<<< HEAD
+    let response = this.authService.login(authDto, options).subscribe((data) => {
+      this.user = data;
+      localStorage.setItem("currentLoginUser", JSON.stringify(this.user));
+      console.log("returned data: ", data)
+    })
+=======
+>>>>>>> 5c22040f43b7c4c83befe034782d7dbb95dea39d
   }
   onClickRegister(): void {
     window.location.href = "./user-registration"

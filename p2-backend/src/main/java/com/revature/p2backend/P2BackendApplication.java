@@ -3,11 +3,14 @@ package com.revature.p2backend;
 
 
 
+import com.revature.p2backend.beans.controllers.AddressController;
 import com.revature.p2backend.beans.dao.*;
 import com.revature.p2backend.beans.controllers.OrdersController;
+import com.revature.p2backend.beans.services.AddressService;
 import com.revature.p2backend.beans.services.OrdersService;
 import com.revature.p2backend.entities.*;
 import com.revature.p2backend.beans.utilities.StorageManager;
+
 import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +32,14 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(Product.class);
 
         context.start();
-
+        User user = new User("username", "password", "first", "last", "email@email.com", "1234567890");
+        UserDao userdao = context.getBean(UserDao.class);
+        //AddressDao addressDao = context.getBean(AddressDao.class);
+        //AddressService addressService = context.getBean(AddressService.class);
+        AddressController addressController = context.getBean(AddressController.class);
+        userdao.save(user);
+        Address address = new Address("12", "stree", "city", "state", "12345", user);
+        addressController.createAddress(address);
+        addressController.getAddressesByUser(user);
     }
 }
