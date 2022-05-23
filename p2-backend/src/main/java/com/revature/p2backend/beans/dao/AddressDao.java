@@ -84,6 +84,16 @@ public class AddressDao implements HibernateDao<Address>{
         return address;
     }
 
+    /*
+    public Address updateAddressById(User user, Integer id, Address address) {
+        getAddressByUser(user);
+        getById(id);
+        Transaction tx = session.beginTransaction();
+        session.merge(address);
+        tx.commit();
+        return address;
+    }
+     */
     @Override
     public void delete(Address address) {
         Transaction tx = session.beginTransaction();
