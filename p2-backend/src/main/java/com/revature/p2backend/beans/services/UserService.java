@@ -85,18 +85,10 @@ public class UserService {
      * information, it takes in a UserDto (this does not include some typical user information)
      * The UserDto gets transferred to a User object to get sent back to the UserDao to make
      * the update.
-     * @param userDto
+     * @param user
      * @return
      */
-    public User update(UserDto userDto){
-        User user = userDao.getById(userDto.getId());
-        user.setId(userDto.getId());
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setPassword(userDto.getPassword());
-        user.setPhoneNumber(userDto.getPhoneNumber());
-        user.getUserName();
-        user.getEmail();
+    public User update(User user){
         return userDao.update(user);
     }
 
