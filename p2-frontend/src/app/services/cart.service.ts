@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError, BehaviorSubject, Observable } from 'rxjs';
-import { HeaderComponent } from '../component/header/header.component';
+import { IProduct } from '../types/IProduct';
 import { OrderItem, OrderItemService } from './order-item.service';
-import { Product } from './product.service';
 import { User } from './user.service';
 
 @Injectable({
@@ -12,8 +11,8 @@ import { User } from './user.service';
 export class CartService {
 
 
-  public cartItemList: any=[];
-  public productList = new BehaviorSubject<any>([]);
+  public cartItemList: OrderItem[]=[];
+  public productList = new BehaviorSubject<OrderItem[]>([]);
   constructor(private orderItemService: OrderItemService, private http: HttpClient) { }
 
   url = "http://localhost:8080/checkout"
@@ -26,17 +25,25 @@ export class CartService {
   //   this.productList.next(product);
   // }
 
-  addToCart(product: any){
-    let orderItem = new OrderItem(product, 1, 1)
-    this.cartItemList.push(orderItem);
+  addToCart(product: IProduct){
+    let orderItem = this.cartItemList.find(item => item.product.productId === product.productId)
+
+    if(orderItem){
+      orderItem.quantity++;
+    }
+    else{
+      orderItem = new OrderItem(product, 1)
+      this.cartItemList.push(orderItem);
+    }
+
     this.productList.next(this.cartItemList)
     console.log(this.cartItemList);
-    
+
   }
 
-  removeCartItem(product: any){
+  removeCartItem(product: OrderItem){
     console.log("made it to remove cart item");
-    this.cartItemList.map((a:any, index: any)=>{
+    this.cartItemList.map((a:OrderItem, index: number)=>{
       if(product === a){
         this.cartItemList.splice(index, 1);
       }
@@ -48,19 +55,20 @@ export class CartService {
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }
-  
-  getTotalProductPrice(): number{
-    let productTotal = 0;
-    this.cartItemList.map((a:any)=>{
-      productTotal = a.total;
-    })
-    return productTotal;
-  }
+
+  // getTotalProductPrice(): number{
+  //   let productTotal = 0;
+  //   this.cartItemList.map((a:OrderItem)=>{
+  //     productTotal = a.total;
+  //   })
+  //   return productTotal;
+  // }
 
   getTotalPrice(): number{
     let grandTotal = 0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal += a.productId.total;
+    this.cartItemList.forEach((a:OrderItem)=>{
+      const itemTotalAmount= (100-a.product.discount)*a.product.price/100*a.quantity
+      grandTotal += itemTotalAmount;
     })
     return grandTotal;
   }
@@ -88,7 +96,7 @@ export class CartService {
     console.log(errorMessage);
     return throwError(() => new Error(errorMessage));
     }
-  
+
 }
 
 
