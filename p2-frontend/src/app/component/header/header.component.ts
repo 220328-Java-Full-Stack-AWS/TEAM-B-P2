@@ -15,10 +15,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.cartService.getProducts()
-    //   .subscribe(res=>{
-    //     this.totalProducts = res.length;
-    //   })
+
+    this.cartService.getProducts()
+      .subscribe(res =>{
+        let total = 0;
+        res.forEach(item=>{total += item.quantity});
+        this.totalProducts = total;
+      })
+
 
   }
   onHome(): void{

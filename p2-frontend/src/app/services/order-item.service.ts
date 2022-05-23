@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IProduct } from '../types/IProduct';
 import { Product } from './product.service';
 
 @Injectable({
@@ -11,15 +12,15 @@ export class OrderItemService {
 }
 
 export class OrderItem {
-  productId: Product;
-  quantity: number; 
+  product: IProduct;
   orderId: number;
-  itemTotalAmount: number;
+  quantity:number;
 
-  constructor(productId: Product, quantity: number, orderId: number) {
-    this.productId = productId;
-    this.quantity = quantity;
+
+  constructor(product : IProduct ,orderId: number) {
+    this.product = product;
     this.orderId = orderId;
-    this.itemTotalAmount = productId.price * quantity;
+    this.quantity=1;
+
   }
 }
