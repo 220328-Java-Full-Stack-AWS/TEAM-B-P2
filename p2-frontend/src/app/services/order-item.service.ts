@@ -18,7 +18,7 @@ export class OrderItem {
 
 
   constructor(product : IProduct ,orderId: number) {
-    this.product = product;
+    this.product = {...product, discount : product.discount ?? 0};
     this.orderId = orderId;
     this.quantity=1;
 
