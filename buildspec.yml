@@ -40,6 +40,16 @@ phases:
       - cd ..
       - pwd
       - ls -al
+      - cd..
+      - pwd
+      - ls -al
+      - cd ..
+      - pwd
+      - ls -al
+      - cd ..
+      - pwd
+      - ls- al
+      - cd p2-backend
       - mv target/p2-backend-0.0.1.war ROOT.war
 artifacts:
   files:
