@@ -23,6 +23,7 @@ phases:
       - npm install
       - npm install -g @angular/cli
       - ng build
+      - npm i --save @fortawesome/fontawesome-svg-core
       - cd ../..
   post_build:
     commands:
