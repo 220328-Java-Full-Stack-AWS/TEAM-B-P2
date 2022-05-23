@@ -17,7 +17,7 @@
                         <td>{{orderItem.product.description}}</td>
                         <td>{{orderItem.product.inventory}}</td>
                         <td>{{orderItem.product.name}}</td>
-                        <td>{{orderItem.product.price}}</td>
+                        <td>{{orderItem.product.price  | currency}}</td>
                         <td>{{orderItem.product.productId}}</td>
                         <td>{{orderItem.quantity}}</td>
                         <td><input (click)="removeProduct(this.orderItem)" type="submit" value="delete"></td>
