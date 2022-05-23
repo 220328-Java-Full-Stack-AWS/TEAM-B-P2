@@ -10,7 +10,7 @@ import { AuthDto, AuthService } from '../../services/auth.service';
 export class UserLoginComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
-
+  user: any;
   username: String = "";
   password: String = "";
 
@@ -21,7 +21,11 @@ export class UserLoginComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     }
-    let response = this.authService.login(authDto, options).subscribe((data) => { console.log("returned data: ", data) })
+    let response = this.authService.login(authDto, options).subscribe((data) => {
+      this.user = data;
+      localStorage.setItem("currentLoginUser", JSON.stringify(this.user));
+      console.log("returned data: ", data)
+    })
   }
   onClickRegister(): void {
 

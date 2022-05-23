@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Address, AddressService, AllAddress, CurrentAddress } from 'src/app/services/address.service';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/services/user.service';
 
 
 @Component({
@@ -16,15 +17,9 @@ export class UserAddressComponent implements OnInit {
   city: string = "";
   state: string = "";
   zipCode: string = "";
+  userId: any;
 
-  address: Address = {
-    addressId: this.addressId,
-    number: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: ''
-  };
+
 
   currentAddress: CurrentAddress = {
     addressId: this.addressId,
@@ -32,11 +27,9 @@ export class UserAddressComponent implements OnInit {
     street: '',
     city: '',
     state: '',
-    zipCode: ''
+    zipCode: '',
+    userId: 1
   };
-
-
-
 
   constructor(
     private addressService: AddressService,
@@ -50,7 +43,8 @@ export class UserAddressComponent implements OnInit {
 
 
     console.log("adding new address...")
-    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode)
+
+    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode, this.userId)
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -77,13 +71,18 @@ export class UserAddressComponent implements OnInit {
     return this.addressService.getAddressById("/address/currentaddress", address, options).subscribe((data: Address) => { console.log("returned data: ", data) });
   }
 
-  showAllAddresses() {
-    return this.addressService.getAllAddress().subscribe((data: any) => { console.log("returned data: ", data) })
+
+  showAllUserAddresses(user: User): any {
+    console.log("displaying current address...")
+
+    //address body need to change to a body with "id" = 1
+
+    return this.addressService.getAddressByUser(user).subscribe((data: Address) => { console.log("returned data: ", data) });
   }
 
   changeAddress(): any {
     console.log("updating your address...")
-    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode);
+    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode, this.userId);
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -95,7 +94,7 @@ export class UserAddressComponent implements OnInit {
 
   deleteAddress(): void {
     console.log("deleting your address...")
-    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode);
+    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode, this.userId);
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -106,6 +105,15 @@ export class UserAddressComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let token = localStorage.getItem("currentLoginUser")
+
+    if (!token) {
+      window.alert("user not logged in.")
+    } else {
+      this.userId = JSON.parse(token)
+      this.showAllUserAddresses(this.userId)
+      console.log("message from ngOnInit: ", this.showAllUserAddresses(this.userId))
+    }
   }
 
 }
