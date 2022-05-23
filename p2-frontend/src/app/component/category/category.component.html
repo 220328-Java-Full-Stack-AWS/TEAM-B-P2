@@ -1,0 +1,9 @@
+<section>
+  <div class="row">
+    <div class="container">
+      <div *ngFor="let type of categoryTypes" class="button-container">
+        <button class="category-button" mat-flat-button color="primary" (click)="onClick(type)">{{type}}</button>
+      </div>
+    </div>
+  </div>
+</section>

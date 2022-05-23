@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   public totalProducts: number = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -19,6 +20,9 @@ export class HeaderComponent implements OnInit {
         this.totalProducts = res.length;
       })
 
+  }
+  onHome(): void{
+    this.router.navigate(['/']);
   }
 
 }

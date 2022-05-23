@@ -29,6 +29,12 @@ public enum Category {
         public String toString() {
             return "EARRINGS";
         }
-    }
+    },
+
+    WATCHES{
+        @Override
+        public String toString() {return "WATCHES";}
+        }
+
 
 }

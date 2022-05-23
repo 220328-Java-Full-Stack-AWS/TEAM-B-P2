@@ -1,5 +1,13 @@
+<!-- TODO to look -->
 <ng-container>
-    <button routerLink="cart">To cart</button> Total products in cart: {{totalProducts}} |
-    <button routerLink="user-login">Login</button> |
-    <button routerLink="user-registration">Register</button>
+  <button routerLink="cart">To cart</button> Total products in cart: {{totalProducts}} |
+  <button routerLink="user-login">Login</button> |
+  <button routerLink="user-registration">Register</button>
 </ng-container>
+
+<button mat-icon-button color="primary" (click)="onHome()">
+  <mat-icon>home</mat-icon>
+</button>
+<img src="">
+<app-search-box></app-search-box>
+<app-nav-bar></app-nav-bar>
