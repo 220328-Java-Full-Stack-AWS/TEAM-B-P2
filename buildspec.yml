@@ -1,0 +1,38 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+
+
+
+  pre_build:
+    commands:
+      - echo ============================pre-build================================
+      - aws s3 cp s3://p2-secret-files/hibernate.properties p2-backend/src/main/resources/hibernate.properties
+      #- aws s3 cp s3://rev-secret-bucket/application.properties src/main/resources/application.properties
+      - aws s3 rm --recursive "s3://p2-s3-bucket/*"
+  build:
+    commands:
+      - echo ============================build================================
+      - cd p2-backend
+      - mvn package -q -DskipTests
+      - cd ./..
+      - cd p2-frontend
+      - npm install
+      - npm install -g @angular/cli
+      - ng build
+      - cd ../..
+  post_build:
+    commands:
+      - echo ============================post-build================================
+      - cd p2-frontend/dist/p2-frontend
+      - aws s3 cp "./" "s3://p2-s3-bucket/" --recursive
+      - cd ../../../..
+      - pwd
+      - mv target/p2-backend-0.0.1.war ROOT.war
+artifacts:
+  files:
+    - ROOT.war
+    - .ebextensions/**/*
