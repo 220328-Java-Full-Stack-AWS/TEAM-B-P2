@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 
+import java.time.LocalDate;
+
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -29,6 +31,11 @@ public class CartServiceTest {
     UserDao userDao;
     @MockBean
     ProductDao productDao;
+    @MockBean
+    CartDto cartDto;
+    @MockBean
+    User user;
+
 
 
     //we are creating a test for
@@ -83,27 +90,39 @@ public class CartServiceTest {
 
     }
 
-    @Test
-    public void checkoutTest(@Autowired CartService sut) throws Exception{
-        //arrange:we want to arrange the parameter and return
-        //with this we are making the parameter
+       @Test
+        public void checkOutMoreTest(@Autowired CartService sut) throws Exception{
+          Double orderTotal = 0.0;
 
-        Address address = new Address("numberTest", "streetTest", "cityTest", "stateTest", "zipCodeTest");
-        //User user = new User("firstNameTest", "lastNameTest", "userNameTest", "emailTest", "passwordTest", "phoneNumberTest");
-        User user = new User();
-        CartDto cartDto = new CartDto(address, user);
-        //with this we are making the return
-        Orders orders = new Orders("creationDateTest", address, user);
-        //with this we say when the mock object calls its method return what we want you to return
-        //which in this case is orders
-        when(ordersDao.update(orders)).thenReturn(orders);
-        //act
-        //With this we are calling the function and it is returning orderReturn
-        //we wanted the return to be orders
-        Orders orderRetuen = sut.checkout(cartDto);
-        //assert: now we assert that what is returned by the function(orderReturn)
-        //is equal to what we wanted the method to return(orders)
-        Assertions.assertEquals(orders, orderRetuen);
-}
+          Address address = new Address("numberTest", "streetTest", "cityTest", "stateTest", "zipCodeTest");
+          User user = new User("firstNameTest", "lastNameTest", "userNameTest", "emailTest", "passwordTest", "phoneNumberTest");
+          CartDto cartDto = new CartDto(address, user);
+
+          Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getAddress(), user);
+          ordersDao.save(orders);
+         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
+            Product product = sut.getProduct(incomingOrderItem.getProductId().getProductId());
+           OrderItem orderItem = new OrderItem(incomingOrderItem.getQuantity(), product, orders);
+           Double itemTotal = incomingOrderItem.getQuantity() * product.getPrice();
+          orderItem.setItemTotalAmount(itemTotal);
+           product.setInventory(product.getInventory() - orderItem.getQuantity());
+           orderTotal += (itemTotal);
+           orders.setOrderItems(orderItem);
+           orderItemDao.save(orderItem);
+           System.out.println(orderItem);
+       }  orders.setOrderTotal(orderTotal);
+         when(ordersDao.update(orders)).thenReturn(orders);
+         Orders orderRetuen = sut.checkout(cartDto);
+         Assertions.assertEquals(orders, orderRetuen);
+
+    }
+
+
+
+
+
+
+
+
 
 }
