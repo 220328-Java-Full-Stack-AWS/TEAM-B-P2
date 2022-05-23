@@ -1,0 +1,23 @@
+section {
+  display: table;
+}
+.row {
+  display: table-cell;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.category-button {
+  width: 100px;
+}
