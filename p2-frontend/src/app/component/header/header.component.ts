@@ -9,16 +9,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  public totalProducts: number = 0;
+  // public totalProducts: number = 0;
 
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.cartService.getProducts()
-      .subscribe(res=>{
-        this.totalProducts = res.length;
-      })
+    // this.cartService.getProducts()
+    //   .subscribe(res=>{
+    //     this.totalProducts = res.length;
+    //   })
 
   }
   onHome(): void{

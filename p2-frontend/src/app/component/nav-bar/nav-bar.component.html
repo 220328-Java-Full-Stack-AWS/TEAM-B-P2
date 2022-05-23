@@ -9,8 +9,9 @@
 <a routerLink="/user-login" routerLinkActive="active">Login</a> |
 <a routerLink="/user-registration" routerLinkActive="active">Register</a>
 <a routerLink="/shopping" routerLinkActive="active">
-  <button mat-icon-button color="primary">
+  <button mat-icon-button color="primary" routerLink="cart">
     <mat-icon>shopping_cart</mat-icon>
+    {{totalProducts}}
   </button>
 </a>
 <hr>
