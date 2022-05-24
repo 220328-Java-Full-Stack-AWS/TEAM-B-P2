@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Address, AddressService, AllAddress, CurrentAddress } from 'src/app/services/address.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/services/user.service';
+import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -11,7 +12,6 @@ import { User } from 'src/app/services/user.service';
   styleUrls: ['./user-address.component.css']
 })
 export class UserAddressComponent implements OnInit {
-  addressId: number = 1;
   number: string = "";
   street: string = "";
   city: string = "";
@@ -19,17 +19,22 @@ export class UserAddressComponent implements OnInit {
   zipCode: string = "";
   userId: any;
 
+  addressId: number = 0;
 
 
-  currentAddress: CurrentAddress = {
-    addressId: this.addressId,
-    number: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    userId: 1
-  };
+  public addresses: Address[] = [];
+  
+
+
+  // currentAddress: CurrentAddress = {
+  //   addressId: this.addressId,
+  //   number: '',
+  //   street: '',
+  //   city: '',
+  //   state: '',
+  //   zipCode: '',
+  //   userId: 1
+  // };
 
   constructor(
     private addressService: AddressService,
@@ -73,16 +78,19 @@ export class UserAddressComponent implements OnInit {
 
 
   showAllUserAddresses(user: User): any {
-    console.log("displaying current address...")
+    console.log("trying to retrieve all user addresses...")
 
     //address body need to change to a body with "id" = 1
 
-    return this.addressService.getAddressByUser(user).subscribe((data: Address) => { console.log("returned data: ", data) });
+    return this.addressService.getAddressByUser(user).subscribe((data: Address[]) => {
+      console.log("returned data: ", data);
+      this.addresses = data;
+      console.log("checking to make sure the data saves properly to this.addresses", this.addresses)
+    });
   }
 
-  changeAddress(): any {
+  changeAddress(address: Address): any {
     console.log("updating your address...")
-    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode, this.userId);
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -92,27 +100,29 @@ export class UserAddressComponent implements OnInit {
 
   }
 
-  deleteAddress(): void {
-    console.log("deleting your address...")
-    let address = new Address(this.number, this.street, this.city, this.state, this.zipCode, this.userId);
+  deleteAddress(address: Address): void {
+    console.log("deleting your address...");
+    console.log(address);
+    const aId = address.addressId
     let options = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'addressId': aId + ""
       })
     }
-    this.addressService.deleteAddress("/address/delete", address, options).subscribe((data: any) => { console.log("returned data: ", data) });
+    this.addressService.deleteAddress("/address/deleteByHeader", address, options).subscribe((data: any) => { console.log("returned data: ", data) });
   }
 
 
   ngOnInit(): void {
     let token = localStorage.getItem("currentUser")
-
+    console.log("inside of ngoninit")
     if (!token) {
       window.alert("user not logged in.")
     } else {
       this.userId = JSON.parse(token)
+      console.log("current user", this.userId)
       this.showAllUserAddresses(this.userId)
-      console.log("message from ngOnInit: ", this.showAllUserAddresses(this.userId))
     }
   }
 
