@@ -96,7 +96,7 @@ public class ProductServiceTest {
         Product productResult = productService.delete(product);;
         //assert: now we assert that what is returned by the function(returnedAddress)
         //is equal to what we wanted the method to return(addressReturn)
-        Assertions.assertEquals(productReturn, productResult);
+        Assertions.assertEquals(productReturn.toString(), productResult.toString());
     }
 
 
