@@ -11,6 +11,7 @@ phases:
     commands:
       - echo ============================pre-build================================
       - aws s3 cp s3://p2-secret-files/hibernate.properties p2-backend/src/main/resources/hibernate.properties
+      #(use the next line if there's an application.properties file and change the name of the bucket)
       #- aws s3 cp s3://rev-secret-bucket/application.properties src/main/resources/application.properties
       - aws s3 rm --recursive "s3://p2-s3-bucket/*"
   build:
