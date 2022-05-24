@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false
+  apiBaseUrl: 'P2-env.eba-mfpb3muj.us-east-1.elasticbeanstalk.com'
 };
 
 /*
