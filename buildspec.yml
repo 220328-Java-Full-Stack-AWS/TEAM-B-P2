@@ -46,4 +46,4 @@ phases:
 artifacts:
   files:
     - ROOT.war
-    - .ebextensions/**/*
+    - .ebextensions/fix-path.config
