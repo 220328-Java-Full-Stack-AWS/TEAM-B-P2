@@ -11,6 +11,7 @@ export class NavBarComponent implements OnInit {
   constructor(private router: Router, private cartService: CartService) { }
 
   public totalProducts: number = 0;
+  token = localStorage.getItem("currentUser");
 
   ngOnInit(): void {
     this.cartService.getProducts()

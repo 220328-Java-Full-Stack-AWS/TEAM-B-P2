@@ -115,6 +115,7 @@ export class UserAddressComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     let token = localStorage.getItem("currentUser")
     console.log("inside of ngoninit")
     if (!token) {

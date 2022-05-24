@@ -24,15 +24,7 @@ export class UserLoginComponent implements OnInit {
     this.authService.login(authDto, options)
       .subscribe((data) => {
         localStorage.setItem("currentUser", JSON.stringify(data));
-
-        if (localStorage.getItem('currentUser') == null) {
-          alert("Unable to log in! Check username and password!");
-        }
-        else {
-          window.location.href = "./";
-        }
-
-
+        window.location.href = "./";
       });
 
       

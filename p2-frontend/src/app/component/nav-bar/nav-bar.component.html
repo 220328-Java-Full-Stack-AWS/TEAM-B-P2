@@ -1,13 +1,13 @@
-
+<ng-container *ngIf="token != null">
 <button mat-icon-button color="primary">
   <mat-icon>favorite</mat-icon>
 </button>
 
 <a routerLink="/product-views" routerLinkActive="active">Product views</a> |
+
 <a routerLink="/user-update" routerLinkActive="active">View User Profile</a> |
+
 <a routerLink="/user-view" routerLinkActive="active">User</a>  |
-<a routerLink="/user-login" routerLinkActive="active">Login</a> |
-<a routerLink="/user-registration" routerLinkActive="active">Register</a>
 <a routerLink="/shopping" routerLinkActive="active">
   <button mat-icon-button color="primary" routerLink="cart">
     <mat-icon>shopping_cart</mat-icon>
@@ -17,5 +17,24 @@
 
 <hr>
 <router-outlet></router-outlet>
+</ng-container>
 
-
+<ng-container *ngIf="token == null">
+  <button mat-icon-button color="primary">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  
+  <a routerLink="/product-views" routerLinkActive="active">Product views</a> |
+  <a routerLink="/user-login" routerLinkActive="active">Login</a> |
+  <a routerLink="/user-registration" routerLinkActive="active">Register</a>
+  <a routerLink="/shopping" routerLinkActive="active">
+    <button mat-icon-button color="primary" routerLink="cart">
+      <mat-icon>shopping_cart</mat-icon>
+      {{totalProducts}}
+    </button>
+  </a>
+  
+  <hr>
+  <router-outlet></router-outlet>
+  
+  </ng-container>

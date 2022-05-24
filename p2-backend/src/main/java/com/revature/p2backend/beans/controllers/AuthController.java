@@ -64,7 +64,7 @@ public class AuthController {
             System.out.println("Successful login");
             HttpHeaders headers = new HttpHeaders();
             headers.add("Responded", "User login controller invoked");
-            return new ResponseEntity<>(user, headers, HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
         catch(Exception e){
             //e.printStackTrace();

@@ -30,9 +30,10 @@ export class AuthService {
     let errorMessage = '';
     if (e.error instanceof ErrorEvent) {
       // Get client-side error
-      errorMessage = e.error.message;
+      alert("Did you lose connection?")
     } else {
       // Get server-side error
+      alert('Invalid username or password');
       errorMessage = `Error Code: ${e.status}\nMessage: ${e.message}`;
     }
     console.log(errorMessage);
