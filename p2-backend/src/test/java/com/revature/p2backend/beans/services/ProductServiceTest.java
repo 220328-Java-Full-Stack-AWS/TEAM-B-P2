@@ -46,15 +46,15 @@ public class ProductServiceTest {
         //with this we are making the return
         Product productReturn = new Product("jeans test", "blue and shiny",99.99,15);
         //with this we say when the mock object calls its method return what we want you to return
-        //which in this case is addressReturn
+        //which in this case is productReturn
         when(productDao.getById(id)).thenReturn(productReturn);
 
         //act
-        //With this we are calling the function and it is returning returnedAddress
-        //we wanted the return to be addressReturn
+        //With this we are calling the function and it is returning productResult
+        //we wanted the return to be productReturn
         Product productResult = productService.getByProductId(id);
-        //assert: now we assert that what is returned by the function(returnedAddress)
-        //is equal to what we wanted the method to return(addressReturn)
+        //assert: now we assert that what is returned by the function(productResult)
+        //is equal to what we wanted the method to return(productReturn)
         Assertions.assertEquals(productReturn, productResult);
     }
 
@@ -66,15 +66,15 @@ public class ProductServiceTest {
         //with this we are making the return
         Product productReturn = new Product("jeans test", "blue and shiny",99.99,15);
         //with this we say when the mock object calls its method return what we want you to return
-        //which in this case is addressReturn
+        //which in this case is productReturn
         when(productDao.update(product)).thenReturn(productReturn);
 
         //act
-        //With this we are calling the function and it is returning returnedAddress
-        //we wanted the return to be addressReturn
+        //With this we are calling the function and it is returning productResult
+        //we wanted the return to be productReturn
         Product productResult = productService.update(product);
-        //assert: now we assert that what is returned by the function(returnedAddress)
-        //is equal to what we wanted the method to return(addressReturn)
+        //assert: now we assert that what is returned by the function(productResult)
+        //is equal to what we wanted the method to return(productReturn)
         Assertions.assertEquals(productReturn, productResult);
     }
 
@@ -87,15 +87,15 @@ public class ProductServiceTest {
         //with this we are making the return
         Product productReturn = new Product("jeans test", "blue and shiny",99.99,15);
         //with this we say when the mock object calls its method return what we want you to return
-        //which in this case is addressReturn
+        //which in this case is productReturn
         when(productDao.delete(product)).thenReturn(productReturn);
 
         //act
-        //With this we are calling the function and it is returning returnedAddress
-        //we wanted the return to be addressReturn
+        //With this we are calling the function and it is returning productResult
+        //we wanted the return to be productReturn
         Product productResult = productService.delete(product);;
-        //assert: now we assert that what is returned by the function(returnedAddress)
-        //is equal to what we wanted the method to return(addressReturn)
+        //assert: now we assert that what is returned by the function(productResult)
+        //is equal to what we wanted the method to return(productReturn)
         Assertions.assertEquals(productReturn.toString(), productResult.toString());
     }
 
