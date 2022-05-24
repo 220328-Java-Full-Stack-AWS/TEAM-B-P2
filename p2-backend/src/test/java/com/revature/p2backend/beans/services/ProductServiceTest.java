@@ -78,27 +78,26 @@ public class ProductServiceTest {
         Assertions.assertEquals(productReturn, productResult);
     }
 
-    //deleteTest not working yet
-    /*
+
     @Test
     public void deleteTest(@Autowired ProductService productService) throws Exception{
         //arrange:we want to arrange the parameter and return
         // with this we are making the parameter
         Product product = new Product("jeans test", "blue and shiny",99.99,15);
         //with this we are making the return
-        Product productReturn = new Product"jeans test", "blue and shiny",99.99,15);
+        Product productReturn = new Product("jeans test", "blue and shiny",99.99,15);
         //with this we say when the mock object calls its method return what we want you to return
         //which in this case is addressReturn
-        when(productDao, productDao.delete(product)).thenReturn(productReturn);
+        when(productDao.delete(product)).thenReturn(productReturn);
 
         //act
         //With this we are calling the function and it is returning returnedAddress
         //we wanted the return to be addressReturn
-        Product productResult = productService.delete(product);
+        Product productResult = productService.delete(product);;
         //assert: now we assert that what is returned by the function(returnedAddress)
         //is equal to what we wanted the method to return(addressReturn)
         Assertions.assertEquals(productReturn, productResult);
     }
-    */
+
 
 }
