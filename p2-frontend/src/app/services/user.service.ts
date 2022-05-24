@@ -50,6 +50,12 @@ export class UserService {
     } else {
       // Get server-side error
       errorMessage = `Error Code: ${e.status}\nMessage: ${e.message}`;
+      if(e.status == 409){
+        alert("Username is not unique")
+      }
+      if(e.status == 410){
+        alert("User email is not unique")
+      }
     }
     console.log(errorMessage);
     return throwError(() => new Error(errorMessage));

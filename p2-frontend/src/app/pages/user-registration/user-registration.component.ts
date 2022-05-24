@@ -25,7 +25,10 @@ export class UserRegistrationComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     }
-    this.userService.createUser(user, options).subscribe((data) => { console.log("returned data: ", data) })
+    this.userService.createUser(user, options).subscribe((data) => { 
+      localStorage.setItem("currentUser", JSON.stringify(data)); 
+      window.location.href = "./";
+  })
   }
 
   ngOnInit(): void {

@@ -105,15 +105,7 @@ export class UserAddressComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let token = localStorage.getItem("currentUser")
 
-    if (!token) {
-      window.alert("user not logged in.")
-    } else {
-      this.userId = JSON.parse(token)
-      this.showAllUserAddresses(this.userId)
-      console.log("message from ngOnInit: ", this.showAllUserAddresses(this.userId))
-    }
   }
 
 }

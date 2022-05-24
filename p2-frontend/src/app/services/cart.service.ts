@@ -39,6 +39,9 @@ export class CartService {
     this.productList.next(this.orderItemList)
     console.log(this.orderItemList);
 
+    localStorage.removeItem("cart");
+    localStorage.setItem("cart", JSON.stringify(this.orderItemList));
+
   }
 
   removeCartItem(product: OrderItem){

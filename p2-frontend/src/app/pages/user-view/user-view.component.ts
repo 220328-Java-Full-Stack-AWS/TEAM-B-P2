@@ -9,6 +9,16 @@ export class UserViewComponent implements OnInit {
 
   constructor() { }
 
+
+  goToAddress(): void{
+    if(localStorage.getItem("currentUser") === null){
+      alert("no one logged in");
+    }
+    else{
+      window.location.href = "./user-address.component.html";
+    }
+  }
+
   ngOnInit(): void {
   }
 
