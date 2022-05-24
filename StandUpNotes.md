@@ -687,3 +687,34 @@ Blocker:
 how to receive the response from the backend
 ____________________________________________________________________
 
+
+5-23/22
+-Chenxi
+yesterday: added address function, hooked address with user id
+today: keep working on address functionality, start unit test for the product
+blocker: time
+
+-Mohammad
+yesterday: doing test for address, cart and order item and is completed, added 
+today: study routing for front end
+blocker: time and knowledge
+
+-Anthony
+yesterday: finished user service test with line coverage, completed on view user functionality, worked with chenxi on address
+today: merging items toghther to see where project currently is
+blocker: time
+
+-Fatemeh
+yesterday: n/a
+today: n/a
+blocker: n/a
+
+-Qiang
+yesterday: integrated UI, completed UI, local storage for cart is complete
+today: helping others with UI
+blocker: none
+
+-Kenneth
+yesterday: merged products UI with 
+today: fix bugs
+blocker: time
