@@ -2,6 +2,7 @@ package com.revature.p2backend.beans.controllers;
 
 
 import com.revature.p2backend.beans.services.AddressService;
+import com.revature.p2backend.beans.services.UserService;
 import com.revature.p2backend.entities.Address;
 import com.revature.p2backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,14 @@ public class AddressController {
         System.out.println("getting address with user" + user);
         return addressService.getAddressByUser(user);
     }
+
+//    @GetMapping("/user")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Address> getAddressByUserId (@RequestHeader("id") Integer id){
+//        System.out.println(id);
+//        User user = userDao.
+//        return addressService.getAddressByUser();
+//    }
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)

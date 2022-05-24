@@ -1,5 +1,5 @@
 import { IProduct } from 'src/app/types/IProduct';
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -8,7 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit, AfterContentInit {
+export class ProductComponent implements OnInit, AfterViewChecked {
 
   itemNewPrice = 0;
   @Input() item?: IProduct;
@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
 
   }
-  ngAfterContentInit(): void {
+  ngAfterViewChecked(): void {
     const price = this.item?.price ?? 0;
     const discount = this.item?.discount ?? 0
     this.itemNewPrice = (price * (100 - discount)) / 100;

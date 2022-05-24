@@ -1,5 +1,6 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -25,6 +26,7 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
+    @JsonBackReference
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,6 +35,7 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", referencedColumnName = "user_id")
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY)

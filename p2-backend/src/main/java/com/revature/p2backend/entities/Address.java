@@ -1,6 +1,8 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,9 +33,11 @@ public class Address {
     private String zipCode;
 
     @OneToMany(mappedBy="address",fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Orders> orders;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private User userId;
 
     public Address() {
@@ -131,8 +135,8 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
-                ", orders=" + orders +
-                ", userId=" + userId +
+//                ", orders=" + orders +
+//                ", userId=" + userId +
                 '}';
     }
 

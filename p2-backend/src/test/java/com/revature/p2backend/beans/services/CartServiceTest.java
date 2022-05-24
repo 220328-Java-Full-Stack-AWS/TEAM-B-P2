@@ -100,7 +100,7 @@ public class CartServiceTest {
         user.setId(1);
         CartDto cartDto = new CartDto(address, user);
 
-        Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getAddress(), cartDto.getUser());
+        Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getShippingAddress(), cartDto.getUser());
         ordersDao.save(orders);
         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
             Product product = sut.getProduct(incomingOrderItem.getProductId().getProductId());
