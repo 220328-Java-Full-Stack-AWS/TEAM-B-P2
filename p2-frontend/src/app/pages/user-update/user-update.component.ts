@@ -52,6 +52,7 @@ export class UserUpdateComponent implements OnInit {
       this.user = data;
       console.log("logged in user ", this.user);
       localStorage.setItem("currentUser", JSON.stringify(this.user));
+      alert("Successfully updated user information.")
     })
 
     

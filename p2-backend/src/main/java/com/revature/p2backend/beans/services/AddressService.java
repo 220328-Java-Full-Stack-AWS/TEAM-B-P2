@@ -39,8 +39,8 @@ public class AddressService {
         return address;
     }
 
-    public void delete(Address address) {
-        addressDao.delete(address);
+    public Address delete(Address address) {
+        return addressDao.delete(address);
     }
 
     public List<Address> getAllAddress() {return addressDao.getAll();}

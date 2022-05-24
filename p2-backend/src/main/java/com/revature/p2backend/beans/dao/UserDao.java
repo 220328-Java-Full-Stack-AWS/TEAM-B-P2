@@ -59,13 +59,14 @@ public class UserDao implements HibernateDao<User> {
     }
 
     @Override
-    public void delete(User user) {
+    public User delete(User user) {
 
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("DELETE User where id = :user_id");
         query.setParameter("user_id", user.getId());
         query.executeUpdate();
         tx.commit();
+        return user;
     }
 
     @Override

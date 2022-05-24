@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "order_item" , schema="public")
@@ -89,5 +90,18 @@ public class OrderItem {
                 ", itemTotalAmount=" + itemTotalAmount +
                 ", productId=" + productId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderItem orderItem = (OrderItem) o;
+        return Objects.equals(id, orderItem.id) && Objects.equals(quantity, orderItem.quantity) && Objects.equals(orders, orderItem.orders) && Objects.equals(itemTotalAmount, orderItem.itemTotalAmount) && Objects.equals(productId, orderItem.productId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, quantity, orders, itemTotalAmount, productId);
     }
 }

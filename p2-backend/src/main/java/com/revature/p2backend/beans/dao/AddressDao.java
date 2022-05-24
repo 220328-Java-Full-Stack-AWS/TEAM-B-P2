@@ -95,13 +95,14 @@ public class AddressDao implements HibernateDao<Address>{
     }
      */
     @Override
-    public void delete(Address address) {
+    public Address delete(Address address) {
         Transaction tx = session.beginTransaction();
         String hql = "DELETE FROM Address WHERE id = :id";
         TypedQuery<Address> query = session.createQuery(hql);
         query.setParameter("id", address.getAddressId());
         query.executeUpdate();
         tx.commit();
+        return address;
     }
 
     /**

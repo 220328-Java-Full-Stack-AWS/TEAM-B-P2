@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="address" , schema="public")
@@ -36,6 +37,14 @@ public class Address {
     private User userId;
 
     public Address() {
+    }
+
+    public Address(String number, String street, String city, String state, String zipCode) {
+        this.number = number;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
     }
 
     public Address(String number, String street, String city, String state, String zipCode, User userId) {
@@ -125,5 +134,18 @@ public class Address {
                 ", orders=" + orders +
                 ", userId=" + userId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(addressId, address.addressId) && number.equals(address.number) && street.equals(address.street) && city.equals(address.city) && state.equals(address.state) && zipCode.equals(address.zipCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(addressId, number, street, city, state, zipCode, userId);
     }
 }

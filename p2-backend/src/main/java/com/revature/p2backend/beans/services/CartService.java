@@ -40,7 +40,7 @@ public class CartService {
         return product;
     }
 
-    public void checkout(CartDto cartDto){
+    public Orders checkout(CartDto cartDto){
         Double orderTotal = 0.0;
         User user = getUser(cartDto.getUser().getId());
         //Address address = getAddress(cartDto.getAddress().getAddressId());
@@ -59,5 +59,6 @@ public class CartService {
         }
         orders.setOrderTotal(orderTotal);
         ordersDao.update(orders);
+        return orders;
     }
 }

@@ -58,6 +58,12 @@ public class Product {
     public Product() {
     }
 
+    public Product(String name, String description, Double price, Integer inventory) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
+    }
 
     public Integer getProductId() {
         return productId;
