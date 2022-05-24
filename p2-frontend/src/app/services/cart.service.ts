@@ -15,7 +15,7 @@ export class CartService {
   public productList = new BehaviorSubject<OrderItem[]>([]);
   constructor(private orderItemService: OrderItemService, private http: HttpClient) { }
 
-  url = "http://localhost:8080/checkout"
+  url = "http://p2-s3-bucket.s3-website-us-east-1.amazonaws.com/checkout"
   //
   getProducts(){
     return this.productList.asObservable();

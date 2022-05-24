@@ -9,7 +9,7 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 })
 export class ProductService {
 
-  baseUrl: string = "http://localhost:8080/products";
+  baseUrl: string = "http://p2-s3-bucket.s3-website-us-east-1.amazonaws.com/products";
   products: IProduct[] = [];
   selectedCategory="";
 

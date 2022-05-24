@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d53a0a9a-e5ab-4933-8768-44ea3ae92b93" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2-frontend/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/p2-frontend/src/app/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2-frontend/src/app/services/cart.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/p2-frontend/src/app/services/cart.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2-frontend/src/app/services/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/p2-frontend/src/app/services/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2-frontend/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/p2-frontend/src/app/services/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

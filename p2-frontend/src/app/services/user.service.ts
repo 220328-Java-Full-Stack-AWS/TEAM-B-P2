@@ -7,7 +7,7 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 })
 export class UserService {
 
-  baseUrl: string = "http://localhost:8080/users";
+  baseUrl: string = "http://p2-s3-bucket.s3-website-us-east-1.amazonaws.com/users";
 
   constructor(private http: HttpClient) { }
 
