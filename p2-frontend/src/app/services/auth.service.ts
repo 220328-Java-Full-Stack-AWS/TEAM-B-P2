@@ -7,7 +7,7 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 })
 export class AuthService {
 
-  baseUrl: string = "http://p2-s3-bucket.s3-website-us-east-1.amazonaws.com/auth";
+  baseUrl: string = "http://P2-env.eba-mfpb3muj.us-east-1.elasticbeanstalk.com/auth";
 
   constructor(private http: HttpClient) { }
 
