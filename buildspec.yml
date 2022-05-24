@@ -12,7 +12,7 @@ phases:
       - echo ============================pre-build================================
       - pwd
       - ls -al
-      - aws s3 cp s3://p2-secret-files/hibernate.properties p2-backend/src/main/resources/hibernate.properties
+      - aws s3 cp s3://p2-secret-files/hibernate.properties p2-backend/src/resources/hibernate.properties
       - pwd
       - ls -al
       #(use the next line if there's an application.properties file and change the name of the bucket)
