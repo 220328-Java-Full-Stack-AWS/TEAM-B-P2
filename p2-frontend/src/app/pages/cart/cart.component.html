@@ -1,0 +1,42 @@
+<ng-container *ngIf="orderItems.length != 0">
+    <div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <!-- <th>Inventory</th> -->
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Quantity</th>
+                    <th>Final Price</th>
+                    <!-- <th>Product Id</th> -->
+                </tr>
+                <tbody>
+                    <tr *ngFor="let orderItem of orderItems; let i = index">
+                        <td>{{orderItem.productId.category}}</td>
+                        <td>{{orderItem.productId.description}}</td>
+                        <!-- <td>{{orderItem.product.inventory}}</td> -->
+                        <td>{{orderItem.productId.name}}</td>
+                        <td>{{orderItem.productId.price  | currency}}</td>
+                        <td>{{orderItem.productId.discount/100  | percent}}</td>
+
+                        <td>{{orderItem.quantity}}</td>
+
+                        <td>{{(orderItem.productId.price * (100 - orderItem.productId.discount) /100)* orderItem.quantity| currency}}</td>
+
+                        <!-- <td>{{orderItem.product.productId}}</td> -->
+                        <td><input (click)="removeProduct(this.orderItem)" type="submit" value="delete"></td>
+                    </tr>
+                </tbody>
+        </table>
+        <p>Order Total: ${{grandTotal}}</p>
+        <input (click)="removeAllProducts()" type="submit" value="delete">
+        <input (click)="goToCheckout()" type="submit" value="checkout">
+    </div>
+</ng-container>
+
+<ng-container *ngIf="orderItems.length == 0">
+    <p>Put some items in your cart</p>
+</ng-container>

@@ -27,7 +27,7 @@ public class Orders {
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="billing_address_id", referencedColumnName =  "address_id")
     private Address billingAddress;
 

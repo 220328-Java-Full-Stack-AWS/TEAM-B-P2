@@ -13,5 +13,5 @@ public interface HibernateDao<T> extends Lifecycle {
 
     public T update(T t);
 
-    public void delete(T t);
+    public T delete(T t);
 }

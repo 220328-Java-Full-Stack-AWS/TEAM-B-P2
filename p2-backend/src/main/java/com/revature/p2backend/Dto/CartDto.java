@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CartDto {
-    private LinkedList<OrderItem> orderItemList;
+    private List<OrderItem> orderItemList;
     private Address address;
     private User user;
 
@@ -21,7 +21,12 @@ public class CartDto {
         this.orderItemList = new LinkedList<>();
     }
 
-    public LinkedList<OrderItem> getOrderItemList() {
+    public CartDto(List<OrderItem> orderItemList, User user) {
+        this.orderItemList = orderItemList;
+        this.user = user;
+    }
+
+    public List<OrderItem> getOrderItemList() {
         return orderItemList;
     }
 

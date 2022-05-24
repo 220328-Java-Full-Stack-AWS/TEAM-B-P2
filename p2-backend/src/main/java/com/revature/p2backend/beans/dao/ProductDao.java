@@ -58,12 +58,13 @@ public class ProductDao implements HibernateDao<Product>{
     }
 
     @Override
-    public void delete(Product product) {
+    public Product delete(Product product) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("Delete Product WHERE id = :productId");
         query.setParameter("productId", product.getProductId());
         query.executeUpdate();
         tx.commit();
+        return product;
     }
 
     @Override

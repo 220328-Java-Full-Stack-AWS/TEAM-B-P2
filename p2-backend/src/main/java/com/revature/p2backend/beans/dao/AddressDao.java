@@ -2,6 +2,7 @@ package com.revature.p2backend.beans.dao;
 
 import com.revature.p2backend.beans.utilities.StorageManager;
 import com.revature.p2backend.entities.Address;
+import com.revature.p2backend.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +52,9 @@ public class AddressDao implements HibernateDao<Address>{
     @Override
     public List<Address> getAll() {
         String hql = "FROM Address";
-        TypedQuery<Address> query = session.createQuery(hql);
-        return query.getResultList();
+        TypedQuery<Address> query = session.createQuery(hql, Address.class);
+        List<Address> address = query.getResultList();
+        return address;
     }
 
     @Override
@@ -65,6 +67,15 @@ public class AddressDao implements HibernateDao<Address>{
         return address;
     }
 
+    public List<Address> getAddressByUser(User user){
+
+        TypedQuery<Address> query = session.createQuery("FROM Address WHERE userId = :user", Address.class);
+        query.setParameter("user", user);
+        List<Address> addresses = query.getResultList();
+        //session.persist(addresses);
+        return addresses;
+    }
+
     @Override
     public Address update(Address address) {
         Transaction tx = session.beginTransaction();
@@ -73,14 +84,25 @@ public class AddressDao implements HibernateDao<Address>{
         return address;
     }
 
+    /*
+    public Address updateAddressById(User user, Integer id, Address address) {
+        getAddressByUser(user);
+        getById(id);
+        Transaction tx = session.beginTransaction();
+        session.merge(address);
+        tx.commit();
+        return address;
+    }
+     */
     @Override
-    public void delete(Address address) {
+    public Address delete(Address address) {
         Transaction tx = session.beginTransaction();
         String hql = "DELETE FROM Address WHERE id = :id";
         TypedQuery<Address> query = session.createQuery(hql);
         query.setParameter("id", address.getAddressId());
         query.executeUpdate();
         tx.commit();
+        return address;
     }
 
     /**

@@ -49,4 +49,14 @@ public class OrdersService {
     public List<Orders> getOrdersByUser(User user){
         return ordersDao.getOrdersByUser(user);
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

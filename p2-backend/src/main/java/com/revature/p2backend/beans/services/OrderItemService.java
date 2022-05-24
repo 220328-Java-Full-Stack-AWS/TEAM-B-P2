@@ -40,8 +40,8 @@ public class OrderItemService {
     }
 
 
-    public void deleteOrderItem(OrderItem orderItem){
-        orderItemDao.delete(orderItem);
+    public OrderItem deleteOrderItem(OrderItem orderItem){
+        return orderItemDao.delete(orderItem);
     }
 
 

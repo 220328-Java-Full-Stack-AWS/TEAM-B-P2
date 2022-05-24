@@ -20,10 +20,10 @@ public class User {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="user_name")
+    @Column(name="user_name", unique = true)
     private String userName;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Column
@@ -35,6 +35,8 @@ public class User {
     @Column(name="credit_card")
     private String creditCard;//added credit card
 
+    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+    private List<Address> address;
 
 //    @ManyToMany(cascade={CascadeType.ALL})
 //    @JoinTable(
@@ -59,7 +61,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-
+        this.address = new LinkedList<>();
     }
 
     public Integer getId() {
@@ -156,4 +158,6 @@ public class User {
 //                ", orders=" + orders +
                 '}';
     }
+
+
 }

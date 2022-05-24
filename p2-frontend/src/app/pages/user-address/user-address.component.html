@@ -1,0 +1,36 @@
+<h3>Edit or Create New Addresses</h3>
+<div>
+    <input type="number" name="number" [(ngModel)]='number' placeholder="Street Number">
+    <input type="street" name="street" [(ngModel)]='street' placeholder="Street">
+    <input type="city" name="city" [(ngModel)]='city' placeholder="City">
+    <input type="state" name="state" [(ngModel)]='state' placeholder="State">
+    <input type="text" name="zipCode" [(ngModel)]='zipCode' placeholder="Zip Code">
+
+    <button type="add" name="add" (click)="addNewAddress()">Add New Address</button>
+</div>
+
+<h3>List of Addresses on User Profile</h3>
+<ng-container *ngIf="addresses.length != 0">
+    <div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Street Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Postal Code</th>
+                </tr>
+            <tbody>
+                <tr *ngFor="let address of addresses; let i = index">
+                    <td>{{address.number}} {{address.street}}</td>
+                    <td>{{address.city}}</td>
+                    <td>{{address.state}}</td>
+                    <td>{{address.zipCode}}</td>
+
+                    <td><input (click)="deleteAddress(this.address)" type="submit" value="Delete Address"></td>
+                    <td><input (click)="changeAddress(this.address)" type="submit" value="Edit Address"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>

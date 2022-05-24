@@ -3,9 +3,12 @@ package com.revature.p2backend.beans.controllers;
 
 import com.revature.p2backend.beans.services.AddressService;
 import com.revature.p2backend.entities.Address;
+import com.revature.p2backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/address")
@@ -31,6 +34,28 @@ public class AddressController {
         return addressService.getAddressById(address.getAddressId());
     }
 
+    @PostMapping("/currentaddress")
+    @ResponseStatus(HttpStatus.OK)
+    public Address viewAddressWithPost(@RequestBody Address address) {
+        System.out.println("Address view function from address controller");
+        return addressService.getAddressById(address.getAddressId());
+    }
+
+
+    @PostMapping("/user")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Address> getAddressesByUser (@RequestBody User user){
+        System.out.println("getting address with user" + user);
+        return addressService.getAddressByUser(user);
+    }
+
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Address> getAllAddress(@RequestBody Address address) {
+        System.out.println("You're seeing all the addresses in the database.");
+        return addressService.getAllAddress();
+    }
+
     @PutMapping("/update")
     public Address updateAddress(@RequestBody Address address) {
         System.out.println("updating address from address controller");
@@ -39,6 +64,14 @@ public class AddressController {
 
     @DeleteMapping("/delete")
     public void deleteAddress(@RequestBody Address address) {
+        System.out.println("deleting address from address controller");
+        addressService.delete(address);
+
+    }
+
+    @DeleteMapping("/deleteByHeader")
+    public void deleteAddress(@RequestHeader("addressId") Integer id) {
+        Address address = addressService.getAddressById(id);
         System.out.println("deleting address from address controller");
         addressService.delete(address);
 

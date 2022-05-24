@@ -62,11 +62,12 @@ public class OrdersDao implements HibernateDao<Orders>{
     }
 
     @Override
-    public void delete(Orders orders) {
+    public Orders delete(Orders orders) {
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("DELETE Orders where id = :id");
         query.setParameter("id", orders.getId());
         query.executeUpdate();
+        return orders;
     }
 
     @Override

@@ -29,15 +29,19 @@ public class AddressService {
         return addressDao.getById(id);
     }
 
+    public List<Address> getAddressByUser(User user){
+        return addressDao.getAddressByUser(user);
+    }
+
     public Address update(Address address) {
 
         addressDao.update(address);
         return address;
     }
 
-    public void delete(Address address) {
-        addressDao.delete(address);
+    public Address delete(Address address) {
+        return addressDao.delete(address);
     }
 
-
+    public List<Address> getAllAddress() {return addressDao.getAll();}
 }

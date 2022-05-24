@@ -1,0 +1,12 @@
+
+.before-discount{
+  text-decoration: line-through;
+}
+
+.image {
+  object-fit:fill;
+  left: auto;
+  margin: 0;
+  width: 350px;
+  height: 350px;
+}

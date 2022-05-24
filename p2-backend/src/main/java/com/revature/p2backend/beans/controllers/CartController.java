@@ -19,7 +19,7 @@ public class CartController {
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void checkout(@RequestBody CartDto cartDto){
-        System.out.println("Made it to checkout");
+        System.out.println("Made it to checkout" + cartDto);
         cartService.checkout(cartDto);
     }
 
