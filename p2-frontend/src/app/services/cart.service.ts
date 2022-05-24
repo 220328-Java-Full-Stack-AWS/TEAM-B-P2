@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError, BehaviorSubject, Observable } from 'rxjs';
 import { IProduct } from '../types/IProduct';
+import { Address } from './address.service';
 import { OrderItem, OrderItemService } from './order-item.service';
 import { User } from './user.service';
 
@@ -76,8 +77,8 @@ export class CartService {
     return grandTotal;
   }
 
-  checkout(orderItemList: any[], user: User): Observable<any> {
-    let cartDto = new CartDto(orderItemList, user);
+  checkout(orderItemList: any[], user: User, shippingAddress: Address): Observable<any> {
+    let cartDto = new CartDto(orderItemList, user, shippingAddress);
     console.log('This is the cart we want to pass', cartDto);
     console.log('This is the cart we want to pass', JSON.stringify(cartDto));
     return this.http.post<any>(this.url, JSON.stringify(cartDto), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
@@ -125,9 +126,12 @@ export class CartService {
 export class CartDto {
   orderItemList: OrderItem[];
   user: User;
+  shippingAddress: Address;
+  
 
-  constructor(orderItemList: OrderItem[], user: User) {
+  constructor(orderItemList: OrderItem[], user: User, shippingAddress: Address) {
     this.orderItemList = orderItemList;
     this.user = user;
+    this.shippingAddress = shippingAddress;
   }
 }

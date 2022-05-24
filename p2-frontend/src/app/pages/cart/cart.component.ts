@@ -31,11 +31,7 @@ export class CartComponent implements OnInit {
       alert("You are not logged in");
     }
     else{
-      let user = JSON.parse(token);
-      this.cartService.checkout(this.cartService.orderItemList, user).subscribe((data) => {
-        console.log('this is the data from the back', data);
-      });
-      console.log("go to checkout:", user, this.cartService.orderItemList);
+      window.location.href = "./checkout";
     }
   }
 
