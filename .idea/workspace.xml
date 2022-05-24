@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d53a0a9a-e5ab-4933-8768-44ea3ae92b93" name="Changes" comment="" />
+    <list default="true" id="d53a0a9a-e5ab-4933-8768-44ea3ae92b93" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/buildspec.yml" beforeDir="false" afterPath="$PROJECT_DIR$/buildspec.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2-backend/.ebextensions/fix-path.config" beforeDir="false" afterPath="$PROJECT_DIR$/.ebextensions/fix-path.config" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +34,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\coding study\revature\TEAM-B-P2\p2-backend" />
+      <recent name="D:\coding study\revature\TEAM-B-P2" />
     </key>
   </component>
   <component name="RunManager">
