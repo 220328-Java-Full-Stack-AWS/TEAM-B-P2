@@ -68,4 +68,12 @@ public class AddressController {
         addressService.delete(address);
 
     }
+
+    @DeleteMapping("/deleteByHeader")
+    public void deleteAddress(@RequestHeader("addressId") Integer id) {
+        Address address = addressService.getAddressById(id);
+        System.out.println("deleting address from address controller");
+        addressService.delete(address);
+
+    }
 }
