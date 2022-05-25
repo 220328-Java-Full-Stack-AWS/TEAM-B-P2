@@ -718,3 +718,54 @@ blocker: none
 yesterday: merged products UI with 
 today: fix bugs
 blocker: time
+
+
+-5.24.2022
+chenxi
+yesterday
+aws
+today
+product test
+blocker
+time
+
+mohammed
+yesterday
+angular,login,updated branch for test
+today
+finishing the project study qc
+blocker 
+time and knowledge
+
+fatemeh
+yesterday
+product features 
+today
+project wrap up polish study qc
+blocker 
+knowledge
+
+anthony
+yesterday
+address
+today
+study qc
+blocker 
+time
+
+Qiang
+yesterday
+merged my portion of ui
+today
+depends on my assignment mostly ui
+blocker 
+no blocker
+
+Kenneth
+yesterday
+get response status from backend to front end unique username and email
+login function, cart in local storage, repopulate the cart with local starage
+today
+make sure cart 
+blocker 
+knowledge
