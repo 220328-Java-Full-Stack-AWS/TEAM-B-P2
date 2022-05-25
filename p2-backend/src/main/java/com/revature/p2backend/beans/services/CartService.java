@@ -49,7 +49,9 @@ public class CartService {
         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
             Product product = getProduct(incomingOrderItem.getProductId().getProductId());
             OrderItem orderItem = new OrderItem(incomingOrderItem.getQuantity(), product, orders);
-            Double itemTotal = incomingOrderItem.getQuantity() * product.getPrice();
+            Double discount = new Double(product.getDiscount());
+            Double d = 1 - (discount/100);
+            Double itemTotal = incomingOrderItem.getQuantity() * product.getPrice() * d;
             orderItem.setItemTotalAmount(itemTotal);
             product.setInventory(product.getInventory() - orderItem.getQuantity());
             orderTotal += (itemTotal);
