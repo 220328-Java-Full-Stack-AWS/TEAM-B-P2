@@ -39,6 +39,7 @@ import { FeaturedProductsComponent } from './component/featured-products/feature
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { LandingSection1Component } from './component/landing-section1/landing-section1.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { UpdateAddressComponent } from './pages/update-address/update-address.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
     FooterComponent,
     LandingSection1Component,
     OrdersComponent,
+    UpdateAddressComponent,
   ],
   imports: [
     BrowserModule,

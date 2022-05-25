@@ -1,0 +1,37 @@
+<span>Update your credentials</span>
+<form (ngSubmit)="onClick(number,street,city,state,zipCode)" #updateAddress="ngForm">
+    <div class="group">
+        <label for="number">Street Number</label>
+        <input type="number" class="form-input" id="number" required name="number" [(ngModel)]="number" />
+    </div>
+    <div class="group">
+        <label for="street">Street</label>
+        <input type="street" class="form-input" id="street" required name="street" [(ngModel)]="street" />
+    </div>
+    <div class="group">
+        <label for="city">City</label>
+        <input type="city" class="form-input" id="city" required name="city" [(ngModel)]="city" />
+    </div>
+    <div class="group">
+        <label for="state">State</label>
+        <input type="state" class="form-input" id="state" required name="state" [(ngModel)]="state" />
+    </div>
+    <div class="group">
+        <label for="zipCode">Zip Code</label>
+        <input type="zipCode" class="form-input" id="zipCode" required name="zipCode" [(ngModel)]="zipCode" />
+    </div>
+    <!-- <div class="group">
+    <label for="comfirmPassword">Confirm Password</label>
+    <input
+      type="password"
+      class="form-input"
+      id="comfirmPassword"
+      required
+      name="comfirmPassword"
+      [(ngModel)]="confirmPassword"
+    />
+  </div> -->
+    <button class="custom-button" type="submit" [disabled]="!updateAddress.form.valid">
+        Update Info
+    </button>
+</form>

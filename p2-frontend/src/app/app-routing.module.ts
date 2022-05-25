@@ -11,6 +11,7 @@ import { UserViewComponent } from './pages/user-view/user-view.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { UpdateAddressComponent } from './pages/update-address/update-address.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent
+  },
+  {
+    path: 'update-address',
+    component: UpdateAddressComponent
   }
 ];
 
