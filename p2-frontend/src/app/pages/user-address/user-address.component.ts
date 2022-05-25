@@ -1,17 +1,19 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Address, AddressService, AllAddress, CurrentAddress } from 'src/app/services/address.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from 'src/app/services/user.service';
 import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 
 
 @Component({
   selector: 'app-user-address',
   templateUrl: './user-address.component.html',
-  styleUrls: ['./user-address.component.css']
+  styleUrls: ['./user-address.component.scss']
 })
 export class UserAddressComponent implements OnInit {
+  addressId: any;
   number: string = "";
   street: string = "";
   city: string = "";
@@ -19,7 +21,8 @@ export class UserAddressComponent implements OnInit {
   zipCode: string = "";
   userId: any;
 
-  addressId: number = 0;
+  editNumber: string ="";
+
 
 
   public addresses: Address[] = [];
@@ -38,8 +41,7 @@ export class UserAddressComponent implements OnInit {
 
   constructor(
     private addressService: AddressService,
-    private route: ActivatedRoute,
-
+    private router: Router
   ) { }
 
 
@@ -55,6 +57,7 @@ export class UserAddressComponent implements OnInit {
     //tested referring the address and httpOptions object in addressService, switched back because it didn't work
     this.addressService.postNewAddress(address).subscribe((data: any) => { console.log("returned data: ", data) });
     //this.showAddress(currentAddress);
+    window.location.href = './user-address';
   }
 
 
@@ -84,15 +87,10 @@ export class UserAddressComponent implements OnInit {
     });
   }
 
-  changeAddress(address: Address): any {
-    console.log("updating your address...")
-    let options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
-    return this.addressService.updateAddress("/address/update", address, options).subscribe((data: any) => { console.log("returned data: ", data) });
 
+  changeAddress(address: Address) {
+    this.addressService.setCurrentAddress(address, this.userId)
+    this.router.navigate(['/update-address']);
   }
 
   deleteAddress(address: Address): void {
@@ -108,6 +106,8 @@ export class UserAddressComponent implements OnInit {
     this.addressService.deleteAddress("/deleteByHeader", address, options).subscribe((data: any) => {
       console.log("returned data: ", data)
     });
+    alert('Address deleted successfully!')
+    window.location.href = './user-address';
   }
 
 

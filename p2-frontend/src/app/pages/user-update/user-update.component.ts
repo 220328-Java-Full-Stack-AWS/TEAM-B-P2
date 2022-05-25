@@ -80,7 +80,6 @@ export class UserUpdateComponent implements OnInit {
       this.password = u.password;
       this.phone = u.phoneNumber;
       console.log(u);
-      
     }
   }
 

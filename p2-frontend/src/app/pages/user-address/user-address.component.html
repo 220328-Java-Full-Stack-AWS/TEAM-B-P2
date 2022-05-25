@@ -1,20 +1,29 @@
 <h3>Edit or Create New Addresses</h3>
-<div>
+<div class="group">
     <input type="number" name="number" [(ngModel)]='number' placeholder="Street Number">
+</div>
+<div class="group">
     <input type="street" name="street" [(ngModel)]='street' placeholder="Street">
+</div>
+<div class="group">   
     <input type="city" name="city" [(ngModel)]='city' placeholder="City">
+</div>
+<div class="group">  
     <input type="state" name="state" [(ngModel)]='state' placeholder="State">
+</div>
     <input type="text" name="zipCode" [(ngModel)]='zipCode' placeholder="Zip Code">
-
-    <button type="add" name="add" (click)="addNewAddress()">Add New Address</button>
+<div class="group">
+    <button class="custom-button" type="add" name="add" (click)="addNewAddress()">Add New Address</button>
 </div>
 
 <h3>List of Addresses on User Profile</h3>
 <ng-container *ngIf="addresses.length != 0">
-    <div>
-        <table class="table table-responsive">
+    <div class="group">
+        <table>
             <thead>
                 <tr>
+                    <th>AddressId</th>
+                    <th>Number</th>
                     <th>Street Address</th>
                     <th>City</th>
                     <th>State</th>
@@ -22,13 +31,14 @@
                 </tr>
             <tbody>
                 <tr *ngFor="let address of addresses; let i = index">
-                    <td>{{address.number}} {{address.street}}</td>
+                    <td>{{address.addressId}}</td>
+                    <td>{{address.number}}</td>
+                    <td>{{address.street}}</td>
                     <td>{{address.city}}</td>
                     <td>{{address.state}}</td>
                     <td>{{address.zipCode}}</td>
-
-                    <td><input (click)="deleteAddress(this.address)" type="submit" value="Delete Address"></td>
-                    <td><input (click)="changeAddress(this.address)" type="submit" value="Edit Address"></td>
+                    <td><input (click)="deleteAddress(this.address)" type="submit" value="Delete Address" class="custom-button"></td>
+                    <td><input (click)="changeAddress(this.address)" type="submit" value="Edit Address" class="custom-button"></td>
                 </tr>
             </tbody>
         </table>
