@@ -3,6 +3,10 @@ package com.revature.p2backend;
 
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.revature.p2backend.beans.controllers.AddressController;
 import com.revature.p2backend.beans.dao.*;
 import com.revature.p2backend.beans.controllers.OrdersController;
@@ -32,6 +36,8 @@ public class P2BackendApplication {
         storageManager.addAnnotatedClass(Product.class);
 
         context.start();
+
+
 
     }
 }

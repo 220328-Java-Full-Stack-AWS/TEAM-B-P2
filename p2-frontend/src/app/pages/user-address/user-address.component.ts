@@ -50,15 +50,10 @@ export class UserAddressComponent implements OnInit {
     console.log("adding new address...")
 
     let address = new Address(this.number, this.street, this.city, this.state, this.zipCode, this.userId)
-    let options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
     //let currentAddress = new CurrentAddress(this.addressId)
     window.alert('You have added to your current address')
     //tested referring the address and httpOptions object in addressService, switched back because it didn't work
-    this.addressService.postNewAddress("/address/add", address, options).subscribe((data: any) => { console.log("returned data: ", data) });
+    this.addressService.postNewAddress(address).subscribe((data: any) => { console.log("returned data: ", data) });
     //this.showAddress(currentAddress);
   }
 
@@ -73,13 +68,13 @@ export class UserAddressComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     }
-    return this.addressService.getAddressById("/address/currentaddress", address, options).subscribe((data: Address) => { console.log("returned data: ", data) });
+    return this.addressService.getAddressById(address).subscribe((data: Address) => { console.log("returned data: ", data) });
   }
 
 
   showAllUserAddresses(user: User): any {
     console.log("trying to retrieve all user addresses...")
-
+    
     //address body need to change to a body with "id" = 1
 
     return this.addressService.getAddressByUser(user).subscribe((data: Address[]) => {
@@ -110,7 +105,9 @@ export class UserAddressComponent implements OnInit {
         'addressId': aId + ""
       })
     }
-    this.addressService.deleteAddress("/address/deleteByHeader", address, options).subscribe((data: any) => { console.log("returned data: ", data) });
+    this.addressService.deleteAddress("/deleteByHeader", address, options).subscribe((data: any) => {
+      console.log("returned data: ", data)
+    });
   }
 
 

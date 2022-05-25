@@ -1,1 +1,94 @@
-<p>checkout works!</p>
+<span>Fill out the following fields:</span>
+<form (ngSubmit)="goToCheckout()" #checkoutForm="ngForm">
+    
+    
+    <label for="billingAddress">Billing Address</label>
+    <div class="group">
+        <label for="billingNumber">Number</label>
+        <input type="billingNumber" class="form-input" id="billingNumber" required name="billingNumber" [(ngModel)]="billingNumber" />
+    </div>
+    <div class="group">
+        <label for="billingStreet">Street</label>
+        <input type="billingStreet" class="form-input" id="billingStreet" required name="billingStreet" [(ngModel)]="billingStreet" />
+    </div>
+    <div class="group">
+        <label for="billingCity">City</label>
+        <input type="billingCity" class="form-input" id="billingCity" required name="billingCity"
+            [(ngModel)]="billingCity" />
+    </div>
+    <div class="group">
+        <label for="billingState">State</label>
+        <input type="billingState" class="form-input" id="billingState" required name="billingState"
+            [(ngModel)]="billingState" />
+    </div>
+    <div class="group">
+        <label for="billingZipCode">Zip Code</label>
+        <input type="billingZipCode" class="form-input" id="billingZipCode" required name="billingZipCode"
+            [(ngModel)]="billingZipCode" />
+    </div>
+    
+    
+    <label for="shippingAddress">Shipping Address</label>
+    <div class="group">
+        <label for="shippingNumber">Number</label>
+        <input type="shippingNumber" class="form-input" id="shippingNumber" required name="shippingNumber"
+            [(ngModel)]="shippingNumber" />
+    </div>
+    <div class="group">
+        <label for="shippingStreet">Street</label>
+        <input type="shippingStreet" class="form-input" id="shippingStreet" required name="shippingStreet"
+            [(ngModel)]="shippingStreet" />
+    </div>
+    <div class="group">
+        <label for="shippingCity">City</label>
+        <input type="shippingCity" class="form-input" id="shippingCity" required name="shippingCity"
+            [(ngModel)]="shippingCity" />
+    </div>
+    <div class="group">
+        <label for="shippingState">State</label>
+        <input type="shippingState" class="form-input" id="shippingState" required name="shippingState"
+            [(ngModel)]="shippingState" />
+    </div>
+    <div class="group">
+        <label for="shippingZipCode">Zip Code</label>
+        <input type="shippingZipCode" class="form-input" id="shippingZipCode" required name="shippingZipCode"
+            [(ngModel)]="shippingZipCode" />
+    </div>
+    
+    <label for="paymentInformation">Payment Information</label>
+    <div class="group">
+        <label for="cardNumber">Card Number</label>
+        <input type="cardNumber" class="form-input" id="cardNumber" required name="cardNumber"
+            [(ngModel)]="cardNumber" />
+    </div>
+    <div class="group">
+        <label for="cardName">Name on Card</label>
+        <input type="cardName" class="form-input" id="cardName" required name="cardName"
+            [(ngModel)]="cardName" />
+    </div>
+    <div class="group">
+        <label for="expirationDate">Expiration Date</label>
+        <input type="expirationDate" class="form-input" id="expirationDate" required name="expirationDate"
+            [(ngModel)]="expirationDate" />
+    </div>
+    <div class="group">
+        <label for="CVV">CVV</label>
+        <input type="CVV" class="form-input" id="CVV" required name="CVV"
+            [(ngModel)]="CVV" />
+    </div>
+    
+    <div style="display: flex; justify-content: space-between">
+        <button class="custom-button" type="submit" [disabled]="!checkoutForm.form.valid">
+            Checkout
+        </button>
+
+    </div>
+</form>
+
+<!-- grab address that is first from list or saved into localstorage or create new address -->
+<h3>Payment Information:</h3>
+<!-- just fill out payment info -->
+<h3>Billing Address:</h3>
+<!-- grab address that is first from list or saved into localstorage or create new address -->
+<h3>Checkout when Ready.</h3>
+

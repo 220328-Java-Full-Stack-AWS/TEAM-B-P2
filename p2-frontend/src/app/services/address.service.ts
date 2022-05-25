@@ -9,8 +9,7 @@ import { User } from './user.service';
 export class AddressService {
 
   //base url to concatenate with in this script. will be replaced with database link in P3.
-  baseUrl: string = "http://localhost:8080"
-  addressUri: string = "/address"
+  baseUrl: string = "http://localhost:8080/address"
   static httpOptions: object;
 
   constructor(private http: HttpClient) { }
@@ -41,10 +40,10 @@ export class AddressService {
 
 
   //POST
-  postNewAddress(uri: string, body: object, options: object): Observable<any> {
-    console.log("POST: ", this.baseUrl + uri, body, options);
+  postNewAddress(body: object): Observable<any> {
+    console.log("POST: ", this.baseUrl, body);
     //this is the request that send to backend with the url same as on postman to post info to the backend.
-    return this.http.post<any>(this.baseUrl + uri, JSON.stringify(body), this.httpOptions)
+    return this.http.post<any>(this.baseUrl + "/add", JSON.stringify(body), this.httpOptions)
       .pipe(
         retry(3),
         catchError(this.errorHandler)
@@ -52,10 +51,10 @@ export class AddressService {
   }
 
   //GET
-  getAddressById(uri: string, body: object, options: object): Observable<any> {
-    console.log("GET: ", this.baseUrl + uri + body, options);
+  getAddressById(body: object): Observable<any> {
+    console.log("GET: ", this.baseUrl+ body);
     //this return request is what gets sent to back end with the url same as on postman to get info from the backend.
-    return this.http.post<any>(this.baseUrl + uri, JSON.stringify(body), this.httpOptions)
+    return this.http.post<any>(this.baseUrl + "/currentaddress", JSON.stringify(body), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -63,8 +62,8 @@ export class AddressService {
   }
 
   getAddressByUser(body: object): Observable<any> {
-    console.log("Getting addresses by User...");
-    return this.http.post<object[]>(this.baseUrl + "/address/user", body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+    console.log("Getting addresses by User...", body);
+    return this.http.post<object[]>(this.baseUrl + "/user", JSON.stringify(body), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -75,7 +74,7 @@ export class AddressService {
   updateAddress(uri: string, body: object, options: object): Observable<any> {
     console.log("PUT: ", this.baseUrl + uri, body, options);
     //this return request is what gets sent to back end with the url same as on postman to update info to the backend.
-    return this.http.put<any>(this.baseUrl + "/address/update", JSON.stringify(body), options)
+    return this.http.put<any>(this.baseUrl + "/update", JSON.stringify(body), options)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -116,6 +115,7 @@ export class Address {
     this.state = _state;
     this.zipCode = _zipCode;
     this.userId = _userId;
+    this.addressId = 0;
   }
 }
 

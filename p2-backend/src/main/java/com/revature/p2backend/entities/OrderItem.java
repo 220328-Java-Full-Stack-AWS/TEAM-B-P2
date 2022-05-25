@@ -27,7 +27,6 @@ public class OrderItem {
     private Double itemTotalAmount;//changed to Double
 
     @OneToOne(fetch = FetchType.LAZY)
-
     @JoinColumn(name="product_id" , referencedColumnName = "product_id")
     private Product productId;
 

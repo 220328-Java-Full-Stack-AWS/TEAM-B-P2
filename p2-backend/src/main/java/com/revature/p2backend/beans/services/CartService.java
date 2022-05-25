@@ -44,7 +44,7 @@ public class CartService {
         Double orderTotal = 0.0;
         User user = getUser(cartDto.getUser().getId());
         //Address address = getAddress(cartDto.getAddress().getAddressId());
-        Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getAddress(), user);
+        Orders orders = new Orders(String.valueOf(LocalDate.now()), cartDto.getShippingAddress(), user);
         ordersDao.save(orders);
         for(OrderItem incomingOrderItem : cartDto.getOrderItemList()){
             Product product = getProduct(incomingOrderItem.getProductId().getProductId());

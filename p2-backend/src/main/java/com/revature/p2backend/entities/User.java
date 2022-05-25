@@ -1,5 +1,7 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -35,8 +37,8 @@ public class User {
     @Column(name="credit_card")
     private String creditCard;//added credit card
 
-    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
-    private List<Address> address;
+//    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+//    private List<Address> address;
 
 //    @ManyToMany(cascade={CascadeType.ALL})
 //    @JoinTable(
@@ -48,6 +50,7 @@ public class User {
 //    private Set<Address> addresses;
 
 //    @OneToMany(mappedBy="user",fetch = FetchType.LAZY)
+//    @JsonManagedReference
 //    private List<Orders> orders = new LinkedList<>();
 
 
@@ -61,7 +64,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.address = new LinkedList<>();
+//        this.address = new LinkedList<>();
     }
 
     public Integer getId() {
