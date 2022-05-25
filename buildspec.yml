@@ -50,6 +50,12 @@ phases:
       - mv ./target/p2-backend-0.0.1.war ./../ROOT.war
       - pwd
       - ls -al
+      - cd src
+      - pwd
+      - ls -al
+      - cd main
+      - pwd
+      - ls -al
 
 artifacts:
   files:
