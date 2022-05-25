@@ -76,19 +76,24 @@ export class CheckoutComponent implements OnInit {
 
     this.addressService.postNewAddress(shippingAddress).subscribe((d) => {
       console.log('new address created', d);
-      shippingAddress = d;
+      console.log("items to purchase", this.orderItems);
+      this.cartService.checkout(this.orderItems, this.user, d).subscribe((data) => {
+        console.log('this is the data from the back', data);
+      });
+      console.log("go to checkout:", this.user, this.orderItems, billingAddress, shippingAddress);
     })
     
-    console.log('shipping address created', shippingAddress)
-    this.cartService.checkout(this.cartService.orderItemList, this.user, shippingAddress).subscribe((data) => {
-      console.log('this is the data from the back', data);
-    });
-    console.log("go to checkout:", this.user, this.cartService.orderItemList, billingAddress, shippingAddress);
+    // console.log('shipping address created', shippingAddress)
+    // this.cartService.checkout(this.cartService.orderItemList, this.user, shippingAddress).subscribe((data) => {
+    //   console.log('this is the data from the back', data);
+    // });
+    // console.log("go to checkout:", this.user, this.cartService.orderItemList, billingAddress, shippingAddress);
     
   }
 
   ngOnInit(): void {
     let token = localStorage.getItem('currentUser')
+    let token2 = localStorage.getItem('cart')
     let u: User;
     if (!token) {
       alert("You are not logged in");
@@ -96,12 +101,12 @@ export class CheckoutComponent implements OnInit {
     else {
       u = JSON.parse(token);
       this.user = u;
+      if (!token2) {
+        alert("Cart is empty");
+      } else {
+        this.orderItems = JSON.parse(token2);
+      }
     }
-    this.cartService.getProducts()
-      .subscribe(res => {
-        this.orderItems = res;
-        this.grandTotal = this.cartService.getTotalPrice();
-      })
   }
 
 }
