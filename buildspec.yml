@@ -12,12 +12,12 @@ phases:
       - echo ============================pre-build================================
       - pwd
       - ls -al
-      - aws s3 cp s3://p2-secret-files/hibernate.properties p2-backend/src/resources/hibernate.properties
+      - aws s3 cp s3://p2-secret-files/hibernate.properties p2-backend/src/main/resources/hibernate.properties
       - pwd
       - ls -al
       #(use the next line if there's an application.properties file and change the name of the bucket)
       #- aws s3 cp s3://rev-secret-bucket/application.properties src/main/resources/application.properties
-      - aws s3 rm "s3://p2-s3-bucket/*" --recursive
+      - aws s3 rm "s3://p2-s3-bucket/" --recursive
   build:
     commands:
       - echo ============================build================================
@@ -48,12 +48,7 @@ phases:
       - pwd
       - ls -al
       - mv ./target/p2-backend-0.0.1.war ./../ROOT.war
-      - pwd
-      - ls -al
-      - cd src
-      - pwd
-      - ls -al
-      - cd resources
+      - cd ./..
       - pwd
       - ls -al
 
