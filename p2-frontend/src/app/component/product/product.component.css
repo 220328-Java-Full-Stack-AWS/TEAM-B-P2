@@ -1,12 +1,21 @@
-
-.before-discount{
+.before-discount {
   text-decoration: line-through;
 }
 
 .image {
-  object-fit:fill;
+  object-fit: fill;
   left: auto;
   margin: 0;
-  width: 350px;
-  height: 350px;
+  width: 18rem;
+}
+
+.item-card {
+  margin-top: 2rem;
+  align-items: center;
+  width: 19rem;
+  align-self: auto;
+}
+
+.icon {
+  margin-inline: 1rem;
 }

@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { SwiperModule } from 'swiper/angular';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { NgModule } from '@angular/core';
@@ -73,7 +72,6 @@ import { OrdersComponent } from './pages/orders/orders.component';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatGridListModule,
     SwiperModule,
     FontAwesomeModule,
   ],

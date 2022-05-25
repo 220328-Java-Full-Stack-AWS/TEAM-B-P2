@@ -1,21 +1,21 @@
+<div class="item-card">
+  <mat-card>
+    <mat-card-content>
+      <img mat-card-image class="image" [src]="item?.imageUrl" alt={{item?.name}} (click)="onClick()">
 
-<mat-card>
-  <mat-card-header></mat-card-header>
-  <mat-card-content>
-    <img  mat-card-image class="image" [src]="item?.imageUrl" alt={{item?.name}}  (click)="onClick()">
-
-    <p>{{item?.name}}</p>
-    <p *ngIf="show">{{item?.description}}</p>
-    <p class ="before-discount"> {{item?.price | currency}}</p>
-    <p > {{itemNewPrice | currency}}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-flat-button color="primary" (click)="onAddToCartClick()">
-      <mat-icon>add_shopping_cart</mat-icon>
-       Add To Cart
-    </button>
-  </mat-card-actions>
-</mat-card>
+      <p>{{item?.name}}</p>
+      <p *ngIf="show">{{item?.description}}</p>
+      <p class="before-discount"> {{item?.price | currency}}</p>
+      <p> {{itemNewPrice | currency}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-flat-button color="primary" (click)="onAddToCartClick()">
+        <mat-icon>add_shopping_cart</mat-icon>
+        Add To Cart
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -2,7 +2,7 @@ import { CategoryType } from '../types/constants';
 import { IProduct } from '../types/IProduct';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, retry, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class ProductService {
 
   baseUrl: string = "http://localhost:8080/products";
   products: IProduct[] = [];
-  selectedCategory="";
+  selectedCategory = "";
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class ProductService {
     )
   }
 
-  viewProductById(id:string): Observable<any> {
+  viewProductById(id: string): Observable<any> {
     return this.http.get<object>(this.baseUrl + `/id/${id}`, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .pipe(
         retry(1),
@@ -54,12 +54,12 @@ export class ProductService {
   }
 
 
-  setSelectedCategory(category : CategoryType | "") {
+  setSelectedCategory(category: CategoryType | "") {
     this.selectedCategory = category;
   }
 
   getSelectedCategory() {
-    return this.selectedCategory ;
+    return this.selectedCategory;
   }
 
   filterByKeywords(data: IProduct[], keyword: string) {
@@ -67,7 +67,6 @@ export class ProductService {
       p.description.toLocaleLowerCase().includes(keyword) ||
       p.name.toLowerCase().includes(keyword));
   }
-
 }
 
 export class Product {

@@ -1,5 +1,6 @@
+import { ProductService } from './../../services/product.service';
 import { IProduct } from 'src/app/types/IProduct';
-import { AfterContentInit, AfterViewChecked ,Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -11,10 +12,12 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductComponent implements OnInit, AfterViewChecked {
 
   itemNewPrice = 0;
+  isFavoriteProduct =false;
   @Input() item?: IProduct;
   @Input() show?: boolean;
 
-  constructor(private router: Router, private cartService: CartService) {
+
+  constructor(private router: Router, private cartService: CartService, private productService: ProductService) {
   }
   ngOnInit(): void {
 
@@ -30,6 +33,4 @@ export class ProductComponent implements OnInit, AfterViewChecked {
   onAddToCartClick() {
     if (this.item) this.cartService.addToCart(this.item)
   }
-
-
 }
