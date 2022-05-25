@@ -53,7 +53,7 @@ phases:
       - cd src
       - pwd
       - ls -al
-      - cd main
+      - cd resources
       - pwd
       - ls -al
 
