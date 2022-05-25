@@ -38,6 +38,7 @@ import { ProductComponent } from './component/product/product.component';
 import { FeaturedProductsComponent } from './component/featured-products/featured-products.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { LandingSection1Component } from './component/landing-section1/landing-section1.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { LandingSection1Component } from './component/landing-section1/landing-s
     ProductDetailsComponent,
     FooterComponent,
     LandingSection1Component,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

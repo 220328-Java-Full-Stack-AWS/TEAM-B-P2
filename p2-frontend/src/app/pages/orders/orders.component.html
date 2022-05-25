@@ -1,0 +1,25 @@
+<ng-container *ngIf="ordersList.length != 0">
+    <div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>creation date</th>
+                    <!-- <th>Inventory</th> -->
+                    <th>Order Total</th>
+                    <!-- <th>Product Id</th> -->
+                </tr>
+                <tbody>
+                    <tr *ngFor="let order of ordersList; let i = index">
+                        <td>{{order.id}}</td>
+                        <td>{{order.creationDate}}</td>
+                        <td>{{order.orderTotal}}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="ordersList.length == 0">
+    <p>You have not made any purchases</p>
+</ng-container>

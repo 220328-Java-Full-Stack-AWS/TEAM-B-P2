@@ -20,7 +20,7 @@ public class OrdersController {
         this.ordersService = ordersService;
     }
 
-    @GetMapping("/byCurrentUser")
+    @PostMapping("/byCurrentUser")
     @ResponseStatus(HttpStatus.OK)
     public List<Orders> getByUser(@RequestBody User user){
         return ordersService.getOrdersByUser(user);

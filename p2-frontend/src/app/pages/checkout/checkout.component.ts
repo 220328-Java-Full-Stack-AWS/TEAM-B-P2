@@ -79,6 +79,9 @@ export class CheckoutComponent implements OnInit {
       console.log("items to purchase", this.orderItems);
       this.cartService.checkout(this.orderItems, this.user, d).subscribe((data) => {
         console.log('this is the data from the back', data);
+        alert("Checkout successful!")
+        localStorage.removeItem("cart")
+        window.location.href = "./"
       });
       console.log("go to checkout:", this.user, this.orderItems, billingAddress, shippingAddress);
     })

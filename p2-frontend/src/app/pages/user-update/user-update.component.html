@@ -38,8 +38,11 @@
 
     <button class="custom-button" type="submit" [disabled]="!signInForm.form.valid">
         Update Info
-    </button>
+    </button> | 
+    <button class="custom-button" type="submit"  (click)="logout()">Logout</button>
 </form>
+
+
 
 
 <router-outlet></router-outlet>

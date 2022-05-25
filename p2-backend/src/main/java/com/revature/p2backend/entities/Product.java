@@ -30,8 +30,8 @@ public class Product {
     @Column
     private Integer inventory;
 
-//    @OneToOne(mappedBy = "productId")
-//    private OrderItem orderItem;
+    @OneToOne(mappedBy = "productId")
+    private OrderItem orderItem;
 
     @Column(name = "category" , nullable = false)
     @NotNull
@@ -47,8 +47,8 @@ public class Product {
     private String sku; //added
 
     @Column
-    @Min(value = 5, message = "Min discount should not be less than 5")
-    @Max(value = 95, message = "Max discount should not be greater than 5")
+    @Min(value = 0, message = "Min discount should not be less than 0")
+    @Max(value = 95, message = "Max discount should not be greater than 95")
     private Integer discount;//added
 
     @Column(nullable = false)

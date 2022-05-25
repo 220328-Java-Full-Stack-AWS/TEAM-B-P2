@@ -19,6 +19,8 @@ export class UserViewComponent implements OnInit {
     }
   }
 
+
+
   ngOnInit(): void {
   }
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { NgForOf } from '@angular/common';
 import { Product } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
 
   public orderItems: OrderItem[] = [];
   public grandTotal: number = 0;
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
   // cartItems = sessionStorage.getItem("product");
 
   removeProduct(product: any){
@@ -31,7 +32,7 @@ export class CartComponent implements OnInit {
       alert("You are not logged in");
     }
     else{
-      window.location.href = "./checkout";
+      this.router.navigate(['/checkout'])
     }
   }
 
@@ -52,6 +53,8 @@ export class CartComponent implements OnInit {
         this.orderItems = res;
         this.grandTotal = this.cartService.getTotalPrice();
       })
+
+
 
   }
 

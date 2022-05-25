@@ -10,6 +10,7 @@ import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserViewComponent } from './pages/user-view/user-view.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent
   }
 ];
 

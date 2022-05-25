@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { AuthDto, AuthService } from '../../services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class UserLoginComponent implements OnInit {
 
 
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
   user: any;
   username: string = "";
   password: string = "";
@@ -24,10 +25,8 @@ export class UserLoginComponent implements OnInit {
     this.authService.login(authDto, options)
       .subscribe((data) => {
         localStorage.setItem("currentUser", JSON.stringify(data));
-        window.location.href = "./";
+        window.location.href = "./"
       });
-
-      
   }
   onClickRegister(): void {
     window.location.href = "./user-registration"

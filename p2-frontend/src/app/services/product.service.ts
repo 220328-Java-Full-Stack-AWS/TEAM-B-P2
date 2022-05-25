@@ -17,10 +17,10 @@ export class ProductService {
 
   viewAllProducts(): Observable<any> {
     return this.http.get<object>(this.baseUrl + "/all", { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
-      .pipe(
-        retry(1),
-        catchError(this.errorHandler)
-      )
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
   }
 
   viewProductById(id:string): Observable<any> {

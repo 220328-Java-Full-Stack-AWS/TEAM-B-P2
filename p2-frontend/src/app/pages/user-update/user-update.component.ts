@@ -22,6 +22,11 @@ export class UserUpdateComponent implements OnInit {
 
   }
 
+  logout():void{
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("cart")
+    window.location.href = "./"
+  }
   
 
   onClick(_username: string, _password: string, _firstName: string, _lastName: string, _email: string, _phone: string): void {
