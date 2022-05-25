@@ -57,6 +57,7 @@ export class UserAddressComponent implements OnInit {
     //tested referring the address and httpOptions object in addressService, switched back because it didn't work
     this.addressService.postNewAddress(address).subscribe((data: any) => { console.log("returned data: ", data) });
     //this.showAddress(currentAddress);
+    window.location.href = './user-address';
   }
 
 
@@ -105,6 +106,8 @@ export class UserAddressComponent implements OnInit {
     this.addressService.deleteAddress("/deleteByHeader", address, options).subscribe((data: any) => {
       console.log("returned data: ", data)
     });
+    alert('Address deleted successfully!')
+    window.location.href = './user-address';
   }
 
 

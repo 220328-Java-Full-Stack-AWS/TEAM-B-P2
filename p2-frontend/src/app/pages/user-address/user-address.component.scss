@@ -7,6 +7,16 @@ $main-color: black;
     color: $main-color;
 }
 
+table {
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    border: 1px solid #999;
+    padding: 0.1rem;
+    text-align: left;
+  }
+
 .group {
     position: relative;
     margin: 25px 0;
