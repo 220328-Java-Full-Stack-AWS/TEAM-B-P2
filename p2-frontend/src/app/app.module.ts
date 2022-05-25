@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { SwiperModule } from 'swiper/angular';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { NgModule } from '@angular/core';
@@ -71,7 +70,6 @@ import { LandingSection1Component } from './component/landing-section1/landing-s
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatGridListModule,
     SwiperModule,
     FontAwesomeModule,
   ],

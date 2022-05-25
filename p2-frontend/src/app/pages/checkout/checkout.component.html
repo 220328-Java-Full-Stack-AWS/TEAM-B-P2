@@ -1,7 +1,7 @@
 <span>Fill out the following fields:</span>
 <form (ngSubmit)="goToCheckout()" #checkoutForm="ngForm">
-    
-    
+
+
     <label for="billingAddress">Billing Address</label>
     <div class="group">
         <label for="billingNumber">Number</label>
@@ -26,8 +26,8 @@
         <input type="billingZipCode" class="form-input" id="billingZipCode" required name="billingZipCode"
             [(ngModel)]="billingZipCode" />
     </div>
-    
-    
+
+
     <label for="shippingAddress">Shipping Address</label>
     <div class="group">
         <label for="shippingNumber">Number</label>
@@ -54,7 +54,7 @@
         <input type="shippingZipCode" class="form-input" id="shippingZipCode" required name="shippingZipCode"
             [(ngModel)]="shippingZipCode" />
     </div>
-    
+
     <label for="paymentInformation">Payment Information</label>
     <div class="group">
         <label for="cardNumber">Card Number</label>
@@ -76,7 +76,7 @@
         <input type="CVV" class="form-input" id="CVV" required name="CVV"
             [(ngModel)]="CVV" />
     </div>
-    
+
     <div style="display: flex; justify-content: space-between">
         <button class="custom-button" type="submit" [disabled]="!checkoutForm.form.valid">
             Checkout
