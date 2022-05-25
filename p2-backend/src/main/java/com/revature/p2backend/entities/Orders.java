@@ -1,5 +1,6 @@
 package com.revature.p2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -27,9 +28,10 @@ public class Orders {
     @JoinColumn(name="address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="billing_address_id", referencedColumnName =  "address_id")
-    private Address billingAddress;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="billing_address_id", referencedColumnName =  "address_id")
+//    @JsonBackReference
+//    private Address billingAddress;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", referencedColumnName = "user_id")
@@ -51,7 +53,7 @@ public class Orders {
     public Orders(String creationDate, Address address, Address billingAddress, User user) {
         this.creationDate = creationDate;
         this.address = address;
-        this.billingAddress = billingAddress;
+//        this.billingAddress = billingAddress;
         this.user = user;
     }
 
@@ -91,13 +93,13 @@ public class Orders {
         this.address = address;
     }
 
-    public Address getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
-    }
+//    public Address getBillingAddress() {
+//        return billingAddress;
+//    }
+//
+//    public void setBillingAddress(Address billingAddress) {
+//        this.billingAddress = billingAddress;
+//    }
 
     public User getUser() {
         return user;

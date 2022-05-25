@@ -9,14 +9,14 @@ import java.util.List;
 
 public class CartDto {
     private List<OrderItem> orderItemList;
-    private Address address;
+    private Address shippingAddress;
     private User user;
 
     public CartDto() {
     }
 
-    public CartDto(Address address, User user) {
-        this.address = address;
+    public CartDto(Address shippingAddress, User user) {
+        this.shippingAddress = shippingAddress;
         this.user = user;
         this.orderItemList = new LinkedList<>();
     }
@@ -34,12 +34,12 @@ public class CartDto {
         this.orderItemList = orderItemList;
     }
 
-    public Address getAddress() {
-        return address;
+    public Address getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public User getUser() {
@@ -54,7 +54,7 @@ public class CartDto {
     public String toString() {
         return "CartDto{" +
                 "orderItemList=" + orderItemList +
-                ", address=" + address +
+                ", address=" + shippingAddress +
                 ", user=" + user +
                 '}';
     }
