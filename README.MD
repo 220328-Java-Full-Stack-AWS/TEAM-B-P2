@@ -42,7 +42,7 @@ The E-Commerce Single-Page Application will allow consumers to browse, search, a
 The persistence layer shall use Hibernate ORM to translate between the database and the application server. The API layer shall abstract away the low-level servlets with Spring Web MVC. The client shall use Angular to produce an SPA which is styled to be functional and readable. The server should follow a proper layered architecture, and have adequate unit testing of the service layer. The client and server should communicate in a RESTful manner, and the server should be stateless. 
 
 ### Entity Relation Diagram
-![]![image](https://user-images.githubusercontent.com/102552265/170398040-9496025e-f176-467c-904c-567267f33e29.png)
+![image](https://user-images.githubusercontent.com/102552265/170398040-9496025e-f176-467c-904c-567267f33e29.png)
 
 
 ## User Stories
