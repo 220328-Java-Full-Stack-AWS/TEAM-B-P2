@@ -38,6 +38,7 @@ The E-Commerce Single-Page Application will allow consumers to browse, search, a
 ### Stretch Goals:
  - Application is merged, tested, and deployed with a fully functional CI/CD Pipeline
 
+### Architecture Diagram Explanation
 The persistence layer shall use Hibernate ORM to translate between the database and the application server. The API layer shall abstract away the low-level servlets with Spring Web MVC. The client shall use Angular to produce an SPA which is styled to be functional and readable. The server should follow a proper layered architecture, and have adequate unit testing of the service layer. The client and server should communicate in a RESTful manner, and the server should be stateless. 
 
 ### Entity Relation Diagram
